@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="companyname.com.kpl.FourFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/black"
+
+        >
+
+
+        <Button
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:text="Official Partners"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="About Kpl Pune"
+            android:gravity="center"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+
+            android:padding="10dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="Contact Us"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="My Favourites"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="Referees"
+            android:textSize="15dp"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:gravity="center"
+
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="Admin Section"
+            android:textSize="15dp"
+            android:background="#FFFFFF"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:gravity="center"
+            android:id="@+id/btn_admin"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

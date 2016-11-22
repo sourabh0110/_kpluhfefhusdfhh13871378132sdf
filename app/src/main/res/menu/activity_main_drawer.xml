@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/favourites"
+            android:title="Favourites" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/login"
+            android:title="Login"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="Logout"
+            android:visible="false"
+            />
+
+
+
+    <item android:title="About">
+        <menu>
+            <item
+                android:id="@+id/nav_aboutkpl"
+                android:icon="@drawable/about_us"
+                android:title="About Kpl" />
+            <item
+                android:id="@+id/nav_aboutdev"
+                android:icon="@drawable/about_dev"
+                android:title="About us" />
+        </menu>
+    </item>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_rateus"
+                android:icon="@drawable/rate_us"
+                android:title="Rate app" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/help"
+                android:title="Help" />
+            <item
+                android:id="@+id/nav_terms_conditions"
+                android:icon="@drawable/terms_conditions"
+                android:title="Terms and Conditions" />
+        </menu>
+
+        </item>
+</menu>
