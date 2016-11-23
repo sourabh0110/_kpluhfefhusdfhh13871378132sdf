@@ -66,9 +66,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onResponse(String response) {
                         if(response.trim().equals("success")){
                             pb.setVisibility(View.INVISIBLE);
+                            editTextPassword.setText("");
+                            editTextUsername.setText("");
                             openProfile();
                         }else{
                             pb.setVisibility(View.INVISIBLE);
+                            editTextPassword.setText("");
+                            editTextUsername.setText("");
                             Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
                         }
                     }
@@ -76,6 +80,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        editTextPassword.setText("");
+                        editTextUsername.setText("");
                         Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
                     }
                 }){
@@ -95,6 +101,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void openProfile(){
         Intent intent = new Intent(this, Admin_Activity.class);
         intent.putExtra(KEY_NAME, username);
+        editTextPassword.setText("");
+        editTextUsername.setText("");
         startActivity(intent);
     }
 
