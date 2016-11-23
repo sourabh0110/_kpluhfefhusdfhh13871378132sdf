@@ -54,7 +54,7 @@ public class FourFragment extends Fragment implements View.OnClickListener {
         admin_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getActivity().getApplication(),Admin_Activity.class);
+                Intent i=new Intent(getActivity().getApplication(),LoginActivity.class);
                 startActivity(i);
             }
         });

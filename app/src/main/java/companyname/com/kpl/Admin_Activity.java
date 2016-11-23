@@ -103,9 +103,9 @@ public class Admin_Activity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new OneFragment_admin(), "");
-        adapter.addFragment(new TwoFragment_admin(), "My KPL");
-        adapter.addFragment(new ThreeFragment_admin(), "Stats");
-        adapter.addFragment(new FourFragment_admin(), "More");
+        adapter.addFragment(new TwoFragment_admin(), "");
+        adapter.addFragment(new ThreeFragment_admin(), "");
+        adapter.addFragment(new FourFragment_admin(), "");
         viewPager.setAdapter(adapter);
     }
     class ViewPagerAdapter extends FragmentPagerAdapter {
