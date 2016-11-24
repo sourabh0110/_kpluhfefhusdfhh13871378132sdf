@@ -1,6 +1,8 @@
 package companyname.com.kpl;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static final String KEY_USERNAME="adm_username";
     public static final String KEY_PASSWORD="adm_password";
     public static final String KEY_NAME="name";
+    public static final String SHARED_PREF_NAME="myloginapp";
+    public static final String LOGGEDIN_SHARED_PREF="loggedin";
 
     private EditText editTextUsername;
     private EditText editTextPassword;
@@ -35,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressBar pb;
     private String username;
     private String password;
-
+    private boolean loggedIn=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        loggedIn=sharedPreferences.getBoolean(LOGGEDIN_SHARED_PREF,false);
+
+        if(loggedIn)
+        {
+            openProfile();
+        }
+    }
 
     private void userLogin() {
         username = editTextUsername.getText().toString().trim();
@@ -65,14 +81,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onResponse(String response) {
                         if(response.trim().equals("success")){
+                           /*
                             pb.setVisibility(View.INVISIBLE);
                             editTextPassword.setText("");
                             editTextUsername.setText("");
                             openProfile();
+                            */
+                            SharedPreferences sharedPreferences=LoginActivity.this.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor=sharedPreferences.edit();
+                            editor.putBoolean(LOGGEDIN_SHARED_PREF,true);
+                            editor.commit();
+                            openProfile();
+
                         }else{
                             pb.setVisibility(View.INVISIBLE);
-                            editTextPassword.setText("");
+
                             editTextUsername.setText("");
+                            editTextPassword.setText("");
+                            editTextUsername.setFocusable(true);
                             Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
                         }
                     }
@@ -80,8 +106,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        editTextPassword.setText("");
+
                         editTextUsername.setText("");
+                        editTextPassword.setText("");
+                        editTextUsername.setFocusable(true);
                         Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
                     }
                 }){
@@ -101,9 +129,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void openProfile(){
         Intent intent = new Intent(this, Admin_Activity.class);
         intent.putExtra(KEY_NAME, username);
-        editTextPassword.setText("");
         editTextUsername.setText("");
+        editTextPassword.setText("");
+        editTextUsername.setFocusable(true);
         startActivity(intent);
+        finish();
     }
 
     @Override

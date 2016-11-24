@@ -1,22 +1,26 @@
 package companyname.com.kpl;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Admin_Activity extends AppCompatActivity {
 
+    private AlertDialog ad;
     private TabLayout tabLayout;
     private long back_pressed;
     private ViewPager viewPager;
@@ -69,6 +73,7 @@ public class Admin_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        /*
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Please Confirm")
                 .setMessage("Are you sure you want to exit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -79,6 +84,8 @@ public class Admin_Activity extends AppCompatActivity {
 
                     }
                 }).setNegativeButton("No", null).show();
+                */
+        logout();
     }
 
     /*
@@ -94,6 +101,42 @@ public class Admin_Activity extends AppCompatActivity {
                              }).setNegativeButton("No", null).show();
                  }
     */
+    private void logout()
+    {
+        AlertDialog.Builder alertDialogBuilder= new AlertDialog.Builder(this).setIcon(R.drawable.alert_info).setTitle("LOGOUT");
+
+        alertDialogBuilder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        SharedPreferences preferences=getSharedPreferences(LoginActivity.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor=preferences.edit();
+
+                        editor.putBoolean(LoginActivity.LOGGEDIN_SHARED_PREF,false);
+                        editor.commit();
+
+                        //Intent i=new Intent(Admin_Activity.this,MainActivity.class);
+                        //startActivity(i);
+                        Toast.makeText(Admin_Activity.this,"Logged Out successfully",Toast.LENGTH_LONG).show();
+                        finish();
+
+
+
+                    }
+                }
+        );
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog=alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
@@ -138,6 +181,8 @@ public class Admin_Activity extends AppCompatActivity {
 
             return mFragmentTitleList.get(position);
         }
+
+
     }
 
 
