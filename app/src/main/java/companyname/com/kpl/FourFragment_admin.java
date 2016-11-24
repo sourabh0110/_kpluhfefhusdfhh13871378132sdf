@@ -1,5 +1,6 @@
 package companyname.com.kpl;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,7 @@ import android.widget.Button;
  */
 public class FourFragment_admin extends Fragment {
 
-    private Button logout;
+    private Button addnews;
     public FourFragment_admin() {
         // Required empty public constructor
     }
@@ -23,6 +24,15 @@ public class FourFragment_admin extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        addnews=(Button)getView().findViewById(R.id.add_news);
+        addnews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Add_news.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 
@@ -35,5 +45,7 @@ public class FourFragment_admin extends Fragment {
 
 
     }
+
+
 
 }

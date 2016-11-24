@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/white"
 
-</LinearLayout>
+            >
+
+
+            <Button
+
+                android:layout_marginTop="60dp"
+                android:layout_width="match_parent"
+                android:textColor="@android:color/white"
+                android:text="Add News"
+                android:background="#000000"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:id="@+id/add_news"
+                android:padding="10dp"
+
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Edit News"
+                android:gravity="center"
+                android:background="#000000"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
