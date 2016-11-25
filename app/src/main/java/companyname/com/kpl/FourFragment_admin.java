@@ -14,7 +14,7 @@ import android.widget.Button;
  */
 public class FourFragment_admin extends Fragment {
 
-    private Button addnews;
+    private Button addnews,delnews;
     public FourFragment_admin() {
         // Required empty public constructor
     }
@@ -33,6 +33,14 @@ public class FourFragment_admin extends Fragment {
             }
         });
 
+        delnews= (Button) getView().findViewById(R.id.del_news);
+        delnews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Delete_news.class);
+                startActivity(i);
+            }
+        });
 
     }
 
