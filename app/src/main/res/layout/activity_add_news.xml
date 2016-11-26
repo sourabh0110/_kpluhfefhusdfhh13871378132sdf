@@ -45,13 +45,22 @@
                 android:hint="Author"
                 />
 
-            <DatePicker
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/tv_label"
-                android:layout_toRightOf="@+id/et_author"
-                android:layout_marginLeft="50dp"
-                ></DatePicker>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_date"
+                    android:layout_below="@+id/tv_label"
+                    android:hint="Date"
+
+                    />
+
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Select Date"
+              android:layout_marginLeft="20dp"
+              android:id="@+id/select_date"
+              />
             </LinearLayout>
 
 
