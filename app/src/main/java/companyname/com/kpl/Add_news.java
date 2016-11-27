@@ -1,37 +1,53 @@
 package companyname.com.kpl;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Add_news extends AppCompatActivity {
     private Button sdate,btnupdate;
     private ImageView iv;
+    private EditText author;
     private TextView tv_date;
     private ImageButton upload_image;
     private static final int PICK_IMAGE=100;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     Uri imageUri;
     int year_x,month_x,day_x;
+    private Bitmap bitmap;
+    private String UPLOAD_URL ="http://devkpl.com/news/upload.php";
+    private int PICK_IMAGE_REQUEST = 1;
+    private String KEY_IMAGE = "image";
+    private String KEY_NAME = "name";
     static final int DIALOG_ID=0;
 
     @Override
@@ -41,24 +57,32 @@ public class Add_news extends AppCompatActivity {
         tv_date= (TextView) findViewById(R.id.tv_date);
         tv_date.setVisibility(View.INVISIBLE);
         btnupdate= (Button) findViewById(R.id.btn_update);
+        author=(EditText)findViewById(R.id.et_author);
         final Calendar cal=Calendar.getInstance();
         year_x=cal.get(Calendar.YEAR);
         month_x=cal.get(Calendar.MONTH);
         day_x=cal.get(Calendar.DAY_OF_MONTH);
         showDialogOnButtonClick();
-        updateInfo();
+       // updateInfo();
         iv= (ImageView) findViewById(R.id.upload);
         upload_image= (ImageButton) findViewById(R.id.upload_button);
-
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateInfo();
+                uploadImage();
+            }
+        });
         upload_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onImageGalleryClicked(v);
+                showFileChooser();
             }
         });
     }
 
     private void updateInfo() {
+        /*
 
         AlertDialog.Builder alertDialogBuilder= new AlertDialog.Builder(this).setIcon(R.drawable.alert_info).setTitle("Please Confirm").setMessage("Are you sure you want to update?");
 
@@ -80,7 +104,10 @@ public class Add_news extends AppCompatActivity {
 
         AlertDialog alertDialog=alertDialogBuilder.create();
         alertDialog.show();
+*/
+        Toast.makeText(Add_news.this,year_x+"/"+month_x+"/"+day_x,Toast.LENGTH_LONG).show();
     }
+
 
     public void showDialogOnButtonClick()
     {
@@ -127,7 +154,7 @@ public class Add_news extends AppCompatActivity {
 
     private void onImageGalleryClicked(View v)
     {
-
+        /*
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
 
         // where do we want to find the data?
@@ -141,11 +168,78 @@ public class Add_news extends AppCompatActivity {
 
         // we will invoke this activity, and get something back from it.
         startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
+*/
 
+    }
+
+    private void showFileChooser()
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+    private void uploadImage(){
+        //Showing the progress dialog
+        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        //Disimissing the progress dialog
+                        loading.dismiss();
+                        //Showing toast message of the response
+                        Toast.makeText(Add_news.this, s , Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        //Dismissing the progress dialog
+                        loading.dismiss();
+
+                        //Showing toast
+                        Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                //Converting Bitmap to String
+               String image = getStringImage(bitmap);
+
+                //Getting Image Name
+                String name = author.getText().toString().trim();
+
+                //Creating parameters
+                Map<String,String> params = new Hashtable<String, String>();
+
+                //Adding parameters
+               params.put(KEY_IMAGE, image);
+                params.put(KEY_NAME, name);
+
+                //returning parameters
+                return params;
+            }
+        };
+
+        //Creating a Request Queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
+    }
+    public String getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        /*
         if (resultCode == RESULT_OK) {
             // if we are here, everything processed successfully.
             if (requestCode == IMAGE_GALLERY_REQUEST) {
@@ -174,6 +268,20 @@ public class Add_news extends AppCompatActivity {
                     //Toast.makeText(, "Unable to open image", Toast.LENGTH_LONG).show();
                 }
 
+            }
+        }
+        */
+
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //Getting the Bitmap from Gallery
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                //Setting the Bitmap to ImageView
+                iv.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
