@@ -47,7 +47,8 @@ public class Add_news extends AppCompatActivity {
     private String UPLOAD_URL ="http://devkpl.com/news/upload.php";
     private int PICK_IMAGE_REQUEST = 1;
     private String KEY_IMAGE = "image";
-    private String KEY_NAME = "name";
+    private String KEY_NAME = "author_name";
+    private String KEY_DATE = "date";
     static final int DIALOG_ID=0;
 
     @Override
@@ -180,6 +181,8 @@ public class Add_news extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
     private void uploadImage(){
+        
+
         //Showing the progress dialog
         final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
@@ -190,6 +193,7 @@ public class Add_news extends AppCompatActivity {
                         loading.dismiss();
                         //Showing toast message of the response
                         Toast.makeText(Add_news.this, s , Toast.LENGTH_LONG).show();
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -210,13 +214,15 @@ public class Add_news extends AppCompatActivity {
 
                 //Getting Image Name
                 String name = author.getText().toString().trim();
-
+                String currdate=tv_date.getText().toString().trim();
                 //Creating parameters
                 Map<String,String> params = new Hashtable<String, String>();
 
                 //Adding parameters
                params.put(KEY_IMAGE, image);
                 params.put(KEY_NAME, name);
+                params.put(KEY_DATE, currdate);
+
 
                 //returning parameters
                 return params;
