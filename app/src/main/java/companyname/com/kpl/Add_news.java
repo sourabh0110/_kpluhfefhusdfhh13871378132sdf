@@ -1,7 +1,9 @@
 package companyname.com.kpl;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,7 +24,7 @@ import java.io.InputStream;
 import java.util.Calendar;
 
 public class Add_news extends AppCompatActivity {
-    private Button sdate;
+    private Button sdate,btnupdate;
     private ImageView iv;
     private TextView tv_date;
     private ImageButton upload_image;
@@ -38,12 +40,13 @@ public class Add_news extends AppCompatActivity {
         setContentView(R.layout.activity_add_news);
         tv_date= (TextView) findViewById(R.id.tv_date);
         tv_date.setVisibility(View.INVISIBLE);
+        btnupdate= (Button) findViewById(R.id.btn_update);
         final Calendar cal=Calendar.getInstance();
         year_x=cal.get(Calendar.YEAR);
         month_x=cal.get(Calendar.MONTH);
         day_x=cal.get(Calendar.DAY_OF_MONTH);
         showDialogOnButtonClick();
-
+        updateInfo();
         iv= (ImageView) findViewById(R.id.upload);
         upload_image= (ImageButton) findViewById(R.id.upload_button);
 
@@ -53,6 +56,30 @@ public class Add_news extends AppCompatActivity {
                 onImageGalleryClicked(v);
             }
         });
+    }
+
+    private void updateInfo() {
+
+        AlertDialog.Builder alertDialogBuilder= new AlertDialog.Builder(this).setIcon(R.drawable.alert_info).setTitle("Please Confirm").setMessage("Are you sure you want to update?");
+
+        alertDialogBuilder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                }
+        );
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog=alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     public void showDialogOnButtonClick()
