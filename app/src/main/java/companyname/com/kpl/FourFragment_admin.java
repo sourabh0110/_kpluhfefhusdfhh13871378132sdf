@@ -14,7 +14,7 @@ import android.widget.Button;
  */
 public class FourFragment_admin extends Fragment {
 
-    private Button addnews,delnews;
+    private Button addnews,delnews,editnews;
     public FourFragment_admin() {
         // Required empty public constructor
     }
@@ -24,6 +24,7 @@ public class FourFragment_admin extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        editnews=(Button)getView().findViewById(R.id.edit_news);
         addnews=(Button)getView().findViewById(R.id.add_news);
         addnews.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,13 @@ public class FourFragment_admin extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getActivity().getApplication(),Delete_news.class);
+                startActivity(i);
+            }
+        });
+        editnews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Edit_news.class);
                 startActivity(i);
             }
         });

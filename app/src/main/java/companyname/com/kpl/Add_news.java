@@ -36,7 +36,7 @@ import java.util.Map;
 public class Add_news extends AppCompatActivity {
     private Button sdate,btnupdate;
     private ImageView iv;
-    private EditText author;
+    private EditText author,news_title,news_desc,news_content;
     private TextView tv_date;
     private ImageButton upload_image;
     private static final int PICK_IMAGE=100;
@@ -49,6 +49,9 @@ public class Add_news extends AppCompatActivity {
     private String KEY_IMAGE = "image";
     private String KEY_NAME = "author_name";
     private String KEY_DATE = "date";
+    private String KEY_TITLE = "title";
+    private String KEY_DESCRIPTION = "description";
+    private String KEY_CONTENT = "content";
     static final int DIALOG_ID=0;
 
     @Override
@@ -59,6 +62,10 @@ public class Add_news extends AppCompatActivity {
         tv_date.setVisibility(View.INVISIBLE);
         btnupdate= (Button) findViewById(R.id.btn_update);
         author=(EditText)findViewById(R.id.et_author);
+        news_title= (EditText) findViewById(R.id.et_title);
+        news_desc= (EditText) findViewById(R.id.et_description);
+        news_content= (EditText) findViewById(R.id.et_content);
+
         final Calendar cal=Calendar.getInstance();
         year_x=cal.get(Calendar.YEAR);
         month_x=cal.get(Calendar.MONTH);
@@ -71,7 +78,7 @@ public class Add_news extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateInfo();
-                uploadImage();
+                uploadToServer();
             }
         });
         upload_image.setOnClickListener(new View.OnClickListener() {
@@ -180,60 +187,71 @@ public class Add_news extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
-    private void uploadImage(){
-        
-
-        //Showing the progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-                        //Disimissing the progress dialog
-                        loading.dismiss();
-                        //Showing toast message of the response
-                        Toast.makeText(Add_news.this, s , Toast.LENGTH_LONG).show();
-
-                    }
-                },
-                new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        //Dismissing the progress dialog
-                        loading.dismiss();
-
-                        //Showing toast
-                        Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Converting Bitmap to String
-               String image = getStringImage(bitmap);
-
-                //Getting Image Name
-                String name = author.getText().toString().trim();
-                String currdate=tv_date.getText().toString().trim();
-                //Creating parameters
-                Map<String,String> params = new Hashtable<String, String>();
-
-                //Adding parameters
-               params.put(KEY_IMAGE, image);
-                params.put(KEY_NAME, name);
-                params.put(KEY_DATE, currdate);
+    private void uploadToServer(){
 
 
-                //returning parameters
-                return params;
-            }
-        };
+            //Showing the progress dialog
+            final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String s) {
+                            //Disimissing the progress dialog
+                            loading.dismiss();
+                            //Showing toast message of the response
+                            Toast.makeText(Add_news.this, s , Toast.LENGTH_LONG).show();
 
-        //Creating a Request Queue
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+                        }
+                    },
+                    new Response.ErrorListener() {
 
-        //Adding request to the queue
-        requestQueue.add(stringRequest);
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            //Dismissing the progress dialog
+                            loading.dismiss();
+
+                            //Showing toast
+                            Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    //Converting Bitmap to String
+                    String image = getStringImage(bitmap);
+
+                    //Getting Image Name and other values
+                    String name = author.getText().toString().trim();
+                    String curr_date=tv_date.getText().toString().trim();
+                    String title=news_title.getText().toString().trim();
+                    String desc=news_desc.getText().toString().trim();
+                    String content=news_content.getText().toString().trim();
+                    //Creating parameters
+                    Map<String,String> params = new Hashtable<String, String>();
+
+                    //Adding parameters
+                    params.put(KEY_IMAGE, image);
+                    params.put(KEY_NAME, name);
+                    params.put(KEY_DATE, curr_date);
+                    params.put(KEY_TITLE, title);
+                    params.put(KEY_DESCRIPTION, desc);
+                    params.put(KEY_CONTENT, content);
+
+
+                    //returning parameters
+                    return params;
+
+                }
+            };
+
+            //Creating a Request Queue
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+            //Adding request to the queue
+            requestQueue.add(stringRequest);
+
+
+
+
     }
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

@@ -109,13 +109,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:hint="Title"
-                    android:id="@+id/title"
+                    android:id="@+id/et_title"
                     ></EditText>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Description"
+                    android:id="@+id/et_description"
                     android:layout_marginTop="10dp"
                     />
                 <EditText
@@ -123,6 +124,7 @@
                     android:layout_height="500dp"
                     android:layout_marginTop="10dp"
                     android:hint="Content"
+                    android:id="@+id/et_content"
                     />
 
             </LinearLayout>
