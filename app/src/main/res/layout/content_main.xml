@@ -34,6 +34,8 @@
             app:tabIndicatorColor="#000000"
 
             />
+
+
     </android.support.design.widget.AppBarLayout>
 
 

@@ -16,7 +16,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +39,7 @@ public class Add_news extends AppCompatActivity {
     private ImageView iv;
     private EditText author,news_title,news_desc,news_content;
     private TextView tv_date;
-    private ImageButton upload_image;
+    private Button upload_image;
     private static final int PICK_IMAGE=100;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     Uri imageUri;
@@ -79,7 +78,7 @@ public class Add_news extends AppCompatActivity {
         showDialogOnButtonClick();
        // updateInfo();
         iv= (ImageView) findViewById(R.id.upload);
-        upload_image= (ImageButton) findViewById(R.id.upload_button);
+        upload_image= (Button) findViewById(R.id.upload_button);
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,25 @@ public class FourFragment_admin extends Fragment {
         delnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getActivity().getApplication(),Delete_news.class);
+              /*  Intent i=new Intent(getActivity().getApplication(),Delete_news.class);
                 startActivity(i);
+                */
+                enterNextFragment();
+            }
+
+            private void enterNextFragment() {
+
+                Fragment newFragment = new Demo();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack
+                transaction.replace(R.id.main, newFragment);
+                transaction.addToBackStack(null);
+
+// Commit the transaction
+                transaction.commit();
+
             }
         });
         editnews.setOnClickListener(new View.OnClickListener() {

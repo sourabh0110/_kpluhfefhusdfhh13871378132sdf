@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin_Activity extends AppCompatActivity {
+public class Admin_Activity extends AppCompatActivity implements Demo.OnFragmentInteractionListener{
 
     private AlertDialog ad;
     private TabLayout tabLayout;
@@ -151,6 +152,12 @@ public class Admin_Activity extends AppCompatActivity {
         adapter.addFragment(new FourFragment_admin(), "");
         viewPager.setAdapter(adapter);
     }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
