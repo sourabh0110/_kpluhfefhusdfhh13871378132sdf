@@ -36,9 +36,18 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Add_news" />
-        <activity android:name=".Edit_news" />
-        <activity android:name=".Delete_news"></activity>
+        <activity android:name=".Add_news"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".Edit_news"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".Delete_news"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".Edit_team"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
     </application>
 
 </manifest>

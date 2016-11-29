@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="companyname.com.kpl.FourFragment">
 
     <ScrollView
         android:layout_width="match_parent"
+
         android:background="@android:color/black"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

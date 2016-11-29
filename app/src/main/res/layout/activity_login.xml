@@ -77,6 +77,10 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/kpllogo"
         />
+<include
+    layout="@layout/activity_footer"
+
+    />
 
 
 </LinearLayout>
