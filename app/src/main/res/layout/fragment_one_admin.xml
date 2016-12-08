@@ -9,19 +9,19 @@
 
 
     <CalendarView
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:contextClickable="true"
         android:textAlignment="center"
         android:layoutDirection="ltr"
+        android:padding="10dp"
+        android:foregroundGravity="center"
         android:layout_centerInParent="true"
-        android:layout_height="300dp">
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+
+        android:layout_height="match_parent">
 
     </CalendarView>
-
-
-
-
-
 
 
 </RelativeLayout>

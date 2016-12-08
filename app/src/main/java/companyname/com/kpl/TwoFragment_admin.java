@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class TwoFragment_admin extends Fragment {
         // Required empty public constructor
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -28,9 +30,29 @@ public class TwoFragment_admin extends Fragment {
         editteam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  Intent i=new Intent(getActivity().getApplication(),Edit_team.class);
-                 startActivity(i);
+                //enterNextFragment();
+                Intent i=new Intent(getActivity().getApplication(),Edit_team.class);
+                startActivity(i);
+
+
             }
+
+            private void enterNextFragment() {
+
+                Fragment newFragment = new Select_team();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack
+                transaction.replace(R.id.fragment_two_admin, newFragment);
+                transaction.addToBackStack(null);
+
+
+// Commit the transaction
+                transaction.commit();
+            }
+
+
         });
     }
 
@@ -45,5 +67,6 @@ public class TwoFragment_admin extends Fragment {
 
 
     }
+
 
 }

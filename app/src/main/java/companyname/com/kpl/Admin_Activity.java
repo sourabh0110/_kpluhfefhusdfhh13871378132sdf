@@ -86,6 +86,9 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
                     }
                 }).setNegativeButton("No", null).show();
                 */
+
+
+
         logout();
     }
 

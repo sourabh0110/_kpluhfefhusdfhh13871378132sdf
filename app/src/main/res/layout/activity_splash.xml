@@ -27,7 +27,7 @@
         android:id="@+id/textView1"
         android:textSize="55dp"
         android:text="KPL"
-        android:textColor="@android:color/black"
+        android:textColor="#F01314"
         android:layout_above="@+id/WeplayLogo"
         android:layout_centerHorizontal="true" />
     <!--
@@ -85,8 +85,22 @@
 
 -->
     <ProgressBar
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:padding="40dp"
         android:id="@+id/progressBar3"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content"></ProgressBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="20dp"
+        android:text="#SarkhaTeFootball"
+        android:textColor="#F01314"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

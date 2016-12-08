@@ -4,81 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="companyname.com.kpl.Edit_team">
+    tools:context="companyname.com.kpl.Select_team">
     <ScrollView
         android:layout_width="match_parent"
         android:background="@android:color/white"
         android:layout_marginBottom="50dp"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@android:color/white">
 
-
-            <Button
-                android:drawableLeft="@android:drawable/ic_dialog_dialer"
-                android:layout_marginTop="60dp"
-                android:layout_width="match_parent"
-                android:textColor="@android:color/white"
-                android:text="Edit Team"
-                android:background="#000000"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content" />
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recyclerView1"
-                >
-
-            </android.support.v7.widget.RecyclerView>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:text="Edit Fixture"
-                android:gravity="center"
-                android:background="#000000"
-                android:textColor="@android:color/white"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content" />
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recyclerView2"
-                >
-
-            </android.support.v7.widget.RecyclerView>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:text="Settings"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:background="#000000"
-                android:textColor="@android:color/white"
-                android:gravity="center"
-                android:id="@+id/btn_setting"
-                android:layout_height="wrap_content" />
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recyclerView3"
-                >
-
-            </android.support.v7.widget.RecyclerView>
-
-        </LinearLayout>
     </ScrollView>
-
-<include
-    layout="@layout/activity_footer_admin"
-    />
+    
 </RelativeLayout>

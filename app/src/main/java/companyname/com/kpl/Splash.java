@@ -1,6 +1,8 @@
 package companyname.com.kpl;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class Splash extends AppCompatActivity {
+    int a=240, b= 19, c= 20;
+    private int progressStatus = 0;
     TextView tv;
     ProgressBar pBar,pb;
     int pStatus = 0;
@@ -24,35 +28,76 @@ public class Splash extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.textView1);
         //pBar = (ProgressBar) findViewById(R.id.progressBar1);
         pb=(ProgressBar)findViewById(R.id.progressBar3);
-        pb.setVisibility(View.INVISIBLE);
-        /*Intent i=new Intent(Splash.this,Pop.class);
-        startActivity(i);
-        finish();
-        */
+        pb.getIndeterminateDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);
 
-        final ImageView iv=(ImageView)findViewById(R.id.WeplayLogo);
-        final Animation an= AnimationUtils.loadAnimation(getBaseContext(),R.anim.splash_start);
-
-
-        iv.startAnimation(an);
-        an.setAnimationListener(new Animation.AnimationListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onAnimationStart(Animation animation) {
+            public void run() {
+                while(progressStatus < 100){
+                    // Update the progress status
+                    progressStatus +=1;
 
-            pb.setVisibility(View.VISIBLE);
+                    // Try to sleep the thread for 20 milliseconds
+                    try{
+                        Thread.sleep(20);
+                    }catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
 
-            }
+                    // Update the progress bar
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            pb.setProgress(progressStatus);
+                            // Show the progress on TextView
+                           // tv.setText(progressStatus+"");
+                        }
+                    });
+                }
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
                 finish();
                 //Intent i=new Intent(Splash.this,ReaderActivity.class);
                 Intent i=new Intent(Splash.this,MainActivity.class);
                 startActivity(i);
             }
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {
+
+        }).start(); // Start the operation
+
+
+
+
+    }
+/*
+*
+* IF PROGRESS BAR IS SET TO CIRCULAR
+*
+* */
+/*
+    final ImageView iv=(ImageView)findViewById(R.id.WeplayLogo);
+    final Animation an= AnimationUtils.loadAnimation(getBaseContext(),R.anim.splash_start);
+
+
+    iv.startAnimation(an);
+    an.setAnimationListener(new Animation.AnimationListener() {
+        @Override
+        public void onAnimationStart(Animation animation) {
+
+            pb.setVisibility(View.VISIBLE);
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            finish();
+            //Intent i=new Intent(Splash.this,ReaderActivity.class);
+            Intent i=new Intent(Splash.this,MainActivity.class);
+            startActivity(i);
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
                 new Thread(new Runnable() {
 
                     @Override
@@ -82,9 +127,10 @@ public class Splash extends AppCompatActivity {
                     }
                 }).start();
 
-            }
-        });
+        }
+    });
 
+*/
 
     }
-}
+
