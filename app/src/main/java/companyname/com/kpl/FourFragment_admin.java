@@ -15,7 +15,7 @@ import android.widget.Button;
  */
 public class FourFragment_admin extends Fragment {
 
-    private Button addnews,delnews,editnews;
+    private Button addnews,delnews,editnews,searchnews;
     public FourFragment_admin() {
         // Required empty public constructor
     }
@@ -25,8 +25,9 @@ public class FourFragment_admin extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editnews=(Button)getView().findViewById(R.id.edit_news);
-        addnews=(Button)getView().findViewById(R.id.add_news);
+        editnews= (Button) getView().findViewById(R.id.btn_edit);
+        searchnews=(Button)getView().findViewById(R.id.btn_search);
+        addnews=(Button)getView().findViewById(R.id.btn_add);
         addnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,16 +35,24 @@ public class FourFragment_admin extends Fragment {
                 startActivity(i);
             }
         });
+        editnews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Edit_news.class);
+                startActivity(i);
+            }
+        });
 
-        delnews= (Button) getView().findViewById(R.id.del_news);
+        delnews= (Button) getView().findViewById(R.id.btn_del);
         delnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               /*  Intent i=new Intent(getActivity().getApplication(),Delete_news.class);
                 startActivity(i);
                 */
-                enterNextFragment();
+                //enterNextFragment();
             }
+
 
             private void enterNextFragment() {
 
@@ -60,10 +69,10 @@ public class FourFragment_admin extends Fragment {
 
             }
         });
-        editnews.setOnClickListener(new View.OnClickListener() {
+        searchnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getActivity().getApplication(),Edit_news.class);
+                Intent i=new Intent(getActivity().getApplication(),Search_news.class);
                 startActivity(i);
             }
         });

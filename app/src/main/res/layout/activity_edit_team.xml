@@ -5,30 +5,52 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context="companyname.com.kpl.Select_team">
+    tools:context="companyname.com.kpl.Edit_team">
     <ScrollView
         android:layout_width="match_parent"
         android:background="@android:color/white"
         android:layout_marginBottom="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_height="match_parent">
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            >
 
-            android:layout_height="wrap_content">
-            <Button
+            <LinearLayout
+                android:background="@drawable/border"
+                android:id="@+id/ll_editteam_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="BACK"
-                android:textAlignment="viewStart"
-                android:drawableLeft="@android:drawable/ic_media_previous"
-                android:id="@+id/btn_back"
-                />
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_media_previous"
+                    android:id="@+id/btn_back"
+                    app:backgroundTint="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:layout_toEndOf="@+id/btn_back"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="9dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
 
             <TextView
+                android:layout_below="@+id/ll_editteam_1"
                 android:paddingLeft="10dp"
-                android:layout_below="@+id/btn_back"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,6 +76,7 @@
                 android:paddingLeft="10dp"
                 android:src="@android:drawable/ic_input_add"
                 android:layout_alignTop="@id/iv_teamlogo"
+                app:backgroundTint="@android:color/black"
                 android:clickable="true"
                 android:id="@+id/floatingActionButton" />
 

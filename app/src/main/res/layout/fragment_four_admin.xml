@@ -26,19 +26,19 @@
                 android:background="#000000"
                 android:gravity="center"
                 android:textSize="15dp"
-                android:id="@+id/add_news"
+                android:id="@+id/btn_add"
                 android:padding="10dp"
 
                 android:layout_height="wrap_content" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
-                android:text="Edit News"
+                android:text="Search News"
                 android:gravity="center"
                 android:background="#000000"
                 android:textColor="@android:color/white"
                 android:textSize="15dp"
-                android:id="@+id/edit_news"
+                android:id="@+id/btn_search"
                 android:padding="10dp"
                 android:layout_height="wrap_content" />
 
@@ -51,7 +51,19 @@
                 android:background="#000000"
                 android:textColor="@android:color/white"
                 android:textSize="15dp"
-                android:id="@+id/del_news"
+                android:id="@+id/btn_del"
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Edit News"
+                android:gravity="center"
+                android:background="#000000"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:id="@+id/btn_edit"
                 android:padding="10dp"
                 android:layout_height="wrap_content" />
 

@@ -37,7 +37,7 @@
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Edit_news"
+            android:name=".Search_news"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Delete_news"
@@ -47,6 +47,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Add_news"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Edit_news"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

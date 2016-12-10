@@ -11,13 +11,66 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
         >
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="ASDASD"
-            android:id="@+id/demobutton"
-            android:drawableLeft="@drawable/abc_btn_check_to_on_mtrl_015"
-            />
+            android:orientation="vertical"
+            android:background="@android:color/white"
+
+            >
+
+
+            <Button
+
+                android:layout_marginTop="60dp"
+                android:layout_width="match_parent"
+                android:textColor="@android:color/white"
+                android:text="Add Player"
+                android:background="#000000"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:id="@+id/btn_add_player"
+                android:padding="10dp"
+
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Edit Player"
+                android:gravity="center"
+                android:background="#000000"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:id="@+id/btn_edit_player"
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Add Featured Player"
+                android:gravity="center"
+                android:background="#000000"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:id="@+id/btn_feat_add_player"
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Edit Featured Player"
+                android:gravity="center"
+                android:background="#000000"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:id="@+id/btn_feat_edit_player"
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         </ScrollView>
 

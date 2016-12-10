@@ -20,14 +20,23 @@
 
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
-    <TextView
+<!--
+ <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         android:textSize="55dp"
         android:text="KPL"
         android:textColor="#F01314"
+        android:layout_above="@+id/WeplayLogo"
+        android:layout_centerHorizontal="true" />
+-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_logo"
+        android:src="@drawable/kpllogo"
         android:layout_above="@+id/WeplayLogo"
         android:layout_centerHorizontal="true" />
     <!--

@@ -25,7 +25,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        tv = (TextView) findViewById(R.id.textView1);
+       // tv = (TextView) findViewById(R.id.textView1);
         //pBar = (ProgressBar) findViewById(R.id.progressBar1);
         pb=(ProgressBar)findViewById(R.id.progressBar3);
         pb.getIndeterminateDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);

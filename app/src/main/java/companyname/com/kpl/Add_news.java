@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
@@ -39,7 +40,7 @@ public class Add_news extends AppCompatActivity {
     private ImageView iv;
     private EditText author,news_title,news_desc,news_content;
     private TextView tv_date;
-    private Button upload_image;
+    private FloatingActionButton upload_image;
     private static final int PICK_IMAGE=100;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     Uri imageUri;
@@ -78,7 +79,7 @@ public class Add_news extends AppCompatActivity {
         showDialogOnButtonClick();
        // updateInfo();
         iv= (ImageView) findViewById(R.id.upload);
-        upload_image= (Button) findViewById(R.id.upload_button);
+     //   upload_image= (FloatingActionButton) findViewById(R.id.upload_button);
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,12 +87,13 @@ public class Add_news extends AppCompatActivity {
                 uploadToServer();
             }
         });
+        /*
         upload_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showFileChooser();
             }
-        });
+        });*/
     }
 
     private void updateInfo() {
