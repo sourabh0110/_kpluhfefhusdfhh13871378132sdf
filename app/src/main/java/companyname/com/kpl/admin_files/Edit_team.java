@@ -1,4 +1,4 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +20,9 @@ import android.widget.Spinner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import companyname.com.kpl.R;
+import companyname.com.kpl.RoundImage;
 
 import static android.R.attr.bitmap;
 
@@ -58,7 +61,7 @@ public class Edit_team extends AppCompatActivity {
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //showFileChooser();
+                showFileChooser();
             }
 
             private void showFileChooser() {

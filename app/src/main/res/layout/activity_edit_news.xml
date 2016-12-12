@@ -4,7 +4,7 @@
     android:id="@+id/activity_edit_news"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="companyname.com.kpl.Edit_news">
+    tools:context="companyname.com.kpl.admin_files.Edit_news">
     <ScrollView
         android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/border"
+                android:layout_marginTop="10dp"
                 android:id="@+id/ll_add_news_1"
                 >
 
@@ -31,18 +32,12 @@
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_media_previous"
                     android:id="@+id/btn_back"
+                    android:textColor="#ffffff"
+                    android:text="Back"
+                    android:drawableLeft="@android:drawable/ic_media_previous"
                     android:backgroundTint="@android:color/black"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Back"
-                    android:layout_toEndOf="@+id/btn_back"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="9dp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    />
+
             </LinearLayout>
 
 
@@ -54,7 +49,7 @@
                 android:textStyle="bold"
                 android:textSize="22dp"
                 android:id="@+id/tv_label_edit_news"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="80dp"
                 />
 
             <LinearLayout
@@ -95,6 +90,7 @@
                 android:id="@+id/ll_editnews_2"
                 android:layout_below="@+id/ll_editnews_1"
                 android:orientation="horizontal"
+                android:background="@drawable/border"
                 >
 
 

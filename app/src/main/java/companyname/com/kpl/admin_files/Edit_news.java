@@ -1,9 +1,11 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import companyname.com.kpl.R;
 
 public class Edit_news extends AppCompatActivity {
 

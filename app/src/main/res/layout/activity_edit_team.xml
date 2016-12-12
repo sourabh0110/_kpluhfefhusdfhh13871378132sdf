@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context="companyname.com.kpl.Edit_team">
+    tools:context="companyname.com.kpl.admin_files.Edit_team">
     <ScrollView
         android:layout_width="match_parent"
         android:background="@android:color/white"
@@ -27,23 +27,16 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_media_previous"
-                    android:id="@+id/btn_back"
-                    app:backgroundTint="@android:color/black"
-                    />
-                <TextView
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_media_previous"
+                    android:id="@+id/btn_back"
                     android:text="Back"
-                    android:layout_toEndOf="@+id/btn_back"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="9dp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    app:backgroundTint="@android:color/black"
                     />
+
 
             </LinearLayout>
 
@@ -59,77 +52,92 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 />
-            <ImageView
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:id="@+id/iv_teamlogo"
+            <RelativeLayout
+                android:id="@+id/rel_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@+id/tv_label"
-                android:src="@drawable/kpl_app_icon"
-                />
-
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#000000"
-                android:paddingLeft="10dp"
-                android:src="@android:drawable/ic_input_add"
-                android:layout_alignTop="@id/iv_teamlogo"
-                app:backgroundTint="@android:color/black"
-                android:clickable="true"
-                android:id="@+id/floatingActionButton" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Team Name"
-                android:layout_alignBottom="@+id/floatingActionButton"
-                android:layout_toEndOf="@+id/iv_teamlogo"
-                android:layout_marginStart="27dp"
-                android:id="@+id/tv_teamname"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:paddingLeft="10dp"
-                />
-
-            <LinearLayout
-                android:paddingLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/iv_teamlogo"
-                android:layout_marginStart="27dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/tv_teamname"
                 >
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Trophy Room"
-    />
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/iv_teamlogo"
+                    android:background="@drawable/border"
+                    android:src="@drawable/kpl_app_icon"
+                    />
 
-                <Spinner
-                    android:layout_width="100dp"
-                    android:id="@+id/spinner_trophy"
-                    android:layout_height="wrap_content">
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:paddingLeft="10dp"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_alignTop="@id/iv_teamlogo"
+                    app:backgroundTint="@android:color/black"
+                    android:clickable="true"
+                    android:id="@+id/floatingActionButton" />
 
-                </Spinner>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Team Name"
+                    android:layout_alignBottom="@+id/floatingActionButton"
+                    android:layout_toEndOf="@+id/iv_teamlogo"
+                    android:layout_marginStart="27dp"
+                    android:id="@+id/tv_teamname"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:paddingLeft="10dp"
+                    />
 
-            </LinearLayout>
+                <LinearLayout
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/border"
+                    android:layout_toRightOf="@+id/iv_teamlogo"
+                    android:layout_below="@+id/tv_teamname"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trophy Room"
+                        />
+
+                    <Spinner
+                        android:layout_width="200dp"
+                        android:id="@+id/spinner_trophy"
+                        android:layout_height="wrap_content">
+
+                    </Spinner>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+
+
 
      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="vertical"
-         android:layout_below="@+id/iv_teamlogo"
-
+         android:layout_below="@+id/rel_layout"
+         android:background="@drawable/border"
+         android:layout_marginTop="15dp"
          >
 
          <TextView
              android:paddingLeft="10dp"
              android:textStyle="bold"
-             android:textSize="18sp"
+             android:textSize="22sp"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Team Sheet"
@@ -137,14 +145,12 @@
 
          <android.support.v7.widget.RecyclerView
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+             android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             ></android.support.v7.widget.RecyclerView>
 
 
-<de.hdodenhof.circleimageview.CircleImageView
-    android:layout_width="75dp"
-    android:layout_height="75dp"
-    android:src="@drawable/kpllogo"
-    />
+
      </LinearLayout>
 
         </RelativeLayout>

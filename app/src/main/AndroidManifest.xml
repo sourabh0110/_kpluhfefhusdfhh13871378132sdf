@@ -31,25 +31,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Admin_Activity"
+            android:name=".admin_files.Admin_Activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".admin_files.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Search_news"
+            android:name=".admin_files.Search_news"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Delete_news"
+            android:name=".admin_files.Delete_news"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Edit_team"
+            android:name=".admin_files.Edit_team"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Add_news"
+            android:name=".admin_files.Add_news"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Edit_news"
+        <activity
+            android:name=".admin_files.Edit_news"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".admin_files.Add_Player"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+        <service android:name=".FcmInstanceIdService"
+            >
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
+            </intent-filter>
+        </service>
+        <service android:name=".FcmMessagingService"
+            >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
+        </service>
 
     </application>
 

@@ -1,4 +1,4 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.Map;
+
+import companyname.com.kpl.R;
 
 public class Add_news extends AppCompatActivity {
     private Button sdate,btnupdate;

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="companyname.com.kpl.Add_news">
+        tools:context="companyname.com.kpl.admin_files.Add_news">
 
         <ScrollView
             android:layout_marginBottom="50dp"

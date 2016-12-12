@@ -1,5 +1,6 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +13,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,20 +26,24 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import companyname.com.kpl.MainActivity;
+import companyname.com.kpl.MySingleton;
+import companyname.com.kpl.R;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String LOGIN_URL = "http://www.devkpl.com/login_new.php";
-
+    String app_server_url = "http://devkpl.com/fcm_insert.php";
     public static final String KEY_USERNAME="adm_username";
     public static final String KEY_PASSWORD="adm_password";
     public static final String KEY_NAME="name";
     public static final String SHARED_PREF_NAME="myloginapp";
     public static final String LOGGEDIN_SHARED_PREF="loggedin";
-
+    private ProgressDialog loading;
     private EditText editTextUsername;
     private EditText editTextPassword;
     private Button buttonLogin;
-    private ProgressBar pb;
+
     private String username;
     private String password;
     private boolean loggedIn=false;
@@ -51,8 +55,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         );
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        pb=(ProgressBar)findViewById(R.id.progressBar);
-        pb.setVisibility(View.INVISIBLE);
+
 
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
@@ -101,8 +104,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             openProfile();
 
                         }else{
-                            pb.setVisibility(View.INVISIBLE);
-
+                            //pb.setVisibility(View.INVISIBLE);
+                            loading.dismiss();
                             editTextUsername.setText("");
                             editTextPassword.setText("");
                             editTextUsername.setFocusable(true);
@@ -113,7 +116,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        loading.dismiss();
                         editTextUsername.setText("");
                         editTextPassword.setText("");
                         editTextUsername.setFocusable(true);
@@ -146,7 +149,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
-        pb.setVisibility(View.VISIBLE);
+        loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
+        //pb.setVisibility(View.VISIBLE);
         userLogin();
+
     }
+
+
 }

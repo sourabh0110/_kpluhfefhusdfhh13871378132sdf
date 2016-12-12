@@ -1,18 +1,21 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import companyname.com.kpl.R;
+import companyname.com.kpl.admin_files.Add_Player;
+
 /**
  * Created by LENOVO on 11/22/2016.
  */
 public class ThreeFragment_admin extends Fragment {
-
+Button addplayer;
 
     public ThreeFragment_admin() {
         // Required empty public constructor
@@ -21,7 +24,14 @@ public class ThreeFragment_admin extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        addplayer= (Button) getView().findViewById(R.id.btn_add_player);
+        addplayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Add_Player.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

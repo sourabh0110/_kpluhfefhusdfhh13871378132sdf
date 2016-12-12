@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="companyname.com.kpl.Delete_news">
+    tools:context="companyname.com.kpl.admin_files.Delete_news">
 
 
 </LinearLayout>

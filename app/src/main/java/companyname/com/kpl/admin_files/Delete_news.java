@@ -1,10 +1,12 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toolbar;
+
+import companyname.com.kpl.R;
 
 public class Delete_news extends AppCompatActivity {
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="companyname.com.kpl.Add_news">
+    tools:context="companyname.com.kpl.admin_files.Add_news">
 
     <ScrollView
         android:layout_marginBottom="50dp"
@@ -31,20 +31,14 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:drawableLeft="@android:drawable/ic_media_previous"
+                    android:textColor="@android:color/white"
                     android:src="@android:drawable/ic_media_previous"
-                    android:id="@+id/btn_back"
+                    android:id="@+id/btn_back_addnews"
                     android:backgroundTint="@android:color/black"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Back"
-                    android:layout_toEndOf="@+id/btn_back"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="9dp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    />
+
             </LinearLayout>
 
             <TextView

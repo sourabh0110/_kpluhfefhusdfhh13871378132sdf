@@ -1,4 +1,4 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import companyname.com.kpl.Demo;
+import companyname.com.kpl.R;
 
 /**
  * Created by LENOVO on 11/22/2016.

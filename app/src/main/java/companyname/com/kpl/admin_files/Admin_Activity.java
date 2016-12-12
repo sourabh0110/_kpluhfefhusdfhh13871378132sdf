@@ -1,4 +1,4 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,7 +19,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin_Activity extends AppCompatActivity implements Demo.OnFragmentInteractionListener{
+import companyname.com.kpl.Demo;
+import companyname.com.kpl.R;
+
+public class Admin_Activity extends AppCompatActivity implements Demo.OnFragmentInteractionListener {
 
     private AlertDialog ad;
     private TabLayout tabLayout;

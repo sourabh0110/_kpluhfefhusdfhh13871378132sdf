@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
 
-    tools:context="companyname.com.kpl.Admin_Activity">
+    tools:context="companyname.com.kpl.admin_files.Admin_Activity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

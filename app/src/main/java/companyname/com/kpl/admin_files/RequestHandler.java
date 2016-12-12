@@ -1,4 +1,4 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

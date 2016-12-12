@@ -1,4 +1,4 @@
-package companyname.com.kpl;
+package companyname.com.kpl.admin_files;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -21,6 +21,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import companyname.com.kpl.R;
+import companyname.com.kpl.admin_files.Config;
 
 public class Search_news extends AppCompatActivity  {
 
