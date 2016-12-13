@@ -160,6 +160,37 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293132464814:android:cabfe27be007352a",
+        "android_client_info": {
+          "package_name": "companyname.com.kpl.admin_files"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293132464814-nbkp8064amv18kqn5au4snlrd92e90ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvQWL2__Px9Ldm7d8N5hNa-iThU4XRNBg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

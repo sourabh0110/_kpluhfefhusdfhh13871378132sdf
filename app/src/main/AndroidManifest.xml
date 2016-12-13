@@ -56,6 +56,9 @@
         <activity android:name=".admin_files.Add_Player"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
+        <activity android:name=".admin_files.DisplayList_news"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
         <service android:name=".FcmInstanceIdService"
             >
             <intent-filter>

@@ -112,8 +112,10 @@
                     android:layout_gravity="center"
                     android:id="@+id/upload"
                     />
-<!--
-                <android.support.design.widget.FloatingActionButton
+
+                <Button
+                    android:text="Choose Image"
+                    android:textColor="#ffffff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_input_add"
@@ -124,7 +126,7 @@
                     android:id="@+id/upload_button"
                     android:backgroundTint="@android:color/black"
                     android:layout_weight="1" />
--->
+
 
             </LinearLayout>
             <LinearLayout

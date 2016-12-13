@@ -7,33 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".admin_files.Search_news">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/border"
-        android:id="@+id/ll_add_news_1"
-        >
 
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_previous"
-            android:id="@+id/btn_back"
-            android:backgroundTint="@android:color/black"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_toEndOf="@+id/btn_back"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="9dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
     <TextView
         android:layout_below="@+id/ll_add_news_1"
         android:layout_width="wrap_content"
@@ -69,7 +43,8 @@
         android:background="@drawable/border"
         android:id="@+id/textViewResultshow"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="wrap_content" />
+    <include layout="@layout/activity_display_list_news"/>
 
 
 
