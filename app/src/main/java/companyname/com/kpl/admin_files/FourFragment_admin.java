@@ -18,7 +18,7 @@ import companyname.com.kpl.R;
  */
 public class FourFragment_admin extends Fragment {
 
-    private Button addnews,delnews,editnews,searchnews;
+    private Button addnews,delnews,editnews,searchnews,showallnews;
     public FourFragment_admin() {
         // Required empty public constructor
     }
@@ -31,6 +31,17 @@ public class FourFragment_admin extends Fragment {
         editnews= (Button) getView().findViewById(R.id.btn_edit);
         searchnews=(Button)getView().findViewById(R.id.btn_search);
         addnews=(Button)getView().findViewById(R.id.btn_add);
+
+        showallnews= (Button) getView().findViewById(R.id.btn_showall_news);
+        showallnews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),DisplayList_news.class);
+                startActivity(i);
+
+            }
+        });
+
         addnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

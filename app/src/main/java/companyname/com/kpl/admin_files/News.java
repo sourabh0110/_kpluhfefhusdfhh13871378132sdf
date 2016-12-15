@@ -20,7 +20,7 @@ public class News {
             this.setNews_image(news_image);
         }
     * */
-    public News(String news_image,int id,String name,String title)
+    public News(String news_image,int id,String name,String title,String desc)
     {
         this.setName(name);
         this.setTitle(title);

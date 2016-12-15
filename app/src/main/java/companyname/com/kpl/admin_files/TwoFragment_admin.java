@@ -23,52 +23,26 @@ public class TwoFragment_admin extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editteam= (Button) getActivity().findViewById(R.id.btn_edit);
-
+        editteam= (Button) getView().findViewById(R.id.btn_edit_team);
         editteam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //enterNextFragment();
                 Intent i=new Intent(getActivity().getApplication(),Edit_team.class);
                 startActivity(i);
-
-
             }
-
-            private void enterNextFragment() {
-
-                Fragment newFragment = new Select_team();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack
-                transaction.replace(R.id.fragment_two_admin, newFragment);
-                transaction.addToBackStack(null);
-
-
-// Commit the transaction
-                transaction.commit();
-            }
-
-
         });
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_two_admin, container, false);
 
 
     }
-
 
 }

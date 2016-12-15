@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -61,6 +62,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             holder.Id.setText(Integer.toString(news.getId()));
             holder.Name.setText(news.getName());
             holder.Title.setText(news.getTitle());
+            holder.Desc.setText(news.getDesc());
             Glide.with(holder.imageView.getContext()).load(news.getNews_image())
                     .error(R.mipmap.ic_launcher)
                     .into(holder.imageView);
@@ -97,6 +99,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
                 Name=(TextView)view.findViewById(R.id.third);
                 Title=(TextView)view.findViewById(R.id.four);
                 Id=(TextView)view.findViewById(R.id.second);
+                Desc=(TextView)view.findViewById(R.id.five);
                 //News_image=(TextView)view.findViewById(R.id.first);
                 imageView= (ImageView) view.findViewById(R.id.first);
                 this.viewType=TYPE_LIST;
@@ -105,6 +108,14 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             {
                 this.viewType=TYPE_HEAD;
             }
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos=getAdapterPosition();
+                    Toast.makeText(view.getContext(),"Pos: "+pos,Toast.LENGTH_LONG).show();
+                }
+            });
+
 
         }
     }
@@ -115,5 +126,6 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             return TYPE_HEAD;
         return TYPE_LIST;
     }
+
 }
 

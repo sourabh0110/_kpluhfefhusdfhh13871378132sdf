@@ -2,9 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="65dp"
-    android:background="@drawable/border"
-    android:backgroundTint="#ffffff"
+    android:background="#000000"
     >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kpl_strip"
+        />
     <TextView
         android:layout_marginLeft="25dp"
         android:layout_width="wrap_content"
@@ -14,9 +18,11 @@
         android:gravity="center_vertical"
         android:textSize="10dp"
         android:textStyle="bold"
-        android:id="@+id/header1"
+        android:visibility="invisible"
+        android:id="@+id/header1111"
         />
     <TextView
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -27,6 +33,7 @@
         android:id="@+id/header2"
         />
     <TextView
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -37,6 +44,7 @@
         android:id="@+id/header3"
         />
     <TextView
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"

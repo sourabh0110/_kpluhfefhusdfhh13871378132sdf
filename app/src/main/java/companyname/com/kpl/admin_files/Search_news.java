@@ -59,8 +59,7 @@ public class Search_news extends AppCompatActivity  {
             }
 
             private void getList() {
-                startActivity(new Intent(Search_news.this,DisplayList_news.class));
-
+                getData();
             }
         });
     }
