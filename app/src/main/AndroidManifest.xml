@@ -59,6 +59,12 @@
         <activity
             android:name=".recycler_listviews_adapters.DisplayList_news"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".recycler_listviews_adapters.News_Details"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+        <activity android:name=".admin_files.Select_team"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
 
         <service android:name=".FcmInstanceIdService">
             <intent-filter>
@@ -70,10 +76,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <activity android:name=".recycler_listviews_adapters.News_Details"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
     </application>
 
 </manifest>

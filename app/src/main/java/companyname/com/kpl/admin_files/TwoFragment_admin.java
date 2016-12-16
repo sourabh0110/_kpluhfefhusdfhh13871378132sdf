@@ -17,7 +17,7 @@ import companyname.com.kpl.R;
  */
 public class TwoFragment_admin extends Fragment {
 
-    Button editteam;
+    Button editteam,select_team;
 
     public TwoFragment_admin() {
         // Required empty public constructor
@@ -26,6 +26,14 @@ public class TwoFragment_admin extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        select_team= (Button) getView().findViewById(R.id.btn_select_team);
+        select_team.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Select_team.class);
+                startActivity(i);
+            }
+        });
         editteam= (Button) getView().findViewById(R.id.btn_edit_team);
         editteam.setOnClickListener(new View.OnClickListener() {
             @Override

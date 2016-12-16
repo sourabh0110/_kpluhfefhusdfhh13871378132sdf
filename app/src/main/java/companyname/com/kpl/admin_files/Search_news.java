@@ -28,6 +28,8 @@ import org.json.JSONObject;
 import companyname.com.kpl.Demo;
 import companyname.com.kpl.R;
 import companyname.com.kpl.admin_files.Config;
+import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_news;
+import companyname.com.kpl.recycler_listviews_adapters.DisplayList_news;
 
 public class Search_news extends AppCompatActivity  {
 
@@ -45,6 +47,8 @@ public class Search_news extends AppCompatActivity  {
         );
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_news);
+        BackgroundTask_news backgroundTaskNews =new BackgroundTask_news(Search_news.this);
+        backgroundTaskNews.execute();
 
         //editTextId = (EditText) findViewById(R.id.editTextId);
         editTextId = (EditText) findViewById(R.id.etId);
