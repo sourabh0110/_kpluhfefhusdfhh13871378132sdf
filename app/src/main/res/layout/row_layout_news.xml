@@ -24,8 +24,13 @@
                 android:id="@+id/first"
                 android:scaleType="fitXY"
                 />
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:id="@+id/image_static"
+                />
             <TextView
-                android:visibility="invisible"
+
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,6 +80,16 @@
                 android:id="@+id/five"
                 android:layout_marginLeft="25dp"
                 android:text="sample"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/five"
+                android:paddingBottom="5dp"
+                android:id="@+id/six"
+                android:layout_marginLeft="25dp"
+                android:text="sample"
+                android:visibility="invisible"
                 />
 
 

@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import companyname.com.kpl.Demo;
 import companyname.com.kpl.R;
+import companyname.com.kpl.recycler_listviews_adapters.DisplayList_news;
 
 /**
  * Created by LENOVO on 11/22/2016.

@@ -53,26 +53,27 @@
         <activity
             android:name=".admin_files.Edit_news"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".admin_files.Add_Player"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-        <activity android:name=".admin_files.DisplayList_news"
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".admin_files.Add_Player"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".recycler_listviews_adapters.DisplayList_news"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-            ></activity>
-        <service android:name=".FcmInstanceIdService"
-            >
+        <service android:name=".FcmInstanceIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".FcmMessagingService"
-            >
+        <service android:name=".FcmMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
+        <activity android:name=".recycler_listviews_adapters.News_Details"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

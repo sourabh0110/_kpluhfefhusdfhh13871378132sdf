@@ -1,4 +1,4 @@
-package companyname.com.kpl.admin_files;
+package companyname.com.kpl.recycler_listviews_adapters;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.AsyncTask;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -54,10 +55,12 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
     protected void onPreExecute() {
         recyclerView = (RecyclerView) activity.findViewById(R.id.recylerView_news);
         layoutManager = new LinearLayoutManager(ctx);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
+        //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(ctx,2);
         recyclerView.setLayoutManager(layoutManager);
+        //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerAdapter_news(arrayList);
+        adapter = new RecyclerAdapter_news(arrayList,ctx);
         recyclerView.setAdapter(adapter);
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
@@ -110,9 +113,9 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
                 count++;
                 //ForWB
                 //News news=new News(JO.getString("author_name"),JO.getString("title"),JO.getInt("news_id"),JO.getString("description"),JO.getString("content"),JO.getString("image"),JO.getString("date"));
-                News news=new News(JO.getString("image"),JO.getInt("news_id"),JO.getString("author_name"),JO.getString("title"),JO.getString("description"));
+                News news=new News(JO.getString("image"),JO.getInt("news_id"),JO.getString("author_name"),JO.getString("title"),JO.getString("description"),JO.getString("content"));
                 publishProgress(news);
-                Thread.sleep(1000);
+                Thread.sleep(100);
             }
             Log.e("JSON_STRING",json_string);
 

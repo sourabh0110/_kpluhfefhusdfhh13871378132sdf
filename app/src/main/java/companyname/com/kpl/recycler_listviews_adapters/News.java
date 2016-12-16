@@ -1,4 +1,4 @@
-package companyname.com.kpl.admin_files;
+package companyname.com.kpl.recycler_listviews_adapters;
 
 /**
  * Created by admin on 12/13/2016.
@@ -20,7 +20,7 @@ public class News {
             this.setNews_image(news_image);
         }
     * */
-    public News(String news_image,int id,String name,String title,String desc)
+    public News(String news_image,int id,String name,String title,String desc,String content)
     {
         this.setName(name);
         this.setTitle(title);

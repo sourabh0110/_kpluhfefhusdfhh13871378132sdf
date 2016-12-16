@@ -47,6 +47,7 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         setContentView(R.layout.activity_admin);
+        //setContentView(R.layout.content_admin_main);
 
         TabLayout tl;
         //private Toolbar toolbar;
