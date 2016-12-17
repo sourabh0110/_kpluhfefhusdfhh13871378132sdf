@@ -53,7 +53,7 @@ public class BackgroundTask_Championship extends AsyncTask<Void,Championship,Voi
         layoutManager = new LinearLayoutManager(ctx);
         //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(ctx,2);
         recyclerView.setLayoutManager(layoutManager);
-        //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         adapter = new RecyclerAdapter_championship(arrayList,ctx);

@@ -2,6 +2,7 @@ package companyname.com.kpl.recycler_listviews_adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,11 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
+        } else {
+            holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
+        }
 
         PremiereLeague premiereLeague=arrayList.get(position);
         //holder.News_image.setText(news.getNews_image());
@@ -113,7 +119,7 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
             int position=getAdapterPosition();
             PremiereLeague premiereLeague=this.premiereLeagues.get(position);
 
-            Intent intent=new Intent(ctx,News_Details.class);
+            Intent intent=new Intent(ctx,Team_details.class);
             intent.putExtra("image", premiereLeague.getTm_image());
             intent.putExtra("id",premiereLeague.getTm_id());
             intent.putExtra("name",premiereLeague.getTm_name());

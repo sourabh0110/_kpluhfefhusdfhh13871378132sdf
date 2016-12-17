@@ -2,6 +2,7 @@ package companyname.com.kpl.recycler_listviews_adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,12 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
 
     @Override
     public void onBindViewHolder(RecyclerAdapter_championship.RecyclerViewHolder holder, int position) {
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
+        } else {
+            holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
+        }
+
         Championship championship=arrayList.get(position);
         //holder.News_image.setText(news.getNews_image());
         //holder.imageView.setImageResource(news.getNews_image());
@@ -79,6 +86,7 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
         Context ctx;
         public RecyclerViewHolder(View view,int viewType,Context ctx,ArrayList<Championship> championship)
         {
+
             super(view);
             this.championship=championship;
             this.ctx=ctx;
@@ -103,7 +111,7 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
             int position=getAdapterPosition();
             Championship championship=this.championship.get(position);
 
-            Intent intent=new Intent(ctx,News_Details.class);
+            Intent intent=new Intent(ctx,Team_details.class);
             intent.putExtra("image", championship.getTm_image());
             intent.putExtra("id",championship.getTm_id());
             intent.putExtra("name",championship.getTm_name());
