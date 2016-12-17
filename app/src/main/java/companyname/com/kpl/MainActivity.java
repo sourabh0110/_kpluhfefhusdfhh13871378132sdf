@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity
                              public void onResponse(String response) {
                                  //          pb.dismiss();
 //                                loading.dismiss();
-                                 Toast.makeText(getApplicationContext(),response+"",Toast.LENGTH_LONG).show();
+                                // Toast.makeText(getApplicationContext(),response+"",Toast.LENGTH_LONG).show();
+                                  Toast.makeText(getApplicationContext(),"New Token Registered",Toast.LENGTH_LONG).show();
                              }
                          }, new Response.ErrorListener()
                  {
@@ -82,7 +83,8 @@ public class MainActivity extends AppCompatActivity
                      public void onErrorResponse(VolleyError error) {
                          //loading.dismiss();
                          System.out.println(error) ;
-                         Toast.makeText(getApplicationContext(),error+"",Toast.LENGTH_LONG).show();
+                         Toast.makeText(getApplicationContext(),"Token Already Registered",Toast.LENGTH_LONG).show();
+                         //Toast.makeText(getApplicationContext(),error+"",Toast.LENGTH_LONG).show();
                      }
                  })
                  {

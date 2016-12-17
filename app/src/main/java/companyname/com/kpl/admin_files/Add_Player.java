@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +30,7 @@ public class Add_Player extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
-        setContentView(R.layout.activity_add__player);
+        setContentView(R.layout.activity_add_player);
         dispdate= (TextView) findViewById(R.id.tv_show_date);
         dispdate.setVisibility(View.INVISIBLE);
         iv= (CircleImageView) findViewById(R.id.civ_add_player);

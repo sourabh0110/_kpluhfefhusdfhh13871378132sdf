@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_team_details"
+    android:id="@+id/activity_player_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="companyname.com.kpl.recycler_listviews_adapters.Team_details">
+    tools:context="companyname.com.kpl.recycler_listviews_adapters.Player_Details">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,49 +18,108 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <ImageView
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@drawable/border"
-                android:id="@+id/first_image_team"
-                android:scaleType="fitXY"
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                />
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/border"
+                    android:id="@+id/first_image_player"
+                    android:scaleType="fitXY"
+
+                    />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/circle"
+                    android:layout_alignTop="@+id/first_image_player"
+                    android:layout_alignStart="@+id/first_image_player"
+                    android:id="@+id/btn_upload_player_image" />
+
+            </RelativeLayout>
+
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/first_image_team"
+                android:layout_below="@+id/first_image_player"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:textColor="#000000"
                 android:textSize="15dp"
-                android:text="Team Code"
+                android:text="Id"
                 android:textAllCaps="true"
-                android:id="@+id/second_idteam"
+                android:id="@+id/second_team_code"
                 android:visibility="invisible"
                 />
             <EditText
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/second_idteam"
+                android:layout_below="@+id/second_team_code"
                 android:paddingBottom="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textSize="20dp"
                 android:textColor="#017EBE"
                 android:textStyle="bold"
-                android:text="Name"
+                android:text="Player Name"
                 android:enabled="false"
                 android:layout_gravity="center"
                 android:textAllCaps="true"
-                android:id="@+id/third_name_team"
+                android:id="@+id/third_player_name"
+                />
+            <TextView
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Date"
+                android:enabled="false"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textSize="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_dob_player"
+
+                />
+            <ListView
+                android:paddingLeft="10dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="25dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_team_name"
+                >
+
+            </ListView>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lv_team_name"
+                android:paddingLeft="10dp"
+                android:textSize="18dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/four_player_mobile"
+                android:textAllCaps="true"
+                android:enabled="false"
+                android:layout_marginLeft="25dp"
+                android:text="Mobile Number"
+                android:layout_gravity="center"
                 />
 
             <RelativeLayout
@@ -78,7 +137,7 @@
                     android:gravity="center"
                     android:text="edit"
                     android:backgroundTint="@color/colorPrimary"
-                    android:id="@+id/btn_edit_team"
+                    android:id="@+id/btn_edit_news"
                     android:textColor="#ffffff"
                     android:background="@drawable/circle"
                     />
@@ -93,12 +152,12 @@
                     android:gravity="center"
                     android:textColor="#ffffff"
                     android:src="@drawable/kpllogo"
-                    android:layout_toRightOf="@+id/btn_edit_team"
-                    android:id="@+id/btn_del_team"
+                    android:layout_toRightOf="@+id/btn_edit_news"
+                    android:id="@+id/btn_del_news"
                     />
 
                 <Button
-                    android:layout_toStartOf="@+id/btn_edit_team"
+                    android:layout_toStartOf="@+id/btn_edit_news"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/circle"
                     android:layout_width="60dp"
@@ -108,7 +167,7 @@
                     android:gravity="center"
                     android:textColor="#ffffff"
                     android:src="@drawable/kpllogo"
-                    android:layout_toRightOf="@+id/btn_del_team"
+                    android:layout_toRightOf="@+id/btn_edit_news"
                     android:id="@+id/btn_update_news"
 
                     />

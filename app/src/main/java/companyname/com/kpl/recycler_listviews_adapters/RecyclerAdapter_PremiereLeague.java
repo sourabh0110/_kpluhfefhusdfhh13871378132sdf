@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import companyname.com.kpl.R;
+import companyname.com.kpl.admin_files.Edit_team;
 
 /**
  * Created by admin on 12/16/2016.
@@ -119,7 +120,7 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
             int position=getAdapterPosition();
             PremiereLeague premiereLeague=this.premiereLeagues.get(position);
 
-            Intent intent=new Intent(ctx,Team_details.class);
+            Intent intent=new Intent(ctx,Edit_team.class);
             intent.putExtra("image", premiereLeague.getTm_image());
             intent.putExtra("id",premiereLeague.getTm_id());
             intent.putExtra("name",premiereLeague.getTm_name());

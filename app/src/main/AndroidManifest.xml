@@ -77,7 +77,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".recycler_listviews_adapters.Team_details"></activity>
+        <activity android:name=".recycler_listviews_adapters.Team_details" />
+        <activity android:name=".admin_files.Edit_Player" />
+        <activity android:name=".recycler_listviews_adapters.Player_Details"></activity>
     </application>
 
 </manifest>

@@ -56,6 +56,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             holder.Name.setText(news.getName());
             holder.Title.setText(news.getTitle());
             holder.Desc.setText(news.getDesc());
+            holder.News_date.setText(news.getNews_date());
             Glide.with(holder.imageView.getContext()).load(news.getNews_image())
                     .error(R.mipmap.ic_launcher)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -97,7 +98,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             this.ctx=ctx;
             view.setOnClickListener(this);
 
-
+                News_date=(TextView)view.findViewById(R.id.seven);
                 Name=(TextView)view.findViewById(R.id.third);
                 Title=(TextView)view.findViewById(R.id.four);
                 Id=(TextView)view.findViewById(R.id.second);
@@ -118,11 +119,13 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
 
             Intent intent=new Intent(ctx,News_Details.class);
             intent.putExtra("image", news.getNews_image());
-            intent.putExtra("id",news.getId());
+            intent.putExtra("news_id",news.getId());
             intent.putExtra("name",news.getName());
             intent.putExtra("title",news.getTitle());
             intent.putExtra("description",news.getDesc());
             intent.putExtra("content",news.getContent());
+            intent.putExtra("date",news.getNews_date());
+
 
 
             this.ctx.startActivity(intent);

@@ -19,7 +19,7 @@ import companyname.com.kpl.recycler_listviews_adapters.DisplayList_news;
  */
 public class FourFragment_admin extends Fragment {
 
-    private Button addnews,delnews,editnews,searchnews,showallnews;
+    private Button addnews,searchnews,showallnews;
     public FourFragment_admin() {
         // Required empty public constructor
     }
@@ -29,7 +29,6 @@ public class FourFragment_admin extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editnews= (Button) getView().findViewById(R.id.btn_edit);
         searchnews=(Button)getView().findViewById(R.id.btn_search);
         addnews=(Button)getView().findViewById(R.id.btn_add);
 
@@ -50,40 +49,6 @@ public class FourFragment_admin extends Fragment {
                 startActivity(i);
             }
         });
-        editnews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getActivity().getApplication(),Edit_news.class);
-                startActivity(i);
-            }
-        });
-
-        delnews= (Button) getView().findViewById(R.id.btn_del);
-        delnews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              /*  Intent i=new Intent(getActivity().getApplication(),Delete_news.class);
-                startActivity(i);
-                */
-                //enterNextFragment();
-            }
-
-
-            private void enterNextFragment() {
-
-                Fragment newFragment = new Demo();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack
-                transaction.replace(R.id.main, newFragment);
-                transaction.addToBackStack(null);
-
-// Commit the transaction
-                transaction.commit();
-
-            }
-        });
         searchnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +63,6 @@ public class FourFragment_admin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_four_admin, container, false);
 
 

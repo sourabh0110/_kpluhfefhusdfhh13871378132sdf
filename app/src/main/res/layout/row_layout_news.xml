@@ -29,21 +29,24 @@
                 android:layout_height="2dp"
                 android:id="@+id/image_static"
                 />
+
             <TextView
 
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/first"
+                android:layout_below="@+id/seven"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
+                android:paddingBottom="5dp"
                 android:textColor="#000000"
                 android:textSize="15dp"
                 android:text="sample"
                 android:textAllCaps="true"
                 android:id="@+id/second"
                 />
+
             <TextView
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
@@ -91,7 +94,18 @@
                 android:text="sample"
                 android:visibility="invisible"
                 />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/first"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="15dp"
+                android:id="@+id/seven"
+                android:layout_marginLeft="25dp"
+                android:text="Date"
+                />
 
         </RelativeLayout>
 

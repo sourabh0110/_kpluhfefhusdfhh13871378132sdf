@@ -80,7 +80,7 @@
                     android:clickable="true"
                     android:id="@+id/floatingActionButton" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Team Name"
@@ -93,9 +93,23 @@
                     android:paddingLeft="10dp"
                     />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Team Code"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/iv_teamlogo"
+                    android:layout_below="@+id/tv_teamname"
+                    android:layout_marginStart="27dp"
+                    android:id="@+id/tv_team_code"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:paddingLeft="10dp"
+                    />
+
                 <LinearLayout
                     android:paddingLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="35dp"
                     android:layout_marginStart="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

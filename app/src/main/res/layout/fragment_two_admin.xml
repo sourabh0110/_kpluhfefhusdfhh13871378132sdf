@@ -44,7 +44,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
-                android:text="Select team"
+                android:text="Settings"
                 android:textSize="15dp"
                 android:padding="10dp"
                 android:background="#000000"

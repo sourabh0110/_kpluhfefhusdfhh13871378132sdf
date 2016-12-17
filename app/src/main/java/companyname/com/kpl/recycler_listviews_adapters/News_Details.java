@@ -16,8 +16,8 @@ import companyname.com.kpl.R;
 
 public class News_Details extends AppCompatActivity {
     ImageView imageView_news;
-    TextView tv_id;
-    Button edit,delete,update;
+    TextView tv_id,tv_date;
+    Button edit,delete,update,uploadnews;
     EditText tv_name,tv_title,tv_desc,tv_content;
 
     @Override
@@ -29,7 +29,9 @@ public class News_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
 
-
+        uploadnews= (Button) findViewById(R.id.btn_upload_news_image);
+        uploadnews.setEnabled(false);
+        tv_date=(TextView)findViewById(R.id.tv_date_news);
         imageView_news= (ImageView) findViewById(R.id.first_image);
         tv_id= (TextView) findViewById(R.id.second_idnews);
         tv_name= (EditText) findViewById(R.id.third_name);
@@ -38,12 +40,13 @@ public class News_Details extends AppCompatActivity {
         tv_content= (EditText) findViewById(R.id.six_content);
 
 //        imageView_news.setImageResource(getIntent().getIntExtra("image",00));
-
-        tv_id.setText("ID: "+getIntent().getStringExtra("id"));
+        tv_date.setText("Date: "+getIntent().getStringExtra("date"));
+        tv_id.setText("ID: "+getIntent().getStringExtra("news_id"));
         tv_name.setText("Author Name: "+getIntent().getStringExtra("name"));
         tv_title.setText("Title: "+getIntent().getStringExtra("title"));
         tv_desc.setText("Description: "+getIntent().getStringExtra("description"));
         tv_content.setText("Content: "+getIntent().getStringExtra("content"));
+
 
         update=(Button)findViewById(R.id.btn_update_news);
         update.setEnabled(false);
@@ -64,10 +67,10 @@ public class News_Details extends AppCompatActivity {
                         tv_title.setEnabled(true);
                         tv_content.setEnabled(true);
                         tv_desc.setEnabled(true);
-                        //edit.setText("Update");
+                        tv_date.setEnabled(true);
+                        uploadnews.setEnabled(true);
                         edit.setEnabled(false);
                         update.setEnabled(true);
-                        //edit.setVisibility(View.INVISIBLE);
                     }
                 });
 

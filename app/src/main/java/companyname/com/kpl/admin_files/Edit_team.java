@@ -15,8 +15,10 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,6 +33,8 @@ public class Edit_team extends AppCompatActivity {
     private Bitmap bitmap;
     private int PICK_IMAGE_REQUEST = 1;
     FloatingActionButton uploadImage;
+    EditText team_name;
+    TextView team_code;
     ImageView iv;
     Spinner sel_trophy;
     String defaultTextForSpinner = "Your deafult text here";
@@ -44,11 +48,16 @@ public class Edit_team extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         setContentView(R.layout.activity_edit_team);
+        team_name=(EditText)findViewById(R.id.tv_teamname);
+        team_code=(TextView)findViewById(R.id.tv_team_code);
         iv= (ImageView) findViewById(R.id.iv_teamlogo);
         Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.kpl_app_icon);
 
         uploadImage= (FloatingActionButton) findViewById(R.id.floatingActionButton);
         sel_trophy= (Spinner) findViewById(R.id.spinner_trophy);
+        iv.setImageResource(getIntent().getIntExtra("image",00));
+        team_code.setText("Code: "+getIntent().getStringExtra("id"));
+        team_name.setText("Team Name: "+getIntent().getStringExtra("name"));
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.trophies_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears

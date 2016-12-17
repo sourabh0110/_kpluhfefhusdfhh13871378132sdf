@@ -18,38 +18,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/border"
-                android:layout_marginTop="10dp"
-                android:id="@+id/ll_add_player_1"
-                >
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_media_previous"
-                    android:id="@+id/btn_back"
-                    android:textColor="#ffffff"
-                    android:text="Back"
-                    android:drawableLeft="@android:drawable/ic_media_previous"
-                    android:backgroundTint="@android:color/black"
-                    />
-
-            </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/border"
                 android:id="@+id/ll_add_player_2"
-
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/ll_add_player_1"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
                 >
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -134,7 +112,7 @@
         android:layout_width="wrap_content"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="Update"
+        android:text="Add Player"
         android:background="#000000"
         android:textColor="#ffffff"
         />

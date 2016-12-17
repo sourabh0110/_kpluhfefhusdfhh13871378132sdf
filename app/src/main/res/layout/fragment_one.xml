@@ -12,12 +12,13 @@
         android:layout_height="match_parent">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@drawable/kpllogo"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/kpllogo"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            />
 
 </ScrollView>
 

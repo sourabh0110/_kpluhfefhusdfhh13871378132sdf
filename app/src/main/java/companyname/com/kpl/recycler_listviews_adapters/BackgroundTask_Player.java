@@ -29,38 +29,38 @@ import java.util.ArrayList;
 import companyname.com.kpl.R;
 
 /**
- * Created by admin on 12/13/2016.
+ * Created by admin on 12/18/2016.
  */
 
-public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
+public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
     private ProgressDialog loading;
     Context ctx;
     Activity activity;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<News> arrayList = new ArrayList<>();
+    ArrayList<PremiereLeague> arrayList = new ArrayList<>();
 
-    public BackgroundTask_news(Context ctx) {
+    public BackgroundTask_Player(Context ctx) {
         this.ctx = ctx;
         activity = (Activity) ctx;
     }
 
 
-    String json_string="http://devkpl.com/KPL-Admin/wsGetNews";
+    String json_string="http://devkpl.com/KPL-Admin/wsGetPlayers";
 
     //String json_string = "http://devkpl.com/getList_news.php";
 
     @Override
     protected void onPreExecute() {
-        recyclerView = (RecyclerView) activity.findViewById(R.id.recylerView_news);
+        recyclerView = (RecyclerView) activity.findViewById(R.id.rv_getallplayers);
         layoutManager = new LinearLayoutManager(ctx);
         //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(ctx,2);
         recyclerView.setLayoutManager(layoutManager);
         //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerAdapter_news(arrayList,ctx);
+        adapter = new RecyclerAdapter_premiereLeague(arrayList,ctx);
         recyclerView.setAdapter(adapter);
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
@@ -71,7 +71,7 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
     }
 
     @Override
-    protected void onProgressUpdate(News... values) {
+    protected void onProgressUpdate(Player... values) {
         arrayList.add(values[0]);
         adapter.notifyDataSetChanged();
     }
@@ -113,8 +113,8 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
                 count++;
                 //ForWB
                 //News news=new News(JO.getString("author_name"),JO.getString("title"),JO.getInt("news_id"),JO.getString("description"),JO.getString("content"),JO.getString("image"),JO.getString("date"));
-                News news=new News(JO.getString("image"),JO.getInt("news_id"),JO.getString("author_name"),JO.getString("title"),JO.getString("description"),JO.getString("content"),JO.getString("date"));
-                publishProgress(news);
+                Player player=new PremiereLeague(JO.getString("tm_logo"),JO.getInt("tm_code"),JO.getString("tm_name"));
+                publishProgress(premiereLeague);
                 Thread.sleep(100);
             }
             Log.e("JSON_STRING",json_string);
@@ -180,4 +180,3 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
 
     }
 }
-

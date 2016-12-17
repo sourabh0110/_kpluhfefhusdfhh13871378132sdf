@@ -28,19 +28,6 @@
                 android:textSize="15dp"
                 android:id="@+id/btn_add"
                 android:padding="10dp"
-
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:text="Delete News"
-                android:gravity="center"
-                android:background="#000000"
-                android:textColor="@android:color/white"
-                android:textSize="15dp"
-                android:id="@+id/btn_del"
-                android:padding="10dp"
                 android:layout_height="wrap_content" />
 
             <Button
@@ -51,22 +38,11 @@
                 android:background="#000000"
                 android:textColor="@android:color/white"
                 android:textSize="15dp"
-                android:id="@+id/btn_edit"
-                android:padding="10dp"
-                android:layout_height="wrap_content" />
-            <Button
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:text="View All news"
-                android:gravity="center"
-                android:background="#000000"
-                android:textColor="@android:color/white"
-                android:textSize="15dp"
                 android:id="@+id/btn_showall_news"
                 android:padding="10dp"
                 android:layout_height="wrap_content" />
             <Button
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:text="Search News"
