@@ -41,7 +41,7 @@
                 android:background="#000000"
                 android:textColor="@android:color/white"
                 android:textSize="15dp"
-                android:id="@+id/btn_edit_player"
+                android:id="@+id/btn_edit_player_list"
                 android:padding="10dp"
                 android:layout_height="wrap_content" />
 

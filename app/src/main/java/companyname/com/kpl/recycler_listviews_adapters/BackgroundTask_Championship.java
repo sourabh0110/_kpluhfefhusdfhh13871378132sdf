@@ -107,7 +107,7 @@ public class BackgroundTask_Championship extends AsyncTask<Void,Championship,Voi
                 //News news=new News(JO.getString("author_name"),JO.getString("title"),JO.getInt("news_id"),JO.getString("description"),JO.getString("content"),JO.getString("image"),JO.getString("date"));
                 Championship championship=new Championship(JO.getString("tm_logo"),JO.getInt("tm_code"),JO.getString("tm_name"));
                 publishProgress(championship);
-                Thread.sleep(100);
+                Thread.sleep(1);
             }
             Log.e("JSON_STRING",json_string);
 

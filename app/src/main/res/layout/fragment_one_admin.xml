@@ -18,7 +18,10 @@
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-
+        android:id="@+id/calendar"
+        android:minDate="01/01/2017"
+        android:maxDate="01/31/2017"
+        android:background="@color/cardview_light_background"
         android:layout_height="match_parent">
 
     </CalendarView>

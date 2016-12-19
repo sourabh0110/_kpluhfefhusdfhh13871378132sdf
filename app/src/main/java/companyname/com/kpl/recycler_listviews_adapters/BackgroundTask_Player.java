@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,7 +40,7 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<PremiereLeague> arrayList = new ArrayList<>();
+    ArrayList<Player> arrayList = new ArrayList<>();
 
     public BackgroundTask_Player(Context ctx) {
         this.ctx = ctx;
@@ -60,7 +61,7 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
         //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerAdapter_premiereLeague(arrayList,ctx);
+        adapter = new RecyclerAdapter_player(arrayList,ctx);
         recyclerView.setAdapter(adapter);
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
@@ -112,9 +113,9 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
                 JSONObject JO=jsonArray.getJSONObject(count);
                 count++;
                 //ForWB
-                //News news=new News(JO.getString("author_name"),JO.getString("title"),JO.getInt("news_id"),JO.getString("description"),JO.getString("content"),JO.getString("image"),JO.getString("date"));
-                Player player=new PremiereLeague(JO.getString("tm_logo"),JO.getInt("tm_code"),JO.getString("tm_name"));
-                publishProgress(premiereLeague);
+                //Player player=new Player(JO.getString("usr_name"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_dob"),JO.getString("usr_profile_pic"),JO.getInt("usr_id"));
+                Player player=new Player(JO.getString("usr_profile_pic"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_name"),JO.getInt("usr_id"),JO.getString("usr_dob"));
+                publishProgress(player);
                 Thread.sleep(100);
             }
             Log.e("JSON_STRING",json_string);

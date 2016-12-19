@@ -31,7 +31,7 @@
         android:textSize="15dp"
         android:text="Name"
         android:textAllCaps="true"
-        android:id="@+id/tv_player_name"
+        android:id="@+id/tv_player_name_fetch"
         />
 
     <TextView
@@ -45,28 +45,44 @@
         android:textSize="15dp"
         android:text="Team Name"
         android:textAllCaps="true"
-        android:id="@+id/tv_player_team_name"
+        android:id="@+id/tv_player_team_name_fetch"
         />
     <TextView
 
         android:layout_marginLeft="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:gravity="center"
         android:id="@+id/tv_player_team_code"
+        android:visibility="invisible"
         />
     <TextView
 
         android:layout_marginLeft="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:gravity="center"
         android:id="@+id/tv_player_mobile_no"
+        android:visibility="invisible"
         />
     <TextView
 
         android:layout_marginLeft="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:gravity="center"
         android:id="@+id/tv_player_team_bdate"
+        android:visibility="invisible"
+        />
+
+    <TextView
+
+        android:layout_marginLeft="15dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:id="@+id/tv_player_id"
+        android:visibility="invisible"
         />
 
 </LinearLayout>
