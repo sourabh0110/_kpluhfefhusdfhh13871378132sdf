@@ -23,41 +23,42 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:id="@+id/first"
                 android:scaleType="fitXY"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:layout_marginTop="10dp"
                 />
-            <ImageView
-                android:layout_width="2dp"
-                android:layout_height="2dp"
-                android:id="@+id/image_static"
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/tv_static_news_path"
+                android:visibility="invisible"
                 />
 
             <TextView
 
                 android:layout_marginLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/five"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:text="ID"
+                android:textAllCaps="true"
+                android:id="@+id/second"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/seven"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
                 android:paddingBottom="5dp"
-                android:textColor="#000000"
-                android:textSize="15dp"
-                android:text="sample"
-                android:textAllCaps="true"
-                android:id="@+id/second"
-                />
-
-            <TextView
-                android:layout_marginLeft="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/second"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="3dp"
                 android:paddingRight="10dp"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:text="sample"
+                android:text="Author Name"
                 android:textAllCaps="true"
                 android:id="@+id/third"
                 />
@@ -65,24 +66,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/third"
-                android:paddingLeft="10dp"
+                android:paddingLeft="3dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
                 android:id="@+id/four"
                 android:textAllCaps="true"
-                android:layout_marginLeft="25dp"
-                android:text="sample"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                android:text="Title"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/four"
-                android:paddingLeft="10dp"
+                android:paddingLeft="3dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
                 android:id="@+id/five"
-                android:layout_marginLeft="25dp"
-                android:text="sample"
+                android:textSize="14dp"
+                android:layout_marginLeft="10dp"
+                android:text="Description"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -99,12 +102,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/first"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="3dp"
                 android:paddingRight="10dp"
                 android:textSize="15dp"
                 android:id="@+id/seven"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
                 android:text="Date"
+
                 />
 
         </RelativeLayout>

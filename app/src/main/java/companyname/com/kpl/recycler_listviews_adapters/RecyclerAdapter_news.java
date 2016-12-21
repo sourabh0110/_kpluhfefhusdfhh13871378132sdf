@@ -2,6 +2,7 @@ package companyname.com.kpl.recycler_listviews_adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,6 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
 
-
         News news=arrayList.get(position);
             //holder.News_image.setText(news.getNews_image());
             //holder.imageView.setImageResource(news.getNews_image());
@@ -62,6 +62,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true)
                     .into(holder.imageView);
+            holder.imagepath.setText(news.getNews_image());
 
 
             //holder.Content.setText(news.getContent());
@@ -87,7 +88,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
     {
 
         int viewType;
-        TextView Name,Title,Id,News_image,Desc,Content,News_date;
+        TextView Name,Title,Id,News_image,Desc,Content,News_date,imagepath;
         ImageView imageView,imageView_static;
         ArrayList<News>news=new ArrayList<News>();
         Context ctx;
@@ -105,8 +106,8 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
                 Desc=(TextView)view.findViewById(R.id.five);
                 Content=(TextView)view.findViewById(R.id.six);
                 imageView= (ImageView) view.findViewById(R.id.first);
-                imageView_static=(ImageView)view.findViewById(R.id.image_static);
-                imageView_static=imageView;
+                imagepath=(TextView)view.findViewById(R.id.tv_static_news_path);
+
             //    this.viewType=TYPE_LIST;
 
 
@@ -119,7 +120,9 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
 
             Intent intent=new Intent(ctx,News_Details.class);
             intent.putExtra("image", news.getNews_image());
-            intent.putExtra("news_id",news.getId());
+            //intent.putExtra("news_id",news.getId());
+            intent.putExtra("imagepath",news.getNews_image());
+            intent.putExtra("news_id",Integer.toString(news.getId()));
             intent.putExtra("name",news.getName());
             intent.putExtra("title",news.getTitle());
             intent.putExtra("description",news.getDesc());

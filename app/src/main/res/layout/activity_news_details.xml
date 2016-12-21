@@ -26,10 +26,8 @@
         <ImageView
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:background="@drawable/border"
             android:id="@+id/first_image"
             android:scaleType="fitXY"
 
@@ -46,6 +44,16 @@
     </RelativeLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/tv_static_path_for_trial"
+        />
+    <ImageView
+        android:layout_width="2dp"
+        android:layout_height="2dp"
+        android:id="@+id/iv_static_path_for_trial"
+        />
+    <TextView
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
         android:layout_marginLeft="25dp"
@@ -60,7 +68,7 @@
         android:text="Id"
         android:textAllCaps="true"
         android:id="@+id/second_idnews"
-        android:visibility="invisible"
+
         />
     <EditText
         android:layout_marginLeft="25dp"
@@ -70,13 +78,14 @@
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textSize="20dp"
+        android:textSize="10dp"
         android:textColor="#017EBE"
         android:textStyle="bold"
         android:text="Name"
         android:enabled="false"
         android:layout_gravity="center"
         android:textAllCaps="true"
+        
         android:id="@+id/third_name"
         />
     <TextView

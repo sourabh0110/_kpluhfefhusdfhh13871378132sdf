@@ -122,7 +122,8 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
 
             Intent intent=new Intent(ctx,Edit_team.class);
             intent.putExtra("image", premiereLeague.getTm_image());
-            intent.putExtra("id",premiereLeague.getTm_id());
+            //intent.putExtra("id",premiereLeague.getTm_id());
+            intent.putExtra("id",Integer.toString(premiereLeague.getTm_id()));
             intent.putExtra("name",premiereLeague.getTm_name());
 
 

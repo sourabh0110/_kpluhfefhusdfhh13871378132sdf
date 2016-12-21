@@ -113,7 +113,8 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
 
             Intent intent=new Intent(ctx,Team_details.class);
             intent.putExtra("image", championship.getTm_image());
-            intent.putExtra("id",championship.getTm_id());
+            //intent.putExtra("id",championship.getTm_id());
+            intent.putExtra("id",Integer.toString(championship.getTm_id()));
             intent.putExtra("name",championship.getTm_name());
 
 

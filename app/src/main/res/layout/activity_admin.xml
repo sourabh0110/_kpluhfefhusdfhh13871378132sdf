@@ -6,9 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-
     tools:openDrawer="start">
-
+<TextView
+    android:layout_width="10dp"
+    android:layout_height="10dp"
+    android:textSize="30dp"
+    android:id="@+id/tv_name"
+    />
     <include
         layout="@layout/app_bar_admin_main"
         android:layout_width="match_parent"

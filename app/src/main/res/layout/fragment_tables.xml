@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    tools:context="companyname.com.kpl.StatsFragment">
+
+    <TextView
+        android:id="@+id/fop_tvBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="8dp"
+        android:text="Back"
+        android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Tables"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fs_tvPremier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Premier League"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fs_tvTheCahmpionships"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="The Championships"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fs_tvDivisionOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Division One"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fs_tvDivisionTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Division Two"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fs_tvDivisionThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Division Three"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fs_tvCrusaders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Super Cup"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fs_tvMagikB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Fair Play"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+

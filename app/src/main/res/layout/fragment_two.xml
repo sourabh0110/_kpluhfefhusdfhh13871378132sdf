@@ -11,13 +11,61 @@
         android:background="@android:color/white"
         android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/kpllogo"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-         />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ExpandableListView
+                android:id="@+id/fmk_elFixture"
+                android:groupIndicator="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ExpandableListView>
+
+            <ExpandableListView
+                android:layout_below="@+id/fmk_elFixture"
+                android:id="@+id/fmk_elResult"
+                android:groupIndicator="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ExpandableListView>
+
+            <ExpandableListView
+                android:layout_below="@+id/fmk_elResult"
+                android:id="@+id/fmk_elTable"
+                android:groupIndicator="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ExpandableListView>
+
+            <TextView
+                android:layout_below="@id/fmk_elTable"
+                android:id="@+id/fk_tvAllTable"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="All Tables"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@id/fk_tvAllTable"
+                android:id="@+id/fk_tvAllFixture"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="All Fixtures"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
 
 </ScrollView>
 </RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/sgil_tvtitle"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:text="View Top 20 Goal Scores"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

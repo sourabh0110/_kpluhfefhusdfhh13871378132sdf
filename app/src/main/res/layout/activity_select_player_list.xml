@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="companyname.com.kpl.admin_files.Edit_Player">
+    tools:context="companyname.com.kpl.admin_files.Select_Player_list">
     <ScrollView
         android:layout_width="match_parent"
         android:background="@android:color/white"

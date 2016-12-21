@@ -3,6 +3,7 @@ package companyname.com.kpl.admin_files;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,6 +37,7 @@ import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.Map;
 
+import companyname.com.kpl.ImageDecoder;
 import companyname.com.kpl.R;
 
 public class Add_news extends AppCompatActivity {
@@ -49,13 +52,17 @@ public class Add_news extends AppCompatActivity {
     Uri imageUri;
     int year_x,month_x,day_x;
     private Bitmap bitmap;
-    private String UPLOAD_URL ="http://devkpl.com/news/upload.php";
+   // private String UPLOAD_URL ="http://devkpl.com/news/upload.php";
+    private String UPLOAD_URL ="http://devkpl.com/KPL-Admin/saveNews";
     private int PICK_IMAGE_REQUEST = 1;
+    //private String KEY_IMAGE = "image";
     private String KEY_IMAGE = "image";
-    private String KEY_NAME = "author_name";
+    //private String KEY_NAME = "author_name";
+    private String KEY_NAME = "name";
     private String KEY_DATE = "date";
     private String KEY_TITLE = "title";
-    private String KEY_DESCRIPTION = "description";
+    private String KEY_DESCRIPTION = "preview";
+    //private String KEY_DESCRIPTION = "description";
     private String KEY_CONTENT = "content";
     static final int DIALOG_ID=0;
 
@@ -218,10 +225,9 @@ public class Add_news extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
                             //Dismissing the progress dialog
+                          //  Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                             loading.dismiss();
-
-                            //Showing toast
-                            Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(Add_news.this, "ERRROR", Toast.LENGTH_LONG).show();
                         }
                     }){
                 @Override
@@ -305,15 +311,33 @@ public class Add_news extends AppCompatActivity {
             }
         }
         */
-
+        Context ctx = null;
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
                 //Getting the Bitmap from Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                try
+                {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                }
+                catch (OutOfMemoryError e)
+                {
+                    Toast.makeText(getApplicationContext(),"FILE SIZE IS LARGE,CHOOSE ANOTHER FILE",Toast.LENGTH_LONG).show();
+                    iv.setImageResource(R.mipmap.ic_launcher);
+                }
+
+
                 //Setting the Bitmap to ImageView
-                iv.setImageBitmap(bitmap);
+               try{
+                   iv.setImageBitmap(bitmap);
+               }
+               catch (OutOfMemoryError e)
+               {
+                   Toast.makeText(getApplicationContext(),"FILE SIZE IS LARGE,CHOOSE ANOTHER FILE",Toast.LENGTH_LONG).show();
+               }
+
+                //iv.setImageBitmap(ImageDecoder.decodeSampledBitmapFromResource(this.getResources(),R.id.upload,100,100));
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -3,6 +3,7 @@ package companyname.com.kpl.admin_files;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,8 +13,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import companyname.com.kpl.R;
 
 public class Admin_Activity extends AppCompatActivity implements Demo.OnFragmentInteractionListener {
 
+    TextView name;
     private AlertDialog ad;
     private TabLayout tabLayout;
     private long back_pressed;
@@ -41,74 +45,52 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         setContentView(R.layout.activity_admin);
-        //setContentView(R.layout.content_admin_main);
-
-        TabLayout tl;
-        //private Toolbar toolbar;
-
-        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
-
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
+       // String username=name.toString().trim();
+        //String username="LOL";
+        name=(TextView)findViewById(R.id.tv_name);
+        Intent i= getIntent();
+        name.setText(getIntent().getStringExtra("name"));
+        //name.setText(i.getStringExtra(LoginActivity.KEY_USERNAME));
+        String username=name.toString().trim();
+        Log.e("name",""+name);
         viewPager = (ViewPager) findViewById(R.id.viewpager_admin);
-        setupViewPager(viewPager);
+        if(name.toString().trim()=="admin"||name.toString().trim()=="Admin" )
+        {
+            setupViewPagerSuperAdmin(viewPager);
+        }
+        else
+        {
+            setupViewPagerAdmin(viewPager);
+        }
 
         tabLayout = (TabLayout) findViewById(R.id.tabs_admin);
         tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
+        if(username=="admin"||username=="Admin" )
+        {
+
+            setupTabIcons_SuperAdmin();
+        }
+        else
+        {
+            setupTabIcons_Admin();
+        }
+
     }
 
     @Override
     public void onBackPressed() {
-        /*
-        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Please Confirm")
-                .setMessage("Are you sure you want to exit?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        finish();
-
-                    }
-                }).setNegativeButton("No", null).show();
-                */
-
-
-
         logout();
     }
 
-    /*
-                 @Override
-                 public void onBackPressed() {
-                     new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
-                             .setMessage("Are you sure you want to exit?")
-                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                 @Override
-                                 public void onClick(DialogInterface dialog, int which) {
-                                     finish();
-                                 }
-                             }).setNegativeButton("No", null).show();
-                 }
-    */
     private void logout()
     {
         AlertDialog.Builder alertDialogBuilder= new AlertDialog.Builder(this).setIcon(R.drawable.alert_info).setTitle("Please Confirm").setMessage("Are you sure you want to Logout?");
@@ -145,19 +127,36 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
         alertDialog.show();
     }
 
-    private void setupTabIcons() {
+    private void setupTabIcons_SuperAdmin() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
-    private void setupViewPager(ViewPager viewPager) {
+
+    private void setupTabIcons_Admin() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        //tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+        //tabLayout.getTabAt(3).setIcon(tabIcons[3]);
+    }
+    private void setupViewPagerSuperAdmin(ViewPager viewPager) {
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new OneFragment_admin(), "");
         adapter.addFragment(new TwoFragment_admin(), "");
         adapter.addFragment(new ThreeFragment_admin(), "");
         adapter.addFragment(new FourFragment_admin(), "");
         viewPager.setAdapter(adapter);
+
+    }
+    private void setupViewPagerAdmin(ViewPager viewPager)
+    {
+            ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+            adapter.addFragment(new OneFragment_admin(), "");
+            adapter.addFragment(new FourFragment_admin(), "");
+            viewPager.setAdapter(adapter);
+
     }
 
     @Override

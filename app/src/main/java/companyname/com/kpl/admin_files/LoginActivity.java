@@ -137,12 +137,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void openProfile(){
-        Intent intent = new Intent(this, Admin_Activity.class);
-        intent.putExtra(KEY_NAME, username);
-        editTextUsername.setText("");
-        editTextPassword.setText("");
-        editTextUsername.setFocusable(true);
-        startActivity(intent);
+        Intent i = new Intent(this, Admin_Activity.class);
+        i.putExtra("name", this.username);
+       // intent.putExtra("name",username);
+        startActivity(i);
         finish();
     }
 

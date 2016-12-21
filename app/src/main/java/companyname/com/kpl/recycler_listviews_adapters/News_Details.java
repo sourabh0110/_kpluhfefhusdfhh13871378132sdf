@@ -1,6 +1,11 @@
 package companyname.com.kpl.recycler_listviews_adapters;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,11 +17,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import companyname.com.kpl.R;
 
 public class News_Details extends AppCompatActivity {
-    ImageView imageView_news;
-    TextView tv_id,tv_date;
+    Context ctx;
+    ImageView imageView_news,iv_staticpath;
+    TextView tv_id,tv_date,staticpath;
     Button edit,delete,update,uploadnews;
     EditText tv_name,tv_title,tv_desc,tv_content;
 
@@ -29,6 +45,8 @@ public class News_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
 
+        staticpath=(TextView)findViewById(R.id.tv_static_path_for_trial);
+        iv_staticpath=(ImageView)findViewById(R.id.iv_static_path_for_trial);
         uploadnews= (Button) findViewById(R.id.btn_upload_news_image);
         uploadnews.setEnabled(false);
         tv_date=(TextView)findViewById(R.id.tv_date_news);
@@ -40,12 +58,28 @@ public class News_Details extends AppCompatActivity {
         tv_content= (EditText) findViewById(R.id.six_content);
 
 //        imageView_news.setImageResource(getIntent().getIntExtra("image",00));
-        tv_date.setText("Date: "+getIntent().getStringExtra("date"));
-        tv_id.setText("ID: "+getIntent().getStringExtra("news_id"));
-        tv_name.setText("Author Name: "+getIntent().getStringExtra("name"));
-        tv_title.setText("Title: "+getIntent().getStringExtra("title"));
-        tv_desc.setText("Description: "+getIntent().getStringExtra("description"));
-        tv_content.setText("Content: "+getIntent().getStringExtra("content"));
+        tv_date.setText(""+getIntent().getStringExtra("date"));
+        tv_id.setText(""+getIntent().getStringExtra("news_id"));
+        tv_name.setText(""+getIntent().getStringExtra("name"));
+        tv_title.setText(""+getIntent().getStringExtra("title"));
+        tv_desc.setText(""+getIntent().getStringExtra("description"));
+        tv_content.setText(""+getIntent().getStringExtra("content"));
+        staticpath.setText(""+getIntent().getStringExtra("imagepath"));
+        String path=staticpath.toString().trim();
+
+
+        Glide.with(getApplicationContext()).load(path)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .error(R.mipmap.ic_launcher)
+                .into(imageView_news);
+
+
+     /*   Picasso.with(getApplicationContext())
+                .load(path)
+                .error(R.drawable.alert_info)
+                .into(imageView_news);
+       */
+
 
 
         update=(Button)findViewById(R.id.btn_update_news);
@@ -64,6 +98,7 @@ public class News_Details extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tv_name.setEnabled(true);
+                        tv_name.setText("");
                         tv_title.setEnabled(true);
                         tv_content.setEnabled(true);
                         tv_desc.setEnabled(true);
@@ -94,4 +129,5 @@ public class News_Details extends AppCompatActivity {
 
 
     }
+
 }

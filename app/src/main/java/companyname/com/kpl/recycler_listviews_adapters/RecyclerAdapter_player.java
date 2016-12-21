@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import companyname.com.kpl.R;
+import companyname.com.kpl.admin_files.Edit_Player;
 import companyname.com.kpl.admin_files.Edit_team;
 
 /**
@@ -109,12 +110,10 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
             int position=getAdapterPosition();
             Player player=this.player.get(position);
 
-            Intent intent=new Intent(ctx,Edit_team.class);
-            intent.putExtra("image", player.getPlayer_image());
-            intent.putExtra("id",player.getPlayer_id());
-            intent.putExtra("name",player.getTm_name());
-
-
+            Intent intent=new Intent(ctx,Edit_Player.class);
+            //intent.putExtra("image", player.getPlayer_image());
+            //intent.putExtra("id",player.getPlayer_id());
+            //intent.putExtra("name",player.getTm_name());
             this.ctx.startActivity(intent);
 
 

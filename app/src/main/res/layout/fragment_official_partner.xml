@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    tools:context="companyname.com.kpl.OfficialPartnerFragment">
+
+
+    <TextView
+        android:id="@+id/fop_tvBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Back" />
+
+    <LinearLayout
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="Ofiicial Partners" />
+        
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:id="@+id/fol_rvPartners"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</LinearLayout>

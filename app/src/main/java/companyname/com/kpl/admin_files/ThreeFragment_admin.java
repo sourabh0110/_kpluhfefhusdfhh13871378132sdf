@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import companyname.com.kpl.R;
-import companyname.com.kpl.admin_files.Add_Player;
 
 /**
  * Created by LENOVO on 11/22/2016.
@@ -36,7 +35,7 @@ Button addplayer,editplayer;
         editplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getActivity().getApplication(),Edit_Player.class);
+                Intent i=new Intent(getActivity().getApplication(),Select_Player_list.class);
                 startActivity(i);
             }
         });
