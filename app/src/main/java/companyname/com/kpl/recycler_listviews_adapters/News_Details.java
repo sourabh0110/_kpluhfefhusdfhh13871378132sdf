@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -28,6 +29,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import companyname.com.kpl.R;
+
+import static android.R.attr.bitmap;
 
 public class News_Details extends AppCompatActivity {
     Context ctx;
@@ -72,6 +75,8 @@ public class News_Details extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .error(R.mipmap.ic_launcher)
                 .into(imageView_news);
+
+
 
 
      /*   Picasso.with(getApplicationContext())

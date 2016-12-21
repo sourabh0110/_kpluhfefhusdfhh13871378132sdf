@@ -43,8 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editTextUsername;
     private EditText editTextPassword;
     private Button buttonLogin;
-
-    private String username;
+    private String username,name;
     private String password;
     private boolean loggedIn=false;
     @Override
@@ -84,6 +83,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void userLogin() {
         username = editTextUsername.getText().toString().trim();
+        name=username;
         password = editTextPassword.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
@@ -97,10 +97,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             editTextUsername.setText("");
                             openProfile();
                             */
-                            SharedPreferences sharedPreferences=LoginActivity.this.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
+                            /*
+                            * USING SHARED PREFERENECES
+                            * SharedPreferences sharedPreferences=LoginActivity.this.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putBoolean(LOGGEDIN_SHARED_PREF,true);
                             editor.commit();
+                            * */
                             openProfile();
 
                         }else{
@@ -137,12 +140,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void openProfile(){
-        Intent i = new Intent(this, Admin_Activity.class);
-        i.putExtra("name", this.username);
+        Intent i = new Intent(getBaseContext(), Admin_Activity.class);
+        //username = "HELO SOURABH";
+        String abc=name;
+        i.putExtra("name", abc);
        // intent.putExtra("name",username);
         startActivity(i);
         finish();
     }
+
 
     @Override
     public void onClick(View v) {

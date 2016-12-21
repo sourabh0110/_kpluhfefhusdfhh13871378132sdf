@@ -1,5 +1,8 @@
 package companyname.com.kpl.admin_files;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -25,9 +29,9 @@ import java.util.List;
 import companyname.com.kpl.Demo;
 import companyname.com.kpl.R;
 
-public class Admin_Activity extends AppCompatActivity implements Demo.OnFragmentInteractionListener {
+public class Admin_Activity extends FragmentActivity implements Demo.OnFragmentInteractionListener {
 
-    TextView name;
+    Bundle arguments;
     private AlertDialog ad;
     private TabLayout tabLayout;
     private long back_pressed;
@@ -55,15 +59,15 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
         );
         setContentView(R.layout.activity_admin);
        // String username=name.toString().trim();
-        //String username="LOL";
-        name=(TextView)findViewById(R.id.tv_name);
-        Intent i= getIntent();
-        name.setText(getIntent().getStringExtra("name"));
-        //name.setText(i.getStringExtra(LoginActivity.KEY_USERNAME));
-        String username=name.toString().trim();
-        Log.e("name",""+name);
+        /*
+        * TAKING THE VALUE OF USER FROM lOGINACTIVITY.JAVA(Username)
+        * */
+        String username=getIntent().getStringExtra("name");
+        Log.e("name",""+username);
+        String a="superadmin";
+        Log.e("a==",""+a);
         viewPager = (ViewPager) findViewById(R.id.viewpager_admin);
-        if(name.toString().trim()=="admin"||name.toString().trim()=="Admin" )
+        if(a.equalsIgnoreCase(username))
         {
             setupViewPagerSuperAdmin(viewPager);
         }
@@ -74,7 +78,7 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
 
         tabLayout = (TabLayout) findViewById(R.id.tabs_admin);
         tabLayout.setupWithViewPager(viewPager);
-        if(username=="admin"||username=="Admin" )
+        if(a.equalsIgnoreCase(username))
         {
 
             setupTabIcons_SuperAdmin();
@@ -162,6 +166,14 @@ public class Admin_Activity extends AppCompatActivity implements Demo.OnFragment
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    public void setArguments(Bundle arguments) {
+        this.arguments = arguments;
+    }
+
+    public Bundle getArguments() {
+        return arguments;
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

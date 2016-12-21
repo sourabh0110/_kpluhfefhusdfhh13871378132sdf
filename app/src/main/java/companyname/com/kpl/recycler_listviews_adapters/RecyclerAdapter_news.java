@@ -2,6 +2,7 @@ package companyname.com.kpl.recycler_listviews_adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import companyname.com.kpl.R;
@@ -128,6 +130,8 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             intent.putExtra("description",news.getDesc());
             intent.putExtra("content",news.getContent());
             intent.putExtra("date",news.getNews_date());
+
+
 
 
 
