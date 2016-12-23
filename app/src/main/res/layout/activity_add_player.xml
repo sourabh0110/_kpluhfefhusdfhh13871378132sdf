@@ -34,8 +34,9 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:contextClickable="true"
-                    android:background="@drawable/border"
+                    android:src="@drawable/menu_add_user"
                     android:id="@+id/civ_add_player"
+
                     />
                 <TextView
                     android:layout_marginTop="15dp"
@@ -58,13 +59,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-
                 android:background="@drawable/border"
                 android:id="@+id/ll_add_player_3"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="5dp"
                 android:layout_below="@+id/ll_add_player_2"
-
                 >
 
 
@@ -72,24 +71,44 @@
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                   android:hint="Enter First Name"
+                   android:hint="Enter Full Name"
                     android:background="@drawable/border"
                     android:textSize="20dp"
+                    android:id="@+id/et_player_name"
                     />
-                <EditText
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Team"
+                        android:textSize="20dp"
+                        />
+                    <Spinner
+                        android:id="@+id/spinner_teamlist"
+                        android:contextClickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:textSize="20dp"
+                        />
+                </LinearLayout>
+
+
+                <TextView
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Last Name"
+                    android:hint="Team Name"
+                    android:enabled="false"
                     android:background="@drawable/border"
                     android:textSize="20dp"
-                    />
-                <ListView
-                    android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:textSize="20dp"
+                    android:id="@+id/tv_static_teamname"
                     />
                 <EditText
                     android:layout_marginTop="15dp"
@@ -98,6 +117,18 @@
                     android:layout_height="wrap_content"
                     android:hint="Enter Contact No"
                     android:textSize="20dp"
+                    android:inputType="number"
+                    android:id="@+id/et_contactno"
+                    />
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Team Code"
+                    android:enabled="false"
+                    android:background="@drawable/border"
+                    android:textSize="20dp"
+                    android:id="@+id/tv_static_teamcode"
                     />
             </LinearLayout>
 <LinearLayout
@@ -115,6 +146,7 @@
         android:text="Add Player"
         android:background="#000000"
         android:textColor="#ffffff"
+        android:id="@+id/btn_addnewplayer"
         />
 
 </LinearLayout>

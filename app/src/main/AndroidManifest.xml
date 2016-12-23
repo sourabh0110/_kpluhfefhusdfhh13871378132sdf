@@ -3,6 +3,7 @@
     package="companyname.com.kpl">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -58,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".recycler_listviews_adapters.DisplayList_news"
-            android:theme="@style/AppTheme.NoActionBar" />
+             />
         <activity
             android:name=".recycler_listviews_adapters.News_Details"
             android:theme="@style/AppTheme.NoActionBar"

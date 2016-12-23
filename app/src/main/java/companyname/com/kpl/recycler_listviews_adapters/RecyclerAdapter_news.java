@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,20 +24,24 @@ import companyname.com.kpl.R;
 /**
  * Created by admin on 12/13/2016.
  */
-public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_news.RecyclerViewHolder>{
+public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_news.RecyclerViewHolder> implements Filterable{
     private Context ctx;
     //private static final int TYPE_HEAD=0;
     //private static final int TYPE_LIST=1;
 
 
-
+    ArrayList<News> filterList=new ArrayList<>();
     ArrayList<News> arrayList=new ArrayList<>();
+    FilterHelper filter;
     public RecyclerAdapter_news(ArrayList<News> arrayList,Context ctx)
     {
 
         this.arrayList=arrayList;
         this.ctx=ctx;
+        this.filterList=arrayList;
     }
+
+
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -86,6 +92,19 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
     public int getItemCount() {
         return arrayList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+
+        if(filter==null)
+        {
+            filter=new FilterHelper(filterList,this);
+        }
+        return filter;
+
+    }
+
+
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
@@ -132,9 +151,6 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             intent.putExtra("date",news.getNews_date());
 
 
-
-
-
             this.ctx.startActivity(intent);
 
 
@@ -147,5 +163,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
     public int getItemViewType(int position) {
         return position;
     }
+
+
 }
 

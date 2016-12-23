@@ -45,27 +45,28 @@ public class Add_news extends AppCompatActivity {
     private ImageView iv;
     private EditText author,news_title,news_desc,news_content;
     private TextView tv_date;
-    //private FloatingActionButton upload_image;
     private Button upload_image;
     private static final int PICK_IMAGE=100;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     Uri imageUri;
     int year_x,month_x,day_x;
     private Bitmap bitmap;
-   // private String UPLOAD_URL ="http://devkpl.com/news/upload.php";
-    private String UPLOAD_URL ="http://devkpl.com/KPL-Admin/saveNews";
+    private String UPLOAD_URL ="http://devkpl.com/news/upload.php";
     private int PICK_IMAGE_REQUEST = 1;
-    //private String KEY_IMAGE = "image";
     private String KEY_IMAGE = "image";
-    //private String KEY_NAME = "author_name";
-    private String KEY_NAME = "name";
+    private String KEY_NAME = "author_name";
     private String KEY_DATE = "date";
     private String KEY_TITLE = "title";
-    private String KEY_DESCRIPTION = "preview";
-    //private String KEY_DESCRIPTION = "description";
+    private String KEY_DESCRIPTION = "description";
     private String KEY_CONTENT = "content";
     static final int DIALOG_ID=0;
-
+/*
+* ORIGINAL MOBILE WS
+* // private String UPLOAD_URL ="http://devkpl.com/KPL-Admin/saveNews";
+* //private String KEY_IMAGE = "image";
+* //private String KEY_NAME = "name";
+* //private String KEY_DESCRIPTION = "preview";
+* */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -87,13 +88,12 @@ public class Add_news extends AppCompatActivity {
         month_x=cal.get(Calendar.MONTH);
         day_x=cal.get(Calendar.DAY_OF_MONTH);
         showDialogOnButtonClick();
-       // updateInfo();
         iv= (ImageView) findViewById(R.id.upload);
         upload_image= (Button) findViewById(R.id.upload_button);
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateInfo();
+                //updateInfo();
                 uploadToServer();
             }
         });
@@ -130,7 +130,7 @@ public class Add_news extends AppCompatActivity {
         AlertDialog alertDialog=alertDialogBuilder.create();
         alertDialog.show();
 */
-        Toast.makeText(Add_news.this,year_x+"/"+month_x+"/"+day_x,Toast.LENGTH_LONG).show();
+        //Toast.makeText(Add_news.this,year_x+"/"+month_x+"/"+day_x,Toast.LENGTH_LONG).show();
     }
 
 
@@ -234,7 +234,6 @@ public class Add_news extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     //Converting Bitmap to String
                     String image = getStringImage(bitmap);
-
                     //Getting Image Name and other values
                     String name = author.getText().toString().trim();
                     String curr_date=tv_date.getText().toString().trim();
@@ -279,40 +278,7 @@ public class Add_news extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        /*
-        if (resultCode == RESULT_OK) {
-            // if we are here, everything processed successfully.
-            if (requestCode == IMAGE_GALLERY_REQUEST) {
-                // if we are here, we are hearing back from the image gallery.
-
-                // the address of the image on the SD Card.
-                Uri imageUri = data.getData();
-
-                // declare a stream to read the image data from the SD Card.
-                InputStream inputStream;
-
-                // we are getting an input stream, based on the URI of the image.
-                try {
-                    inputStream = getContentResolver().openInputStream(imageUri);
-
-                    // get a bitmap from the stream.
-                    Bitmap image = BitmapFactory.decodeStream(inputStream);
-
-
-                    // show the image to the user
-                    iv.setImageBitmap(image);
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    // show a message to the user indictating that the image is unavailable.
-                    //Toast.makeText(, "Unable to open image", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        }
-        */
         Context ctx = null;
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {

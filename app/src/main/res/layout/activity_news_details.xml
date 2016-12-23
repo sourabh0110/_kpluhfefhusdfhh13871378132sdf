@@ -24,22 +24,26 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:id="@+id/first_image"
             android:scaleType="fitXY"
-
-            />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circle"
-            android:layout_alignTop="@+id/first_image"
-            android:layout_alignStart="@+id/first_image"
-            android:id="@+id/btn_upload_news_image" />
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Choose Other Image"
+            android:textColor="#ffffff"
+            android:id="@+id/btn_upload_news_image"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:layout_marginTop="167dp" />
 
     </RelativeLayout>
 
@@ -47,11 +51,13 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:id="@+id/tv_static_path_for_trial"
+        android:visibility="invisible"
         />
     <ImageView
         android:layout_width="2dp"
         android:layout_height="2dp"
         android:id="@+id/iv_static_path_for_trial"
+        android:visibility="invisible"
         />
     <TextView
         android:layout_marginTop="5dp"
@@ -66,6 +72,7 @@
         android:textColor="#000000"
         android:textSize="15dp"
         android:text="Id"
+        android:visibility="invisible"
         android:textAllCaps="true"
         android:id="@+id/second_idnews"
 
@@ -78,48 +85,63 @@
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textSize="10dp"
+        android:textSize="20dp"
         android:textColor="#017EBE"
         android:textStyle="bold"
         android:text="Name"
         android:enabled="false"
         android:layout_gravity="center"
-        android:textAllCaps="true"
-        
         android:id="@+id/third_name"
         />
-    <TextView
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Date"
-        android:enabled="false"
-        android:layout_gravity="center"
-        android:textAllCaps="true"
-        android:textSize="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_date_news"
+        android:orientation="horizontal"
 
-        />
+        >
+        <TextView
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Date"
+            android:enabled="false"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:layout_marginLeft="37dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_date_news"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:layout_marginLeft="50dp"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:id="@+id/select_date_update"
+            />
+
+    </LinearLayout>
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/third_name"
         android:paddingLeft="10dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:paddingRight="10dp"
         android:paddingBottom="5dp"
         android:id="@+id/four_title"
-        android:textAllCaps="true"
         android:enabled="false"
         android:layout_marginLeft="25dp"
         android:text="Title"
         android:layout_gravity="center"
         />
     <EditText
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/four_title"
@@ -133,7 +155,7 @@
         android:enabled="false"
         />
     <EditText
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

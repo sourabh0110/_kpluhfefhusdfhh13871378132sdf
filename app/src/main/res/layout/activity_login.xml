@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextUsername"
         android:hint="Please Enter UserName"
+        android:inputType="textPassword"
         android:layout_marginTop="40dp"
         android:background="@drawable/border"
         />
@@ -65,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextPassword"
+        android:inputType="textPassword"
         android:hint="Please Enter Password"
         android:background="@drawable/border"
         />

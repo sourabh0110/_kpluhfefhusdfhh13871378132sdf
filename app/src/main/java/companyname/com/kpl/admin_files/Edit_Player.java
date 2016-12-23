@@ -10,6 +10,6 @@ public class Edit_Player extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit__player);
+        setContentView(R.layout.activity_edit_player);
     }
 }

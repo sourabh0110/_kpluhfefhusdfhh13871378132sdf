@@ -9,9 +9,11 @@ import android.os.AsyncTask;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,12 +36,14 @@ import companyname.com.kpl.R;
 
 public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
     private ProgressDialog loading;
+    RecyclerAdapter_news recyclerAdapter_news;
     Context ctx;
     Activity activity;
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager layoutManager;
-    ArrayList<News> arrayList = new ArrayList<>();
+    public RecyclerView recyclerView;
+    public RecyclerView.Adapter adapter;
+    public RecyclerView.LayoutManager layoutManager;
+  //  public SearchView searchView;
+    public ArrayList<News> arrayList = new ArrayList<>();
 
     public BackgroundTask_news(Context ctx) {
         this.ctx = ctx;
@@ -53,7 +57,10 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
 
     @Override
     protected void onPreExecute() {
+
         recyclerView = (RecyclerView) activity.findViewById(R.id.recylerView_news);
+
+
         layoutManager = new LinearLayoutManager(ctx);
         //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(ctx,2);
         recyclerView.setLayoutManager(layoutManager);
@@ -62,6 +69,7 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
         recyclerView.setHasFixedSize(true);
         adapter = new RecyclerAdapter_news(arrayList,ctx);
         recyclerView.setAdapter(adapter);
+
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
         loading.setMessage("List is now Loading!");
@@ -80,8 +88,27 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
     protected void onPostExecute(Void aVoid) {
 
         loading.dismiss();
+       /*
+       * searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+              //  adapter.getFilter().filter(newText);
+                Toast.makeText(activity.getApplicationContext(),"CLICKED",Toast.LENGTH_LONG).show();
+                //adapter.getFilter.filter(newText);
+                recyclerAdapter_news.getFilter(newText);
+                return false;
+            }
+        });
+       * */
 
     }
+
+
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -135,6 +162,8 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
         return null;
     }
 
+
+
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;
@@ -179,5 +208,7 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
 
     }
+
+
 }
 

@@ -23,8 +23,8 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:id="@+id/first"
                 android:scaleType="fitXY"
-                android:paddingRight="30dp"
-                android:paddingLeft="30dp"
+                android:paddingRight="60dp"
+                android:paddingLeft="60dp"
                 android:layout_marginTop="10dp"
                 />
             <TextView
