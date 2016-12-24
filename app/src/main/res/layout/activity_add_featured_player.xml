@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add__player"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="companyname.com.kpl.admin_files.Add_Featured_player">
+
+    <ScrollView
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:id="@+id/ll_add_player_2"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contextClickable="true"
+                    android:src="@drawable/menu_add_user"
+                    android:id="@+id/civ_add_featured_player"
+
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:id="@+id/ll_add_player_3"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/ll_add_player_2"
+                >
+
+
+                <EditText
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Full Name"
+                    android:background="@drawable/border"
+                    android:textSize="20dp"
+                    android:id="@+id/et_featured_player_name"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Team"
+                        android:textSize="20dp"
+                        />
+                    <Spinner
+                        android:id="@+id/spinner_featured_teamlist"
+                        android:contextClickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:textSize="20dp"
+                        />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Team Name"
+                    android:enabled="false"
+                    android:background="@drawable/border"
+                    android:textSize="20dp"
+                    android:id="@+id/tv_static_featured_teamname"
+                    />
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Team Code"
+                    android:enabled="false"
+                    android:background="@drawable/border"
+                    android:textSize="20dp"
+                    android:id="@+id/tv_static_featured_teamcode"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Position"
+                        android:textSize="20dp"
+                        />
+                    <Spinner
+                        android:id="@+id/spinner_featured_pos"
+                        android:contextClickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:textSize="20dp"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Player Position"
+                    android:enabled="false"
+                    android:background="@drawable/border"
+                    android:textSize="20dp"
+                    android:id="@+id/tv_static_featured_pos"
+                    />
+                <EditText
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/border"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Goals Scored"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:id="@+id/et_featured_goals"
+                    />
+                <EditText
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/border"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Yellow Cards"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:id="@+id/et_featured_yellow"
+                    />
+                <EditText
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/border"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Red Cards"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:id="@+id/et_featured_red"
+                    />
+                <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/border"
+                android:layout_height="wrap_content"
+                android:hint="Enter Total Assists"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:id="@+id/et_featured_assist"
+                />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_below="@+id/ll_add_player_3"
+                >
+                <Button
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Add Player"
+                    android:background="#000000"
+                    android:textColor="#ffffff"
+                    android:id="@+id/btn_addnewplayer"
+                    />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,7 +1,5 @@
 package companyname.com.kpl.admin_files;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,13 +15,13 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -39,61 +37,52 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.Map;
 
-import companyname.com.kpl.MainActivity;
 import companyname.com.kpl.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelectedListener {
-
-    /**
-     *ALL SPINNER ITEMS
-     *
-     */
-    //Declaring a Spinner
-    private Spinner spinner;
+public class Add_Featured_player extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+    private Spinner spinner,spinner_pos;
 
     //An ArrayList for Spinner Items
     private ArrayList<String> players;
+    private ArrayList<String> position;
 
     //JSON Array
     private JSONArray result;
 
     //DECLARING TVs AND ETs
-    private TextView textViewTeamName,textViewCode;
-    private EditText playerName,contactNo ;
+    private TextView textViewTeamName,textViewCode,textViewPosition;
+    private EditText playerName,goals,redcard,yellowcard,assists ;
     CircleImageView iv;
-    Button add_date;
-    TextView textViewdispdate;
-    private Button addnewplayer;
+    private Button addnewfeaturedplayer;
     private Bitmap bitmap;
     private static final int PICK_IMAGE=100;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     private int PICK_IMAGE_REQUEST = 1;
-    static final int DIALOG_ID=0;
     /*
     * KEY VARIABLES FOR PLAYER TABLE
     * */
-    private String UPLOAD_URL ="http://devkpl.com/player/upload.php";
-    private String KEY_IMAGE = "usr_profile_pic";
-    private String KEY_USERNAME = "usr_name";
-    private String KEY_DOB = "usr_dob";
-    private String KEY_TEAMCODE = "usr_team_code";
-    private String KEY_TEAMNAME = "team_name";
-    private String KEY_MOBNO = "usr_mobile_number";
+    private String UPLOAD_URL ="http://devkpl.com/featuredplayer/upload.php";
+    private String KEY_IMAGE = "image";
+    private String KEY_USERNAME = "player_name";
+    private String KEY_POS = "player_pos";
+    private String KEY_TEAMNAME = "player_team";
+    private String KEY_GOALS = "goals_scored";
+    private String KEY_RED = "red_cards";
+    private String KEY_YELLOW = "yellow_cards";
+    private String KEY_ASSISTS = "assists";
 
     /*
-    * DEMO URLS
+    * SPINNER URL
     * */
     String DATA_URL = "http://devkpl.com/KPL-Admin/wsGetTeams";
     public static final String JSON_ARRAY = "server_response";
     public static final String TAG_TEAMNAME = "tm_name";
     public static final String TAG_CODE = "tm_code";
     public static final String TAG_COURSE = "course";
-    int year_x,month_x,day_x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +91,8 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
-        setContentView(R.layout.activity_add_player);
+        setContentView(R.layout.activity_add_featured_player);
+
         /*
         * SPINNER ITEMS
         * */
@@ -110,27 +100,43 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
         players = new ArrayList<String>();
 
         //Initializing Spinner
-        spinner = (Spinner) findViewById(R.id.spinner_teamlist);
-
+        spinner = (Spinner) findViewById(R.id.spinner_featured_teamlist);
+        spinner_pos=(Spinner)findViewById(R.id.spinner_featured_pos);
         //Adding an Item Selected Listener to our Spinner
         //As we have implemented the class Spinner.OnItemSelectedListener to this class iteself we are passing this to setOnItemSelectedListener
         spinner.setOnItemSelectedListener(this);
+        //spinner_pos.setOnItemClickListener(this);
         /*
-        * ASSIGNING VALUES
+        * SET SPINNER ADAPTER
         * */
-        textViewdispdate= (TextView) findViewById(R.id.tv_show_date);
-        textViewdispdate.setVisibility(View.INVISIBLE);
-        iv= (CircleImageView) findViewById(R.id.civ_add_player);
-        playerName=(EditText)findViewById(R.id.et_player_name);
-        contactNo=(EditText)findViewById(R.id.et_contactno);
-        textViewTeamName = (TextView) findViewById(R.id.tv_static_teamname);
-        textViewCode = (TextView) findViewById(R.id.tv_static_teamcode);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.player_position_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+
+        spinner_pos.setAdapter(adapter);
+
+        /*
+        * ASSIGNING VALUES/IDS
+        * */
+        iv= (CircleImageView) findViewById(R.id.civ_add_featured_player);
+        playerName=(EditText)findViewById(R.id.et_featured_player_name);
+        textViewTeamName = (TextView) findViewById(R.id.tv_static_featured_teamname);
+        textViewCode = (TextView) findViewById(R.id.tv_static_featured_teamcode);
+        textViewPosition=(TextView)findViewById(R.id.tv_static_featured_pos);
+        goals=(EditText)findViewById(R.id.et_featured_goals);
+        redcard= (EditText) findViewById(R.id.et_featured_red);
+        yellowcard= (EditText) findViewById(R.id.et_featured_yellow);
+        assists= (EditText) findViewById(R.id.et_featured_assist);
+
+
         getdata();
         /*
         * ADDING TO THE SERVER(addnewplayer)
         * */
-        addnewplayer=(Button)findViewById(R.id.btn_addnewplayer);
-        addnewplayer.setOnClickListener(new View.OnClickListener() {
+        addnewfeaturedplayer=(Button)findViewById(R.id.btn_addnewplayer);
+        addnewfeaturedplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadToServer();
@@ -144,14 +150,24 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
                 //Toast.makeText(getApplicationContext(),"Clickable",Toast.LENGTH_LONG).show();
             }
         });
-        final Calendar cal=Calendar.getInstance();
-        year_x=cal.get(Calendar.YEAR);
-        month_x=cal.get(Calendar.MONTH);
-        day_x=cal.get(Calendar.DAY_OF_MONTH);
-        showDialogOnButtonClick();
+
 
     }
 
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    public String getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
     private void uploadToServer() {
 
         //Showing the progress dialog
@@ -163,7 +179,7 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
                         //Disimissing the progress dialog
                         loading.dismiss();
                         //Showing toast message of the response
-                        Toast.makeText(Add_Player.this, s , Toast.LENGTH_LONG).show();
+                        Toast.makeText(Add_Featured_player.this, s , Toast.LENGTH_LONG).show();
 
                     }
                 },
@@ -174,30 +190,37 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
                         //Dismissing the progress dialog
                         //  Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                         loading.dismiss();
-                        Toast.makeText(Add_Player.this,""+volleyError, Toast.LENGTH_LONG).show();
+                        Toast.makeText(Add_Featured_player.this,""+volleyError, Toast.LENGTH_LONG).show();
                     }
-                }){
+                })
+
+
+
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 //Converting Bitmap to String
                 String image = getStringImage(bitmap);
                 //Getting Image Name and other values
                 String teamname = textViewTeamName.getText().toString().trim();
-                String teamcode=textViewCode.getText().toString().trim();
-                String dispdate=textViewdispdate.getText().toString().trim();
                 String player_name=playerName.getText().toString().trim();
-                String contactno=contactNo.getText().toString().trim();
-
+                String player_pos=textViewPosition.getText().toString().trim();
+                String goal=goals.getText().toString().trim();
+                String red=redcard.getText().toString().trim();
+                String yellow=yellowcard.getText().toString().trim();
+                String assist=assists.getText().toString().trim();
                 //Creating parameters
                 Map<String,String> params = new Hashtable<String, String>();
 
                 //Adding parameters
                 params.put(KEY_IMAGE, image);
                 params.put(KEY_USERNAME, player_name);
-                params.put(KEY_DOB, dispdate);
-                params.put(KEY_TEAMCODE, teamcode);
                 params.put(KEY_TEAMNAME, teamname);
-                params.put(KEY_MOBNO, contactno);
+                params.put(KEY_POS, player_pos);
+                params.put(KEY_GOALS, goal);
+                params.put(KEY_YELLOW, yellow);
+                params.put(KEY_RED, red);
+                params.put(KEY_ASSISTS,assist);
 
 
                 //returning parameters
@@ -206,19 +229,37 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
             }
         };
 
+
         //Creating a Request Queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         //Adding request to the queue
         requestQueue.add(stringRequest);
 
+        /*
+        * SETTING THE TIMEOUT TO 50SECONDS
+        * */
 
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 50000;
+            }
 
+            @Override
+            public int getCurrentRetryCount() {
+                return 50000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
 
     }
 
     private void getdata() {
-
         StringRequest stringRequest = new StringRequest(DATA_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -250,47 +291,25 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
 
         //Adding request to the queue
         requestQueue.add(stringRequest);
-
-        /*
-        * SETTING THE TIMEOUT TO 50SECONDS
-        * */
-
-        stringRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 50000;
-            }
-
-            @Override
-            public int getCurrentRetryCount() {
-                return 50000;
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        });
     }
 
+    private void getTeams(JSONArray j){
+        //Traversing through all the items in the json array
+        for(int i=0;i<j.length();i++){
+            try {
+                //Getting json object
+                JSONObject json = j.getJSONObject(i);
 
-private void getTeams(JSONArray j){
-    //Traversing through all the items in the json array
-    for(int i=0;i<j.length();i++){
-        try {
-            //Getting json object
-            JSONObject json = j.getJSONObject(i);
-
-            //Adding the name of the student to array list
-            players.add(json.getString(TAG_TEAMNAME));
-        } catch (JSONException e) {
-            e.printStackTrace();
+                //Adding the name of the student to array list
+                players.add(json.getString(TAG_TEAMNAME));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
-    //Setting adapter to show the items in the spinner
-    spinner.setAdapter(new ArrayAdapter<String>(Add_Player.this, android.R.layout.simple_spinner_dropdown_item, players));
-}
+        //Setting adapter to show the items in the spinner
+        spinner.setAdapter(new ArrayAdapter<String>(Add_Featured_player.this, android.R.layout.simple_spinner_dropdown_item, players));
+    }
 
     private String getName(int position){
         String name="",code="";
@@ -321,63 +340,6 @@ private void getTeams(JSONArray j){
         }
         //Returning the name
         return code;
-    }
-    private void showDialogOnButtonClick() {
-        add_date= (Button) findViewById(R.id.btn_select_date);
-        add_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(DIALOG_ID);
-            }
-        });
-    }
-    @Override
-    protected Dialog onCreateDialog(int id)
-    {
-        if(id==DIALOG_ID)
-            return new DatePickerDialog(this,dpickerListener,year_x,month_x,day_x);
-        return null;
-    }
-    private DatePickerDialog.OnDateSetListener dpickerListener
-            = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-            year_x=year;
-            month_x=month+1;
-            day_x=dayOfMonth;
-
-            //Toast.makeText(Add_news.this,year_x+"/"+month_x+"/"+day_x,Toast.LENGTH_LONG).show();
-            textViewdispdate.setText(year_x+"/"+month_x+"/"+day_x);
-
-            if(textViewdispdate==null)
-            {
-                textViewdispdate.setVisibility(View.INVISIBLE);
-            }
-            else
-            {
-                textViewdispdate.setVisibility(View.VISIBLE);
-            }
-        }
-
-    };
-     /*
-    * FOR IMAGE UPLOADING FROM GALLERY TO INTENT
-    * */
-
-    private void showFileChooser()
-    {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-    }
-    public String getStringImage(Bitmap bmp){
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
     }
 
     @Override
@@ -413,13 +375,18 @@ private void getTeams(JSONArray j){
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         textViewTeamName.setText(getName(position));
         textViewCode.setText(getCode(position));
+        String item = parent.getItemAtPosition(position).toString();
+        textViewPosition.setText(item);
+        /*
+        * USING ID TAG FOR 2 SPINNERS
+        * */
+
     }
 
     @Override
@@ -427,4 +394,6 @@ private void getTeams(JSONArray j){
         textViewTeamName.setText("");
         textViewCode.setText("");
     }
+
+
 }

@@ -15,8 +15,11 @@ import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_PremiereLe
 public class Select_team extends AppCompatActivity {
 RecyclerView premeireleague;
     Button btn_premiereLeague,btn_championship;
+    /*
+    * CHECKING IF THE BUTTON IS CLICKED, DISABLING IT AFTER CLICK!
+    * */
     Boolean pl_pressed=false;
-            Boolean championship_pressed = false;
+    Boolean championship_pressed = false;
 
 
     @Override

@@ -17,6 +17,15 @@
         <item>Trophy7</item>
         <item>Trophy8</item>
     </string-array>
+
+    <string-array name="player_position_array">
+        <item>NO TROPHIES</item>
+        <item>Defender</item>
+        <item>Midfielder</item>
+        <item>Striker</item>
+        <item>GoalKeeper</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

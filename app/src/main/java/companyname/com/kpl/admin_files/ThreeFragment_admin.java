@@ -14,7 +14,7 @@ import companyname.com.kpl.R;
  * Created by LENOVO on 11/22/2016.
  */
 public class ThreeFragment_admin extends Fragment {
-Button addplayer,editplayer;
+Button addplayer,editplayer,addfeaturedplayer,editfeaturedplayer;
 
     public ThreeFragment_admin() {
         // Required empty public constructor
@@ -39,6 +39,16 @@ Button addplayer,editplayer;
                 startActivity(i);
             }
         });
+
+        addfeaturedplayer= (Button) getView().findViewById(R.id.btn_feat_add_player);
+        addfeaturedplayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Add_Featured_player.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override

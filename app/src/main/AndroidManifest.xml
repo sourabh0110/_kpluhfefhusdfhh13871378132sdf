@@ -57,9 +57,7 @@
         <activity
             android:name=".admin_files.Add_Player"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".recycler_listviews_adapters.DisplayList_news"
-             />
+        <activity android:name=".recycler_listviews_adapters.DisplayList_news" />
         <activity
             android:name=".recycler_listviews_adapters.News_Details"
             android:theme="@style/AppTheme.NoActionBar"
@@ -84,7 +82,8 @@
             android:name=".admin_files.Select_Player_list"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".recycler_listviews_adapters.Player_Details" />
-        <activity android:name=".admin_files.Edit_Player"></activity>
+        <activity android:name=".admin_files.Edit_Player" />
+        <activity android:name=".admin_files.Add_Featured_player"></activity>
     </application>
 
 </manifest>
