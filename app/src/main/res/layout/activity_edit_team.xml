@@ -21,31 +21,11 @@
             android:paddingTop="10dp"
             >
 
-            <LinearLayout
-                android:background="@drawable/border"
-                android:id="@+id/ll_editteam_1"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@android:drawable/ic_media_previous"
-                    android:id="@+id/btn_back"
-                    android:text="Back"
-                    android:textColor="#ffffff"
-                    app:backgroundTint="@android:color/black"
-                    />
-
-
-            </LinearLayout>
-
-
             <TextView
-                android:layout_below="@+id/ll_editteam_1"
                 android:paddingLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:text="Edit Team"
                 android:id="@+id/tv_label"
@@ -65,31 +45,21 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:id="@+id/iv_teamlogo"
-                    android:background="@drawable/border"
                     android:src="@drawable/kpl_app_icon"
                     />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:paddingLeft="10dp"
-                    android:src="@android:drawable/ic_input_add"
-                    android:layout_alignTop="@id/iv_teamlogo"
-                    app:backgroundTint="@android:color/black"
-                    android:clickable="true"
-                    android:id="@+id/floatingActionButton" />
+
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Team Name"
-                    android:layout_alignBottom="@+id/floatingActionButton"
+                    android:layout_marginTop="30dp"
                     android:layout_toEndOf="@+id/iv_teamlogo"
                     android:layout_marginStart="27dp"
                     android:id="@+id/tv_teamname"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
                     android:paddingLeft="10dp"
                     />
 
@@ -100,10 +70,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@+id/iv_teamlogo"
                     android:layout_below="@+id/tv_teamname"
-                    android:layout_marginStart="27dp"
+                    android:layout_marginStart="29dp"
                     android:id="@+id/tv_team_code"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
                     android:paddingLeft="10dp"
                     />
 
@@ -161,8 +131,59 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
+             android:id="@+id/rv_playerlist"
              ></android.support.v7.widget.RecyclerView>
 
+         <RelativeLayout
+             android:layout_alignParentBottom="true"
+             android:layout_gravity="center"
+             android:gravity="center"
+             android:layout_marginTop="20dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+             <Button
+                 android:layout_marginLeft="20dp"
+                 android:layout_width="60dp"
+                 android:layout_height="60dp"
+                 android:gravity="center"
+                 android:text="edit"
+                 android:backgroundTint="@color/colorPrimary"
+                 android:id="@+id/btn_edit_team"
+                 android:textColor="#ffffff"
+                 android:background="@drawable/circle"
+                 />
+
+             <Button
+                 android:layout_marginLeft="20dp"
+                 android:background="@drawable/circle"
+                 android:layout_width="60dp"
+                 android:layout_height="60dp"
+                 android:text="DELETE"
+                 android:backgroundTint="@color/colorPrimary"
+                 android:gravity="center"
+                 android:textColor="#ffffff"
+                 android:src="@drawable/kpllogo"
+                 android:layout_toRightOf="@+id/btn_edit_team"
+                 android:id="@+id/btn_del_team"
+                 />
+
+             <Button
+                 android:layout_toStartOf="@+id/btn_edit_team"
+                 android:layout_marginLeft="20dp"
+                 android:background="@drawable/circle"
+                 android:layout_width="60dp"
+                 android:layout_height="60dp"
+                 android:text="Update"
+                 android:backgroundTint="@color/colorPrimary"
+                 android:gravity="center"
+                 android:textColor="#ffffff"
+                 android:src="@drawable/kpllogo"
+                 android:layout_toRightOf="@+id/btn_edit_team"
+                 android:id="@+id/btn_update_team"
+
+                 />
+         </RelativeLayout>
 
 
      </LinearLayout>

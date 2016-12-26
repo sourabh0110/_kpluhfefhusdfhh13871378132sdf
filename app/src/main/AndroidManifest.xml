@@ -83,7 +83,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".recycler_listviews_adapters.Player_Details" />
         <activity android:name=".admin_files.Edit_Player" />
-        <activity android:name=".admin_files.Add_Featured_player"></activity>
+        <activity android:name=".admin_files.Add_Featured_player" />
+        <activity android:name=".recycler_listviews_adapters.FeaturedPlayer_Details"></activity>
     </application>
 
 </manifest>

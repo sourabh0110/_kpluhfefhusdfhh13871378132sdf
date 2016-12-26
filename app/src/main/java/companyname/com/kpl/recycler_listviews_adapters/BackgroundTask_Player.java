@@ -114,7 +114,7 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
                 count++;
                 //ForWB
                 //Player player=new Player(JO.getString("usr_name"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_dob"),JO.getString("usr_profile_pic"),JO.getInt("usr_id"));
-                Player player=new Player(JO.getString("usr_profile_pic"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_name"),JO.getInt("usr_id"),JO.getString("usr_dob"));
+                Player player=new Player(JO.getString("usr_profile_pic"),JO.getInt("usr_team_code"),JO.getString("team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_name"),JO.getInt("usr_id"),JO.getString("usr_dob"));
                 publishProgress(player);
                 Thread.sleep(100);
             }

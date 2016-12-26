@@ -15,7 +15,7 @@
             android:id="@+id/first_team_logo"
             android:scaleType="fitXY"
             />
-        <ImageView
+        <TextView
             android:layout_width="2dp"
             android:layout_height="2dp"
             android:id="@+id/image_static"

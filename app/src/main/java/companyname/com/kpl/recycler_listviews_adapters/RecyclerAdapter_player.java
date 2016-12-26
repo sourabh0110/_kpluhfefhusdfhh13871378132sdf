@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import companyname.com.kpl.R;
 import companyname.com.kpl.admin_files.Edit_Player;
 import companyname.com.kpl.admin_files.Edit_team;
+import companyname.com.kpl.admin_files.Select_Player_list;
 
 /**
  * Created by admin on 12/19/2016.
@@ -59,16 +60,6 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
                 .skipMemoryCache(true)
                 .into(holder.imageView);
 
-
-        //holder.Content.setText(news.getContent());
-            /*
-            * Glide.with(holder.imageView.getContext()).load("http://devkpl.com/news/uploads/" + news.getNews_image())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
-                    .into(holder.imageView);
-            *
-            * */
-
     }
 
     @Override
@@ -98,8 +89,6 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
             team_code=(TextView)view.findViewById(R.id.tv_player_team_code);
             team_name=(TextView)view.findViewById(R.id.tv_player_team_name_fetch);
             imageView= (ImageView) view.findViewById(R.id.iv_player_image);
-            imageView_static=(ImageView)view.findViewById(R.id.image_static);
-            imageView_static=imageView;
             //    this.viewType=TYPE_LIST;
 
 
@@ -110,10 +99,14 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
             int position=getAdapterPosition();
             Player player=this.player.get(position);
 
-            Intent intent=new Intent(ctx,Edit_Player.class);
-            //intent.putExtra("image", player.getPlayer_image());
-            //intent.putExtra("id",player.getPlayer_id());
-            //intent.putExtra("name",player.getTm_name());
+            Intent intent=new Intent(ctx,Player_Details.class);
+            intent.putExtra("imagepath", player.getPlayer_image());
+            intent.putExtra("teamname",player.getTm_name());
+            intent.putExtra("name",player.getPlayer_name());
+            intent.putExtra("dob",player.getPlayer_dob());
+            intent.putExtra("mobno",player.getMobno());
+            intent.putExtra("id",Integer.toString(player.getPlayer_id()));
+
             this.ctx.startActivity(intent);
 
 

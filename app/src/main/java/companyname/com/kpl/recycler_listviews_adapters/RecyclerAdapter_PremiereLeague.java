@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -67,6 +69,7 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
                 .skipMemoryCache(true)
                 .into(holder.imageView);
 
+        holder.imageView_static.setText(premiereLeague.getTm_image());
 
         //holder.Content.setText(news.getContent());
             /*
@@ -91,7 +94,8 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
 
         int viewType;
         TextView Name,Id;
-        ImageView imageView,imageView_static;
+        ImageView imageView;
+        TextView imageView_static;
         ArrayList<PremiereLeague>premiereLeagues=new ArrayList<PremiereLeague>();
         Context ctx;
         public RecyclerViewHolder(View view,int viewType,Context ctx,ArrayList<PremiereLeague> premiereLeagues)
@@ -103,34 +107,20 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
 
 
             Name=(TextView)view.findViewById(R.id.second_team_name);
-            //Title=(TextView)view.findViewById(R.id.four);
             Id=(TextView)view.findViewById(R.id.third_team_code);
-            //Desc=(TextView)view.findViewById(R.id.five);
-            //Content=(TextView)view.findViewById(R.id.six);
             imageView= (ImageView) view.findViewById(R.id.first_team_logo);
-            imageView_static=(ImageView)view.findViewById(R.id.image_static);
-            imageView_static=imageView;
-            //    this.viewType=TYPE_LIST;
-
-
+            imageView_static=(TextView)view.findViewById(R.id.image_static);
         }
 
         @Override
         public void onClick(View view) {
             int position=getAdapterPosition();
             PremiereLeague premiereLeague=this.premiereLeagues.get(position);
-
             Intent intent=new Intent(ctx,Edit_team.class);
             intent.putExtra("image", premiereLeague.getTm_image());
-            //intent.putExtra("id",premiereLeague.getTm_id());
             intent.putExtra("id",Integer.toString(premiereLeague.getTm_id()));
             intent.putExtra("name",premiereLeague.getTm_name());
-
-
             this.ctx.startActivity(intent);
-
-
-
         }
 
     }

@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="companyname.com.kpl.recycler_listviews_adapters.Player_Details">
+    tools:context="companyname.com.kpl.recycler_listviews_adapters.FeaturedPlayer_Details">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,7 +26,7 @@
                     android:layout_width="5dp"
                     android:layout_height="5dp"
                     android:text="PATH"
-                    android:id="@+id/tv_player_imagepath"
+                    android:id="@+id/tv_fplayer_imagepath"
                     />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -35,7 +35,7 @@
                     android:src="@mipmap/ic_launcher"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:id="@+id/iv_edit_image_player"
+                    android:id="@+id/iv_edit_image_fplayer"
                     />
 
 
@@ -48,7 +48,6 @@
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/first_image_player"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
@@ -56,7 +55,7 @@
                 android:textSize="15dp"
                 android:text="Id"
                 android:textAllCaps="true"
-                android:id="@+id/tv_edit_player_id"
+                android:id="@+id/tv_edit_fplayer_id"
                 android:visibility="invisible"
                 />
             <EditText
@@ -71,44 +70,12 @@
                 android:textSize="20dp"
                 android:textColor="#017EBE"
                 android:textStyle="bold"
-                android:text="Player Name"
+                android:text="Featured Player Name"
                 android:enabled="false"
                 android:layout_gravity="center"
                 android:id="@+id/et_edit_player_name"
                 />
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
 
-            >
-            <TextView
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="Date"
-                android:enabled="false"
-                android:layout_gravity="center"
-                android:textSize="20dp"
-                android:layout_marginLeft="37dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_date_player"
-                />
-            <Button
-                android:background="@color/colorPrimary"
-                android:textColor="#ffffff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SELECT DATE"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginLeft="35dp"
-                android:id="@+id/btn_edit_date"
-                />
-            </LinearLayout>
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
@@ -123,7 +90,39 @@
                 android:layout_gravity="center"
                 android:textAllCaps="true"
                 android:hint="ORIGINAL TEAM"
-                android:id="@+id/tv_player_original_team"
+                android:id="@+id/tv_fplayer_original_team"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="20dp"
+                android:text="Original Team Code"
+                android:enabled="false"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:hint="ORIGINAL CODE"
+                android:id="@+id/tv_fplayer_original_code"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="20dp"
+                android:text="Previous Position"
+                android:enabled="false"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:hint="PREV POS"
+                android:id="@+id/tv_fplayer_prev_pos"
                 />
             <LinearLayout
 
@@ -137,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SELECT TEAM"
+                    android:text="SELECT NEW POS"
                     android:id="@+id/select_team"
                     android:paddingLeft="10dp"
                     android:textSize="18dp"
@@ -152,7 +151,7 @@
                     android:paddingBottom="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner_team_name"
+                    android:id="@+id/spinner_fplayer_pos"
                     />
 
             </LinearLayout>
@@ -160,7 +159,7 @@
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:hint="TEAM NAME"
+                android:hint="NEW POSITION"
                 android:enabled="false"
                 android:paddingLeft="10dp"
                 android:textSize="18dp"
@@ -169,16 +168,16 @@
                 android:paddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_team_name"
+                android:id="@+id/tv_fplayer_new_pos"
                 >
 
 
             </TextView>
 
-            <TextView
+            <EditText
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:hint="TEAM CODE"
+                android:hint="Goals"
                 android:paddingLeft="10dp"
                 android:enabled="false"
                 android:textSize="18dp"
@@ -187,22 +186,51 @@
                 android:paddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_team_code"
+                android:id="@+id/et_fplayer_goals"
                 />
             <EditText
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lv_team_name"
                 android:paddingLeft="10dp"
                 android:textSize="18dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
-                android:id="@+id/et_edit_player_mobile"
+                android:id="@+id/et_fplayer_yellow"
                 android:textAllCaps="true"
                 android:enabled="false"
                 android:layout_marginLeft="25dp"
-                android:text="Mobile Number"
+                android:text="Yellow cards"
+                android:layout_gravity="center"
+                />
+            <EditText
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="18dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/et_fplayer_red"
+                android:textAllCaps="true"
+                android:enabled="false"
+                android:layout_marginLeft="25dp"
+                android:text="Red cards"
+                android:layout_gravity="center"
+                />
+            <EditText
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="18dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/et_fplayer_assists"
+                android:textAllCaps="true"
+                android:enabled="false"
+                android:layout_marginLeft="25dp"
+                android:text="Assists"
                 android:layout_gravity="center"
                 />
 

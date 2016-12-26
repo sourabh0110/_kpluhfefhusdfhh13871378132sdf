@@ -3,6 +3,7 @@ package companyname.com.kpl.recycler_listviews_adapters;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,6 +29,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
@@ -42,10 +49,19 @@ import java.util.Calendar;
 
 import companyname.com.kpl.Image_Caching.ImageLoader;
 import companyname.com.kpl.R;
+import companyname.com.kpl.admin_files.Config;
+import companyname.com.kpl.admin_files.FourFragment_admin;
+import companyname.com.kpl.admin_files.Search_news;
 
 import static android.R.attr.bitmap;
 
 public class News_Details extends Activity {
+    /*
+    * DATA URL FOR DELETE
+    * */
+    //public static final String DATA_URL = "http://devkpl.com/news/getDataID.php?id=";
+    public static final String DATA_URL="http://devkpl.com/alldeletequeries/getDataID_news_delete.php?id=";
+    private ProgressDialog loading;
     private Bitmap bitmap;
     private static final int PICK_IMAGE=100;
     public static final int IMAGE_GALLERY_REQUEST = 20;
@@ -77,8 +93,6 @@ public class News_Details extends Activity {
         showDialogOnButtonClick();
         staticpath=(TextView)findViewById(R.id.tv_static_path_for_trial);
         iv_staticpath=(ImageView)findViewById(R.id.iv_static_path_for_trial);
-        uploadnews= (Button) findViewById(R.id.btn_upload_news_image);
-        uploadnews.setEnabled(false);
         tv_date=(TextView)findViewById(R.id.tv_date_news);
         imageView_news= (ImageView) findViewById(R.id.first_image);
         tv_id= (TextView) findViewById(R.id.second_idnews);
@@ -86,6 +100,8 @@ public class News_Details extends Activity {
         tv_title= (EditText) findViewById(R.id.four_title);
         tv_desc= (EditText) findViewById(R.id.five_desc);
         tv_content= (EditText) findViewById(R.id.six_content);
+        sdate.setEnabled(false);
+        imageView_news.setEnabled(false);
 /*
 * INTENT EXTRAS
 * */
@@ -138,6 +154,7 @@ public class News_Details extends Activity {
                         uploadnews.setEnabled(true);
                         edit.setEnabled(false);
                         update.setEnabled(true);
+                        imageView_news.setEnabled(true);
                     }
                 });
 
@@ -156,6 +173,27 @@ public class News_Details extends Activity {
             @Override
             public void onClick(View v) {
 
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(News_Details.this);
+                alertDialog.setTitle("Confirm Delete");
+                alertDialog.setMessage("The changes you make cannot be reverted!!");
+                alertDialog.setCancelable(true);
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    //CALLING METHOD TO IMPLEMENT DELETE!
+                    deletedata();
+
+                    }
+                });
+
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.show();
             }
         });
 
@@ -167,7 +205,62 @@ public class News_Details extends Activity {
        });
 
     }
-        public void showDialogOnButtonClick()
+
+    private void deletedata() {
+        String id = tv_id.getText().toString().trim();
+        if (id.equals("")) {
+            Toast.makeText(this, "Please enter an id", Toast.LENGTH_LONG).show();
+            return;
+        }
+        loading = ProgressDialog.show(this,"Please wait...","Deleting this Record...",false,false);
+
+        String url = DATA_URL+tv_id.getText().toString().trim();
+        // String url = Config.DATA_URL;
+
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                loading.dismiss();
+                //showJSON(response);
+                Toast.makeText(getApplicationContext(),"NEWS DELETED SUCCESSFULLY!",Toast.LENGTH_LONG).show();
+                getCallingPackage();
+                finish();
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        loading.dismiss();
+
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+         /*
+        * SETTING THE TIMEOUT TO 50SECONDS
+        * */
+
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 50000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 50000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+
+    }
+
+    public void showDialogOnButtonClick()
     {
         sdate= (Button) findViewById(R.id.select_date_update);
         sdate.setOnClickListener(new View.OnClickListener() {
