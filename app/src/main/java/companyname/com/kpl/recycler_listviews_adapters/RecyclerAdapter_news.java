@@ -1,5 +1,6 @@
 package companyname.com.kpl.recycler_listviews_adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -150,6 +151,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             intent.putExtra("content",news.getContent());
             intent.putExtra("date",news.getNews_date());
 
+            ((Activity)ctx).finish();
 
             this.ctx.startActivity(intent);
 

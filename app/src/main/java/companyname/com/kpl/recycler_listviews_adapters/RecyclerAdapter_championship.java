@@ -1,5 +1,6 @@
 package companyname.com.kpl.recycler_listviews_adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -119,6 +120,7 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
 
 
             this.ctx.startActivity(intent);
+            ((Activity)ctx).finish();
 
 
 

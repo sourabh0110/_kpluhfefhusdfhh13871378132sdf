@@ -73,7 +73,7 @@
                 android:text="Featured Player Name"
                 android:enabled="false"
                 android:layout_gravity="center"
-                android:id="@+id/et_edit_player_name"
+                android:id="@+id/et_edit_fplayer_name"
                 />
 
             <TextView
@@ -101,22 +101,6 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textSize="20dp"
-                android:text="Original Team Code"
-                android:enabled="false"
-                android:layout_gravity="center"
-                android:textAllCaps="true"
-                android:hint="ORIGINAL CODE"
-                android:id="@+id/tv_fplayer_original_code"
-                />
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textSize="20dp"
                 android:text="Previous Position"
                 android:enabled="false"
                 android:layout_gravity="center"
@@ -130,13 +114,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SELECT NEW POS"
+                    android:text="NEW POS"
                     android:id="@+id/select_team"
                     android:paddingLeft="10dp"
                     android:textSize="18dp"
@@ -149,7 +133,7 @@
                     android:layout_gravity="center"
                     android:textSize="18dp"
                     android:paddingBottom="5dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinner_fplayer_pos"
                     />
@@ -170,10 +154,21 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_fplayer_new_pos"
                 >
-
-
             </TextView>
-
+            <EditText
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:hint="Matches Played"
+                android:paddingLeft="10dp"
+                android:enabled="false"
+                android:textSize="18dp"
+                android:layout_marginLeft="25dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_fplayer_matches"
+                />
             <EditText
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"

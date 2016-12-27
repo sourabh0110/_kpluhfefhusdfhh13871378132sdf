@@ -1,5 +1,6 @@
 package companyname.com.kpl.recycler_listviews_adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -121,6 +122,7 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
             intent.putExtra("id",Integer.toString(premiereLeague.getTm_id()));
             intent.putExtra("name",premiereLeague.getTm_name());
             this.ctx.startActivity(intent);
+            ((Activity)ctx).finish();
         }
 
     }

@@ -84,7 +84,8 @@
         <activity android:name=".recycler_listviews_adapters.Player_Details" />
         <activity android:name=".admin_files.Edit_Player" />
         <activity android:name=".admin_files.Add_Featured_player" />
-        <activity android:name=".recycler_listviews_adapters.FeaturedPlayer_Details"></activity>
+        <activity android:name=".recycler_listviews_adapters.FeaturedPlayer_Details" />
+        <activity android:name=".admin_files.Select_Feat_Player_list"></activity>
     </application>
 
 </manifest>

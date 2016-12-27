@@ -48,6 +48,14 @@ Button addplayer,editplayer,addfeaturedplayer,editfeaturedplayer;
                 startActivity(i);
             }
         });
+        editfeaturedplayer=(Button)getView().findViewById(R.id.btn_feat_edit_player);
+        editfeaturedplayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplication(),Select_Feat_Player_list.class);
+                startActivity(i);
+            }
+        });
 
     }
 

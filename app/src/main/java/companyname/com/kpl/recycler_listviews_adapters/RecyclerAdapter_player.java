@@ -1,5 +1,6 @@
 package companyname.com.kpl.recycler_listviews_adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -108,7 +109,7 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
             intent.putExtra("id",Integer.toString(player.getPlayer_id()));
 
             this.ctx.startActivity(intent);
-
+            ((Activity)ctx).finish();
 
 
         }
