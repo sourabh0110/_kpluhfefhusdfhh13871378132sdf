@@ -50,6 +50,7 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
 
     String json_string="http://devkpl.com/KPL-Admin/wsGetPlayers";
 
+
     //String json_string = "http://devkpl.com/getList_news.php";
 
     @Override

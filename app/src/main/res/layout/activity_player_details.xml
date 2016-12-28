@@ -110,6 +110,7 @@
                 />
             </LinearLayout>
             <TextView
+                android:visibility="invisible"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
                 android:layout_width="match_parent"
@@ -147,10 +148,11 @@
                     />
 
                 <Spinner
-                    android:layout_gravity="center"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
                     android:textSize="18dp"
                     android:paddingBottom="5dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinner_team_name"
                     />

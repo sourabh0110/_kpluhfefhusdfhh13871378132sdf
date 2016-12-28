@@ -31,13 +31,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".admin_files.Admin_Activity"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".admin_files.LoginActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="companyname.com.kpl.LOGINACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".admin_files.Admin_Activity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".admin_files.Search_news"
             android:theme="@style/AppTheme.NoActionBar" />

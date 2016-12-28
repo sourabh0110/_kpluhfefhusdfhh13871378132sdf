@@ -71,6 +71,7 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
     private String KEY_IMAGE = "image";
     private String KEY_MATCHES = "matches_played";
     private String KEY_USERNAME = "player_name";
+    private String KEY_OLD_USERNAME = "old_player_name";
     private String KEY_POS = "player_pos";
     private String KEY_TEAMNAME = "player_team";
     private String KEY_GOALS = "goals_scored";
@@ -137,11 +138,21 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
         red = (EditText) findViewById(R.id.et_fplayer_red);
         assists  = (EditText) findViewById(R.id.et_fplayer_assists);
         //player_staticpath = (TextView) findViewById(R.id.tv_player_imagepath);
+
+
+        /*
+        * FOR OLD AND NEW IMAGE
+        * */
         iv = (ImageView) findViewById(R.id.iv_edit_image_fplayer);
+        iv.setEnabled(false);
+        final int[] flag = {0};
         textViewTeamName=(TextView)findViewById(R.id.tv_team_name);
         textViewCode=(TextView)findViewById(R.id.tv_team_code);
         delete = (Button) findViewById(R.id.btn_del_player);
         getdataspinner();
+
+
+
         /*
 * INTENT EXTRAS
 * */
@@ -171,13 +182,36 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                 .skipMemoryCache(true)
                 .error(R.mipmap.ic_launcher)
                 .into(iv);
+        Toast.makeText(getApplicationContext(),"IMAGE SET",Toast.LENGTH_LONG).show();
 
         update = (Button) findViewById(R.id.btn_update_player);
         update.setEnabled(false);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update();
+
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(FeaturedPlayer_Details.this);
+                alertDialog.setTitle("Confirm Update");
+                alertDialog.setMessage("The changes you make cannot be reverted!!");
+                alertDialog.setCancelable(true);
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //CALLING METHOD TO IMPLEMENT UPDATE!
+                        update();
+
+                    }
+                });
+
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.show();
+
             }
         });
 
@@ -200,8 +234,8 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                         matches.setEnabled(true);
                         yellow.setEnabled(true);
                         red.setEnabled(true);
-                        //sdate.setEnabled(true);
-                        iv.setEnabled(true);
+                        //iv.setImageBitmap(null);
+                        //iv.setEnabled(true);
                     }
                 });
 
@@ -463,7 +497,8 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Context ctx = null;
+
+          Context ctx = null;
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
@@ -472,7 +507,7 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                     bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 } catch (OutOfMemoryError e) {
                     Toast.makeText(getApplicationContext(), "FILE SIZE IS LARGE,CHOOSE ANOTHER FILE", Toast.LENGTH_LONG).show();
-                    iv.setImageResource(R.mipmap.ic_launcher);
+                    iv.setImageBitmap(null);
                 }
 
 
@@ -481,6 +516,7 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                     iv.setImageBitmap(bitmap);
                 } catch (OutOfMemoryError e) {
                     Toast.makeText(getApplicationContext(), "FILE SIZE IS LARGE,CHOOSE ANOTHER FILE", Toast.LENGTH_LONG).show();
+                    iv.setImageBitmap(null);
                 }
 
                 //iv.setImageBitmap(ImageDecoder.decodeSampledBitmapFromResource(this.getResources(),R.id.upload,100,100));
@@ -488,6 +524,8 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                 e.printStackTrace();
             }
         }
+
+
     }
 
     @Override
@@ -513,8 +551,7 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                     public void onResponse(String s) {
                         //Disimissing the progress dialog
                         loading.dismiss();
-                        //Showing toast message of the response
-                        Toast.makeText(FeaturedPlayer_Details.this, "Record Updated Successfully" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(FeaturedPlayer_Details.this, "Record Updated Successfully!", Toast.LENGTH_LONG).show();
                         finish();
                     }
                 },
@@ -525,7 +562,7 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
                         //Dismissing the progress dialog
                         //  Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                         loading.dismiss();
-                        Toast.makeText(FeaturedPlayer_Details.this,""+volleyError, Toast.LENGTH_LONG).show();
+                        Toast.makeText(FeaturedPlayer_Details.this,"ERROR!", Toast.LENGTH_LONG).show();
                     }
                 })
 
@@ -535,12 +572,13 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 //Converting Bitmap to String
-                String image = getStringImage(bitmap);
-                //Getting Image Name and other values
-                //params.put("id", String.valueOf(id));
+
+                String image = getIntent().getStringExtra("image");
+                //String player_name=getIntent().getStringExtra("name");
+                //String image = getStringImage(bitmap);
                 String id1= pid.getText().toString();
                 String teamname = team_name.getText().toString().trim();
-                String player_name=name.getText().toString().trim();
+                String new_player_name=name.getText().toString().trim();
                 String player_pos=prev_pos.getText().toString().trim();
                 String goal=goals.getText().toString().trim();
                 String red1=red.getText().toString().trim();
@@ -552,15 +590,16 @@ public class FeaturedPlayer_Details extends AppCompatActivity implements Adapter
 
                 //Adding parameters
                 params.put(KEY_IMAGE, image);
-                params.put(KEY_USERNAME, player_name);
-                //params.put(KEY_TEAMNAME, teamname);
-                //params.put(KEY_POS, player_pos);
-                //params.put(KEY_GOALS, goal);
-                //params.put(KEY_YELLOW, yellow1);
-                //params.put(KEY_RED, red1);
-                //params.put(KEY_ASSISTS,assist);
-                //params.put(KEY_MATCHES,matches1);
-                //params.put(KEY_ID,id1);
+                params.put(KEY_USERNAME, new_player_name);
+                //params.put(KEY_OLD_USERNAME, player_name);
+                params.put(KEY_TEAMNAME, teamname);
+                params.put(KEY_POS, player_pos);
+                params.put(KEY_GOALS, goal);
+                params.put(KEY_YELLOW, yellow1);
+                params.put(KEY_RED, red1);
+                params.put(KEY_ASSISTS,assist);
+                params.put(KEY_MATCHES,matches1);
+                params.put(KEY_ID,id1);
 
 
 
