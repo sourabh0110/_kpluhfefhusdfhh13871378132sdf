@@ -29,6 +29,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
@@ -46,6 +48,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Map;
 
 import companyname.com.kpl.Image_Caching.ImageLoader;
 import companyname.com.kpl.R;
@@ -74,6 +78,14 @@ public class News_Details extends Activity {
     TextView tv_id,tv_date,staticpath;
     Button edit,delete,update,uploadnews,sdate;
     EditText tv_name,tv_title,tv_desc,tv_content;
+    private String UPDATE_URL="http://devkpl.com/allupdatequeries/update_player.php";
+    private String KEY_ID="usr_id";
+    private String KEY_IMAGE = "usr_profile_pic";
+    private String KEY_DOB = "usr_dob";
+    private String KEY_MOBNO = "usr_mobile_number";
+    private String KEY_USERNAME = "usr_name";
+    private String KEY_TEAM = "team_name";
+    private String KEY_CODE = "usr_team_code";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,7 +166,7 @@ public class News_Details extends Activity {
                         uploadnews.setEnabled(true);
                         edit.setEnabled(false);
                         update.setEnabled(true);
-                        imageView_news.setEnabled(true);
+                        //imageView_news.setEnabled(true);
                     }
                 });
 
@@ -197,12 +209,131 @@ public class News_Details extends Activity {
             }
         });
 
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(News_Details.this);
+                alertDialog.setTitle("Confirm Update");
+                alertDialog.setMessage("The changes you make cannot be reverted!!");
+                alertDialog.setCancelable(true);
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //CALLING METHOD TO IMPLEMENT UPDATE!
+                        update();
+
+                    }
+                });
+
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.show();
+            }
+        });
        imageView_news.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                showFileChooser();
            }
        });
+
+    }
+
+    private void update() {
+        final ProgressDialog loading = ProgressDialog.show(this,"Updating Records...","Please wait...",false,false);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPDATE_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        //Disimissing the progress dialog
+                        loading.dismiss();
+                        //Toast.makeText(Player_Details.this, "Record Updated Successfully!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(News_Details.this, ""+s, Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        //Dismissing the progress dialog
+                        //  Toast.makeText(Add_news.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        loading.dismiss();
+                        Toast.makeText(News_Details.this,"ERROR!", Toast.LENGTH_LONG).show();
+                    }
+                })
+
+
+
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                //Converting Bitmap to String
+
+                String image = getIntent().getStringExtra("imagepath");
+                //String player_name=getIntent().getStringExtra("name");
+                //String image = getStringImage(bitmap);
+                String id1= tv_id.getText().toString();
+                String new_player_name=tv_name.getText().toString().trim();
+                String date=tv_date.getText().toString().trim();
+                String desc=tv_desc.getText().toString().trim();
+                String title=tv_title.getText().toString().trim();
+                String content=tv_content.getText().toString().trim();
+                //Creating parameterss
+                Map<String,String> params = new Hashtable<String, String>();
+
+                //Adding parameters
+                //params.put(KEY_IMAGE, image);
+                params.put(KEY_USERNAME, new_player_name);
+                //params.put(KEY_OLD_USERNAME, player_name);
+                params.put(KEY_TEAM, newteam);
+                params.put(KEY_CODE, newcode);
+                params.put(KEY_DOB, dob);
+                params.put(KEY_MOBNO, mobno);
+                params.put(KEY_ID,id1);
+
+
+
+                //returning parameters
+                return params;
+
+            }
+        };
+
+
+        //Creating a Request Queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
+
+        /*
+        * SETTING THE TIMEOUT TO 50SECONDS
+        * */
+
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 50000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 50000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+
+
 
     }
 
