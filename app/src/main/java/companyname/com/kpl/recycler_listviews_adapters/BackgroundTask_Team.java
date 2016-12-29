@@ -7,12 +7,12 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,41 +28,44 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import companyname.com.kpl.R;
+import companyname.com.kpl.admin_files.Edit_team;
 
 /**
- * Created by admin on 12/18/2016.
+ * Created by admin on 12/29/2016.
  */
-
-public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
+public class BackgroundTask_Team extends AsyncTask<Void,Team,Void> {
     private ProgressDialog loading;
+    private String target;
     Context ctx;
     Activity activity;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<Player> arrayList = new ArrayList<>();
+    ArrayList<Team> arrayList = new ArrayList<>();
 
-    public BackgroundTask_Player(Context ctx) {
+    public BackgroundTask_Team(Context ctx, String team_code) {
         this.ctx = ctx;
         activity = (Activity) ctx;
+        target=team_code;
+        Log.e("URL",""+target);
     }
 
 
-    //String json_string="http://devkpl.com/KPL-Admin/wsGetPlayers";
-    String json_string="http://kplpune.in/KPL-Admin/wsGetPlayers";
+    //String json_string="http://devkpl.com/KPL-Admin/wsGetPlayers/";
+     String json_string="http://kplpune.in/KPL-Admin/wsGetAllPayersByTeam/";
 
     //String json_string = "http://devkpl.com/getList_news.php";
 
     @Override
     protected void onPreExecute() {
-        recyclerView = (RecyclerView) activity.findViewById(R.id.rv_getallplayers);
+        recyclerView = (RecyclerView) activity.findViewById(R.id.rv_playerlist);
         layoutManager = new LinearLayoutManager(ctx);
         //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(ctx,2);
         recyclerView.setLayoutManager(layoutManager);
         //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerAdapter_player(arrayList,ctx);
+        adapter = new RecyclerAdapter_team(arrayList,ctx);
         recyclerView.setAdapter(adapter);
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
@@ -73,7 +76,7 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
     }
 
     @Override
-    protected void onProgressUpdate(Player... values) {
+    protected void onProgressUpdate(Team... values) {
         arrayList.add(values[0]);
         adapter.notifyDataSetChanged();
     }
@@ -89,9 +92,11 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
     protected Void doInBackground(Void... voids) {
 
 
+
         try {
 
-            URL url=new URL(json_string);
+            URL url=new URL(json_string+target);
+            Log.e("URL",""+url);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
             InputStream inputStream=httpURLConnection.getInputStream();
             BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream));
@@ -114,10 +119,10 @@ public class BackgroundTask_Player extends AsyncTask<Void,Player,Void> {
                 JSONObject JO=jsonArray.getJSONObject(count);
                 count++;
                 //ForWB
-                //Player player=new Player(JO.getString("usr_name"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_dob"),JO.getString("usr_profile_pic"),JO.getInt("usr_id"));
-                Player player=new Player(JO.getString("usr_profile_pic"),JO.getInt("usr_team_code"),JO.getString("team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_name"),JO.getInt("usr_id"),JO.getString("usr_dob"));
-                publishProgress(player);
-                Thread.sleep(100);
+                //News news=new News(JO.getString("author_name"),JO.getString("title"),JO.getInt("news_id"),JO.getString("description"),JO.getString("content"),JO.getString("image"),JO.getString("date"));
+                Team team=new Team(JO.getString("usr_name"),JO.getString("usr_profile_pic"));
+                publishProgress(team);
+                Thread.sleep(1);
             }
             Log.e("JSON_STRING",json_string);
 

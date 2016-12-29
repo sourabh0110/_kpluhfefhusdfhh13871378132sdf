@@ -78,14 +78,14 @@ public class News_Details extends Activity {
     TextView tv_id,tv_date,staticpath;
     Button edit,delete,update,uploadnews,sdate;
     EditText tv_name,tv_title,tv_desc,tv_content;
-    private String UPDATE_URL="http://devkpl.com/allupdatequeries/update_player.php";
-    private String KEY_ID="usr_id";
-    private String KEY_IMAGE = "usr_profile_pic";
-    private String KEY_DOB = "usr_dob";
-    private String KEY_MOBNO = "usr_mobile_number";
-    private String KEY_USERNAME = "usr_name";
-    private String KEY_TEAM = "team_name";
-    private String KEY_CODE = "usr_team_code";
+    private String UPDATE_URL="http://devkpl.com/allupdatequeries/update_news.php";
+    private String KEY_ID="news_id";
+    private String KEY_IMAGE = "image";
+    private String KEY_NAME = "author_name";
+    private String KEY_DATE = "date";
+    private String KEY_TITLE = "title";
+    private String KEY_DESCRIPTION = "description";
+    private String KEY_CONTENT = "content";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +163,7 @@ public class News_Details extends Activity {
                         tv_content.setEnabled(true);
                         tv_desc.setEnabled(true);
                         tv_date.setEnabled(true);
-                        uploadnews.setEnabled(true);
+                       // uploadnews.setEnabled(true);
                         edit.setEnabled(false);
                         update.setEnabled(true);
                         //imageView_news.setEnabled(true);
@@ -289,12 +289,11 @@ public class News_Details extends Activity {
 
                 //Adding parameters
                 //params.put(KEY_IMAGE, image);
-                params.put(KEY_USERNAME, new_player_name);
-                //params.put(KEY_OLD_USERNAME, player_name);
-                params.put(KEY_TEAM, newteam);
-                params.put(KEY_CODE, newcode);
-                params.put(KEY_DOB, dob);
-                params.put(KEY_MOBNO, mobno);
+                params.put(KEY_NAME, new_player_name);
+                params.put(KEY_DATE, date);
+                params.put(KEY_TITLE, title);
+                params.put(KEY_CONTENT, content);
+                params.put(KEY_DESCRIPTION, desc);
                 params.put(KEY_ID,id1);
 
 

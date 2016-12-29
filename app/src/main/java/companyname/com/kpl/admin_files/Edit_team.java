@@ -38,6 +38,10 @@ import java.io.IOException;
 
 import companyname.com.kpl.R;
 import companyname.com.kpl.RoundImage;
+import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_Feat_Player;
+import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_PremiereLeague;
+import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_Team;
+import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_news;
 import companyname.com.kpl.recycler_listviews_adapters.News_Details;
 
 import static android.R.attr.bitmap;
@@ -46,7 +50,7 @@ public class Edit_team extends AppCompatActivity {
     RoundImage roundImage;
     private Bitmap bitmap;
     private int PICK_IMAGE_REQUEST = 1;
-    Button edit,delete,update;
+    Button edit,delete,update,viewplayers;
     EditText team_name;
     TextView team_code;
     ImageView iv;
@@ -64,11 +68,14 @@ public class Edit_team extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         setContentView(R.layout.activity_edit_team);
+        viewplayers= (Button) findViewById(R.id.view_all_players);
         edit=(Button)findViewById(R.id.btn_edit_team);
         delete=(Button)findViewById(R.id.btn_del_team);
         update=(Button)findViewById(R.id.btn_update_team);
         team_name = (EditText) findViewById(R.id.tv_teamname);
         team_code = (TextView) findViewById(R.id.tv_team_code);
+
+
         iv = (ImageView) findViewById(R.id.iv_teamlogo);
         iv.setEnabled(false);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kpl_app_icon);
@@ -81,6 +88,8 @@ public class Edit_team extends AppCompatActivity {
 
         team_code.setText(getIntent().getStringExtra("id"));
         team_name.setText(getIntent().getStringExtra("name"));
+        final String teamcode=team_code.getText().toString().trim();
+        //Toast.makeText(getApplicationContext(),""+teamcode,Toast.LENGTH_LONG).show();
         team_code.setEnabled(false);
         team_name.setEnabled(false);
         /*
@@ -106,6 +115,17 @@ public class Edit_team extends AppCompatActivity {
 
         sel_trophy.setAdapter(adapter);
         update.setEnabled(false);
+/*
+* VIEW ALL PLAYERS BUTTON IMPLEMENTATION
+* */
+        viewplayers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final BackgroundTask_Team backgroundTask_team =new BackgroundTask_Team(Edit_team.this,teamcode);
+                backgroundTask_team.execute();
+                viewplayers.setEnabled(false);
+            }
+        });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +140,7 @@ public class Edit_team extends AppCompatActivity {
                         team_name.setEnabled(true);
                         edit.setEnabled(false);
                         update.setEnabled(true);
-                        iv.setEnabled(true);
+                      //  iv.setEnabled(true);
                     }
                 });
 

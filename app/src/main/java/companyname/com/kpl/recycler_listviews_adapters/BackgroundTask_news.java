@@ -69,7 +69,6 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
         recyclerView.setHasFixedSize(true);
         adapter = new RecyclerAdapter_news(arrayList,ctx);
         recyclerView.setAdapter(adapter);
-
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
         loading.setMessage("List is now Loading!");
