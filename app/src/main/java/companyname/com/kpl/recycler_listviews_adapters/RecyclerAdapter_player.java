@@ -99,7 +99,6 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
         public void onClick(View view) {
             int position=getAdapterPosition();
             Player player=this.player.get(position);
-
             Intent intent=new Intent(ctx,Player_Details.class);
             intent.putExtra("imagepath", player.getPlayer_image());
             intent.putExtra("teamname",player.getTm_name());

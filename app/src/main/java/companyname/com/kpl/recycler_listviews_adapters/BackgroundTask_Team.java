@@ -52,7 +52,8 @@ public class BackgroundTask_Team extends AsyncTask<Void,Team,Void> {
 
 
     //String json_string="http://devkpl.com/KPL-Admin/wsGetPlayers/";
-     String json_string="http://kplpune.in/KPL-Admin/wsGetAllPayersByTeam/";
+    // String json_string="http://kplpune.in/KPL-Admin/wsGetAllPayersByTeam/";
+    String json_string="http://devkpl.com/KPL-Admin/wsGetAllPayersByTeam/";
 
     //String json_string = "http://devkpl.com/getList_news.php";
 

@@ -50,11 +50,15 @@ public class RecyclerAdapter_premiereLeague extends RecyclerView.Adapter <Recycl
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        if (position % 2 == 0) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
+        /*
+        * IF ALTERNATE ROW COLORS
+        * if (position % 2 == 0) {
+        holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
+        holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
         }
+        *
+        * */
 
         PremiereLeague premiereLeague=arrayList.get(position);
         //holder.News_image.setText(news.getNews_image());

@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
+import companyname.com.kpl.ImageDecoder;
 import companyname.com.kpl.R;
 import companyname.com.kpl.admin_files.Edit_team;
 
@@ -48,11 +49,15 @@ public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
     @Override
 public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        if (position % 2 == 0) {
+        /*
+        * IF ALTERNATE ROW COLORS
+        * if (position % 2 == 0) {
         holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
         holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
         }
+        *
+        * */
 
         Team team=arrayList.get(position);
         //holder.News_image.setText(news.getNews_image());
@@ -61,8 +66,11 @@ public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.Name.setText(team.getName());
         //holder.Title.setText(news.getTitle());
         //holder.Desc.setText(news.getDesc());
-        Glide.with(holder.imageView.getContext()).load(team.getImage())
-        .error(R.mipmap.ic_launcher)
+        //imageView.setImageBitmap(ImageDecoder.decodeSampledBitmapFromResource(ctx.getResources(),items.get(position).getImage(),100,100));
+        Glide.with(holder.imageView.getContext())
+        .load(team.getImage())
+        //.asBitmap(ImageDecoder.decodeSampledBitmapFromResource(ctx.getResources(),R.id.image_static_player1,100,100))
+        .error(R.drawable.default_player)
         .diskCacheStrategy(DiskCacheStrategy.NONE)
         .skipMemoryCache(true)
         .into(holder.imageView);
@@ -103,7 +111,10 @@ public static class RecyclerViewHolder extends RecyclerView.ViewHolder implement
 
 
         Name=(TextView)view.findViewById(R.id.tv_player_name_fetch1);
-        imageView= (ImageView) view.findViewById(R.id.image_static_player1);
+        imageView= (ImageView) view.findViewById(R.id.iv_player_image);
+        //imageView= (ImageView) view.findViewById(R.id.image_static_player1);
+        //imageView.setImageBitmap(ImageDecoder.decodeSampledBitmapFromResource(ctx.getResources(),R.id.iv_player_image,100,100));
+        //imageView.setImageBitmap(ImageDecoder.decodeSampledBitmapFromResource(ctx.getResources(),items.get(position).getImage(),100,100));
     }
 
     @Override

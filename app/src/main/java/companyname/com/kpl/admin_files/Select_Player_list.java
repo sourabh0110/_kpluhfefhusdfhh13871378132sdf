@@ -6,8 +6,11 @@ import android.support.v7.widget.SearchView;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+
 import companyname.com.kpl.R;
 import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_Player;
+import companyname.com.kpl.recycler_listviews_adapters.Player;
 
 public class Select_Player_list extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
@@ -32,6 +35,9 @@ public class Select_Player_list extends AppCompatActivity implements SearchView.
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        newText=newText.toLowerCase();
+        ArrayList<Player>players=new ArrayList<>();
+        String name=players.get(0).getPlayer_name().toLowerCase();
         return false;
     }
 }

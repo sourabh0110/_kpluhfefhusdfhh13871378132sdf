@@ -39,11 +39,15 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
 
     @Override
     public void onBindViewHolder(RecyclerAdapter_championship.RecyclerViewHolder holder, int position) {
-        if (position % 2 == 0) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
+        /*
+        * IF ALTERNATE ROW COLORS
+        * if (position % 2 == 0) {
+        holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
+        holder.itemView.setBackgroundColor(Color.parseColor("#E8E8E8"));
         }
+        *
+        * */
 
         Championship championship=arrayList.get(position);
         //holder.News_image.setText(news.getNews_image());
@@ -109,7 +113,8 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
 
         @Override
         public void onClick(View view) {
-            int position=getAdapterPosition();
+            /*
+            *int position=getAdapterPosition();
             Championship championship=this.championship.get(position);
 
             Intent intent=new Intent(ctx,Team_details.class);
@@ -121,6 +126,8 @@ public class RecyclerAdapter_championship extends RecyclerView.Adapter <Recycler
 
             this.ctx.startActivity(intent);
             ((Activity)ctx).finish();
+            * */
+
 
 
 
