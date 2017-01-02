@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#017ebe</color>
+    <color name="colorPrimaryDark">#017ebe</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#000000</color>
+    <color name="cell_color_1">#0ae2e5</color>
+    <color name="cell_color_2">#fd1738</color>
+    <color name="cell_color_3">#0052cc</color>
+    <color name="color_c">#01a2a4</color>
+    <color name="gray">#e4e4e4</color>
+    <color name="headr">#00121b</color>
+    <color name="table_cell">#4c4c4c</color>
+    <color name="btn_back">#e8e8e8</color>
+    <color name="crew_bg">#12d2de</color>
 </resources>

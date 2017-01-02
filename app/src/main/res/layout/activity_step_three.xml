@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_step_three"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="companyname.com.kpl.admin_files.StepThree">
+
+    <LinearLayout
+        android:id="@+id/cst_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textColorPrimary"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/cst_btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textColor="@color/textColorPrimary"
+            android:background="@color/headr"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/table_cell"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/cst_ivLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@mipmap/ic_launcher"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/cst_tvLname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.15"
+                android:gravity="left"
+                android:layout_gravity="center"
+                android:text="abc"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.30">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Division One"
+                    android:padding="5dp"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/textColorPrimary"/>
+
+                <TextView
+                    android:id="@+id/cst_tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="8:00"
+                    android:textSize="13sp"
+                    android:textColor="@color/textColorPrimary"
+                    android:padding="10dp"
+                    android:background="@color/headr"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/cst_tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="07/01/2017"
+                    android:padding="5dp"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/textColorPrimary"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cst_tvRname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.15"
+                android:text="def"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/cst_ivRight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@mipmap/ic_launcher"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Referee: Omi"
+            android:textColor="@color/headr"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:background="@color/headr">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/textColorPrimary"
+                android:text="Name"
+                android:padding="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textColor="@color/textColorPrimary"
+                android:text="Ref"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/gray"
+            android:overScrollMode="never"
+            android:id="@+id/cst_rvEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+
+</RelativeLayout>

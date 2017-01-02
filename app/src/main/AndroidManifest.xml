@@ -33,22 +33,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".admin_files.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="companyname.com.kpl.LOGINACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".admin_files.Admin_Activity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
+             />
         <activity
             android:name=".admin_files.Search_news"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -96,7 +93,11 @@
         <activity android:name=".admin_files.Edit_Player" />
         <activity android:name=".admin_files.Add_Featured_player" />
         <activity android:name=".recycler_listviews_adapters.FeaturedPlayer_Details" />
-        <activity android:name=".admin_files.Select_Feat_Player_list"></activity>
+        <activity android:name=".admin_files.Select_Feat_Player_list" />
+        <activity android:name=".admin_files.Stepone" />
+        <activity android:name=".admin_files.StepTwo" />
+        <activity android:name=".admin_files.StepThree" />
+        <activity android:name=".admin_files.StepZero"></activity>
     </application>
 
 </manifest>

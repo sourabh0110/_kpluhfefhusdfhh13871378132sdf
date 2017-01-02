@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:id="@+id/cso_llmain"
+        android:padding="5dp">
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:src="@mipmap/ic_launcher"
+        />
+
+        <TextView
+            android:id="@+id/cso_tvName"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:text="Anmol"
+            android:textColor="@color/headr"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/cso_rb"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>

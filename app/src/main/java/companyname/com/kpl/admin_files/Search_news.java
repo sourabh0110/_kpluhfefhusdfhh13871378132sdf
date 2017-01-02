@@ -1,10 +1,7 @@
 package companyname.com.kpl.admin_files;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,11 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import companyname.com.kpl.Demo;
 import companyname.com.kpl.R;
-import companyname.com.kpl.admin_files.Config;
 import companyname.com.kpl.recycler_listviews_adapters.BackgroundTask_news;
-import companyname.com.kpl.recycler_listviews_adapters.DisplayList_news;
 
 public class Search_news extends AppCompatActivity  {
 
