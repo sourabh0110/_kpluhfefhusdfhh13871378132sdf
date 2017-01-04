@@ -67,7 +67,7 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
             holder.Desc.setText(news.getDesc());
             holder.News_date.setText(news.getNews_date());
             Glide.with(holder.imageView.getContext()).load(news.getNews_image())
-                    .error(R.mipmap.ic_launcher)
+                    .error(R.drawable.news_default_logo)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true)
                     .into(holder.imageView);
@@ -97,10 +97,6 @@ public class RecyclerAdapter_news extends RecyclerView.Adapter <RecyclerAdapter_
     @Override
     public Filter getFilter() {
 
-        if(filter==null)
-        {
-            filter=new FilterHelper(filterList,this);
-        }
         return filter;
 
     }

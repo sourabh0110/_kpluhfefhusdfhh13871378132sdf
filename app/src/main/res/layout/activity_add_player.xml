@@ -30,11 +30,13 @@
                 android:gravity="center"
                 >
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:contextClickable="true"
-                    android:src="@drawable/menu_add_user"
+                    android:maxHeight="150dp"
+                    android:maxWidth="150dp"
+                    android:src="@drawable/default_player"
                     android:id="@+id/civ_add_player"
 
                     />

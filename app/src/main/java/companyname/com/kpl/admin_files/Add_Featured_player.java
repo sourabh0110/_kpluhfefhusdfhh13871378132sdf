@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +58,7 @@ public class Add_Featured_player extends AppCompatActivity implements AdapterVie
     //DECLARING TVs AND ETs
     private TextView textViewTeamName,textViewCode,textViewPosition;
     private EditText playerName,goals,redcard,yellowcard,assists ;
-    CircleImageView iv;
+    ImageView iv;
     private Button addnewfeaturedplayer;
     private Bitmap bitmap;
     private static final int PICK_IMAGE=100;
@@ -120,7 +122,7 @@ public class Add_Featured_player extends AppCompatActivity implements AdapterVie
         /*
         * ASSIGNING VALUES/IDS
         * */
-        iv= (CircleImageView) findViewById(R.id.civ_add_featured_player);
+        iv= (ImageView) findViewById(R.id.civ_add_featured_player);
         playerName=(EditText)findViewById(R.id.et_featured_player_name);
         textViewTeamName = (TextView) findViewById(R.id.tv_static_featured_teamname);
         textViewCode = (TextView) findViewById(R.id.tv_static_featured_teamcode);
@@ -139,7 +141,10 @@ public class Add_Featured_player extends AppCompatActivity implements AdapterVie
         addnewfeaturedplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadToServer();
+
+                if(isValidate()){
+                    uploadToServer();
+                }
             }
         });
 
@@ -151,6 +156,33 @@ public class Add_Featured_player extends AppCompatActivity implements AdapterVie
             }
         });
 
+
+    }
+
+    private boolean isValidate() {
+        boolean isValid = true;
+        if (TextUtils.isEmpty(playerName.getText().toString())){
+            playerName.setError("Name Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(goals.getText().toString())){
+            goals.setError("Goals Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(yellowcard.getText().toString())){
+            yellowcard.setError("YC Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(redcard.getText().toString())){
+            redcard.setError("RC Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(assists.getText().toString())){
+            assists.setError("Assist Missing");
+            isValid=false;
+        }
+
+        return isValid;
 
     }
 

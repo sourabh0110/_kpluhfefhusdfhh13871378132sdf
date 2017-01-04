@@ -115,7 +115,7 @@ public class BackgroundTask_Feat_Player extends AsyncTask<Void,FeatPlayer,Void> 
                 //Player player=new Player(JO.getString("usr_name"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_dob"),JO.getString("usr_profile_pic"),JO.getInt("usr_id"));
                 FeatPlayer fplayer=new FeatPlayer(JO.getInt("id"),JO.getInt("matches_played"),JO.getInt("goals_scored"),JO.getInt("yellow_cards"),JO.getInt("red_cards"),JO.getInt("assists"),JO.getString("player_name"),JO.getString("player_pos"),JO.getString("player_team"),JO.getString("image"));
                 publishProgress(fplayer);
-                Thread.sleep(100);
+                Thread.sleep(1);
             }
             Log.e("JSON_STRING",json_string);
 

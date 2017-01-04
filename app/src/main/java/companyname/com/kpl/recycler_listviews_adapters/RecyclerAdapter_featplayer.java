@@ -64,7 +64,7 @@ public class RecyclerAdapter_featplayer extends RecyclerView.Adapter <RecyclerAd
         holder.player_team.setText(player.getPlayer_team());
 
         Glide.with(holder.feat_image.getContext()).load(player.getImage())
-                .error(R.mipmap.ic_launcher)
+                .error(R.drawable.default_player)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
                 .into(holder.feat_image);

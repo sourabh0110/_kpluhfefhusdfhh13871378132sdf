@@ -11,7 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/textColorPrimary"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*Select the referee and tap on player Name to Confirm!"
+            android:textColor="@color/headr"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
 
         <Button
             android:id="@+id/csf_btnConfirm"
@@ -21,6 +31,7 @@
             android:textColor="@color/textColorPrimary"
             android:background="@color/headr"
             android:layout_margin="10dp"/>
+
 
     </LinearLayout>
 
@@ -138,26 +149,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="73dp"
                 android:textColor="@color/textColorPrimary"
                 android:text="Name"
                 android:padding="5dp"/>
-
-            <TextView
+<!--
+<TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:textColor="@color/textColorPrimary"
                 android:text="Ref"
                 android:padding="5dp"/>
+-->
+
 
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/csf_rvEvent"
-            android:overScrollMode="never"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp">
 

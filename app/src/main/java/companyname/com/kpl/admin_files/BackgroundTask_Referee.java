@@ -32,18 +32,20 @@ import companyname.com.kpl.recycler_listviews_adapters.CalEventAdapter;
 import companyname.com.kpl.recycler_listviews_adapters.HotListPojo;
 import companyname.com.kpl.recycler_listviews_adapters.Player;
 import companyname.com.kpl.recycler_listviews_adapters.RecyclerAdapter_player;
+import companyname.com.kpl.recycler_listviews_adapters.RecyclerAdapter_referee;
+import companyname.com.kpl.recycler_listviews_adapters.Referee;
 
 /**
  * Created by admin on 1/3/2017.
  */
-public class BackgroundTask_Referee extends AsyncTask<Void,Player,Void> implements OnClickListener {
+public class BackgroundTask_Referee extends AsyncTask<Void,Referee,Void> {
     private ProgressDialog loading;
     Context ctx;
     Activity activity;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<HotListPojo> arrayList = new ArrayList<>();
+    ArrayList<Referee> arrayList = new ArrayList<>();
 
     public BackgroundTask_Referee(Context ctx) {
         this.ctx = ctx;
@@ -51,21 +53,21 @@ public class BackgroundTask_Referee extends AsyncTask<Void,Player,Void> implemen
     }
 
 
-    //String json_string="http://devkpl.com/KPL-Admin/wsGetPlayers";
-    String json_string="http://kplpune.in/KPL-Admin/wsGetTeams";
+    String json_string="http://devkpl.com/KPL-Admin/wsGetReferees";
+    //String json_string="http://kplpune.in/KPL-Admin/wsGetPlayers";
 
     //String json_string = "http://devkpl.com/getList_news.php";
 
     @Override
     protected void onPreExecute() {
-        recyclerView = (RecyclerView) activity.findViewById(R.id.cef_rvEvent);
+        recyclerView = (RecyclerView) activity.findViewById(R.id.csf_rvEvent);
         layoutManager = new LinearLayoutManager(ctx);
         //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(ctx,2);
         recyclerView.setLayoutManager(layoutManager);
         //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2,dpToPx(10),true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter = new CalEventAdapter(ctx, this);
+        adapter = new RecyclerAdapter_referee(arrayList,ctx);
         recyclerView.setAdapter(adapter);
         loading=new ProgressDialog(ctx);
         loading.setTitle("Please Wait..");
@@ -76,8 +78,8 @@ public class BackgroundTask_Referee extends AsyncTask<Void,Player,Void> implemen
     }
 
     @Override
-    protected void onProgressUpdate(Player... values) {
-        //arrayList.add(values[0]);
+    protected void onProgressUpdate(Referee... values) {
+        arrayList.add(values[0]);
         adapter.notifyDataSetChanged();
     }
 
@@ -118,8 +120,8 @@ public class BackgroundTask_Referee extends AsyncTask<Void,Player,Void> implemen
                 count++;
                 //ForWB
                 //Player player=new Player(JO.getString("usr_name"),JO.getInt("usr_team_code"),JO.getString("usr_team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_dob"),JO.getString("usr_profile_pic"),JO.getInt("usr_id"));
-                Player player=new Player(JO.getString("usr_profile_pic"),JO.getInt("usr_team_code"),JO.getString("team_name"),JO.getString("usr_mobile_number"),JO.getString("usr_name"),JO.getInt("usr_id"),JO.getString("usr_dob"));
-                publishProgress(player);
+                Referee referee=new Referee(JO.getString("ref_name"),JO.getString("ref_profile_pic"),JO.getInt("ref_id"));
+                publishProgress(referee);
                 Thread.sleep(100);
             }
             Log.e("JSON_STRING",json_string);
@@ -138,11 +140,6 @@ public class BackgroundTask_Referee extends AsyncTask<Void,Player,Void> implemen
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    public void onClick(View view, int position) {
-
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

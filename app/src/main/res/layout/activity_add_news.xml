@@ -85,11 +85,13 @@
 
 
                 <ImageView
-
+                    android:src="@drawable/news_default_logo"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:id="@+id/upload"
+                    android:maxHeight="150dp"
+                    android:maxWidth="150dp"
                     />
 
                 <Button

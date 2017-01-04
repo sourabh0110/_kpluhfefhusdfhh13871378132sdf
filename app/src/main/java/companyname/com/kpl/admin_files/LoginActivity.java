@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -112,18 +113,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             editTextUsername.setText("");
                             editTextPassword.setText("");
                             editTextUsername.setFocusable(true);
-                            Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"LOGIN FAILED..TRY AGAIN",Toast.LENGTH_LONG).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        loading.dismiss();
-                        editTextUsername.setText("");
-                        editTextPassword.setText("");
-                        editTextUsername.setFocusable(true);
-                        Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
+
+                            loading.dismiss();
+                            editTextUsername.setText("");
+                            editTextPassword.setText("");
+                            editTextUsername.setFocusable(true);
+                            Toast.makeText(LoginActivity.this,"ERROR CONNECTING TO SERVER",Toast.LENGTH_LONG ).show();
+
+
                     }
                 }){
             @Override
@@ -153,10 +157,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
-        loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
-        //pb.setVisibility(View.VISIBLE);
-        userLogin();
 
+        //pb.setVisibility(View.VISIBLE);
+        if(isValidate()){
+            loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
+            userLogin();
+        }
+        
+
+    }
+
+    private boolean isValidate() {
+        boolean isValid = true;
+        if (TextUtils.isEmpty(editTextUsername.getText().toString())){
+            editTextUsername.setError("UserName Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(editTextPassword.getText().toString())){
+            editTextPassword.setError("Password Missing");
+            isValid=false;
+        }
+        return isValid;
     }
 
 

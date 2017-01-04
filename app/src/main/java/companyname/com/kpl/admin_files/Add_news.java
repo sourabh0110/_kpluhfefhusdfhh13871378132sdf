@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -95,7 +96,10 @@ public class Add_news extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //updateInfo();
-                uploadToServer();
+                if(isValidate()){
+                    uploadToServer();
+                }
+
             }
         });
 
@@ -105,6 +109,33 @@ public class Add_news extends AppCompatActivity {
                 showFileChooser();
             }
         });
+    }
+
+    private boolean isValidate() {
+        boolean isValid = true;
+        if (TextUtils.isEmpty(tv_date.getText().toString())){
+            tv_date.setError("Date Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(author.getText().toString())){
+            author.setError("Name Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(news_title.getText().toString())){
+            news_title.setError("Title Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(news_desc.getText().toString())){
+            news_desc.setError("Description Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(news_content.getText().toString())){
+            news_content.setError("Content Missing");
+            isValid=false;
+        }
+
+        return isValid;
+
     }
 
     private void updateInfo() {

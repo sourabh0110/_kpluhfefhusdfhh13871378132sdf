@@ -1,6 +1,6 @@
 package companyname.com.kpl.recycler_listviews_adapters;
 
-import android.support.v7.widget.RecyclerView;
+    import android.support.v7.widget.RecyclerView;
 import android.widget.Filter;
 
 import java.util.ArrayList;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class FilterHelper extends Filter {
     RecyclerView.Adapter adapter;
-    ArrayList<News> filterList;
+    ArrayList<Player> filterList;
 
 
-    public FilterHelper(ArrayList<News> filterList,RecyclerView.Adapter adapter)
+    public FilterHelper(ArrayList<Player> filterList,RecyclerView.Adapter adapter)
     {
         this.adapter=adapter;
         this.filterList=filterList;
@@ -32,12 +32,12 @@ public class FilterHelper extends Filter {
             //CHANGE TO UPPER
             constraint=constraint.toString().toUpperCase();
             //STORE OUR FILTERED PLAYERS
-            ArrayList<News> filteredPlayers=new ArrayList<>();
+            ArrayList<Player> filteredPlayers=new ArrayList<>();
 
             for (int i=0;i<filterList.size();i++)
             {
                 //CHECK
-                if(filterList.get(i).getName().toUpperCase().contains(constraint))
+                if(filterList.get(i).getPlayer_name().toUpperCase().contains(constraint))
                 {
                     //ADD PLAYER TO FILTERED PLAYERS
                     filteredPlayers.add(filterList.get(i));
@@ -60,7 +60,7 @@ public class FilterHelper extends Filter {
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
 
-       // adapter.news= (ArrayList<News>) results.values;
+         //adapter.= (ArrayList<Player>) results.values;
 
         //REFRESH
         adapter.notifyDataSetChanged();

@@ -141,7 +141,7 @@ public class BackgroundTask_news extends AsyncTask<Void,News,Void> {
                 //News news=new News(JO.getString("author_name"),JO.getString("title"),JO.getInt("news_id"),JO.getString("description"),JO.getString("content"),JO.getString("image"),JO.getString("date"));
                 News news=new News(JO.getString("image"),JO.getInt("news_id"),JO.getString("author_name"),JO.getString("title"),JO.getString("description"),JO.getString("content"),JO.getString("date"));
                 publishProgress(news);
-                Thread.sleep(100);
+                Thread.sleep(1);
             }
             Log.e("JSON_STRING",json_string);
 

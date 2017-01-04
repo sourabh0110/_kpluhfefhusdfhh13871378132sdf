@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +67,7 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
     //DECLARING TVs AND ETs
     private TextView textViewTeamName,textViewCode;
     private EditText playerName,contactNo ;
-    CircleImageView iv;
+    ImageView iv;
     Button add_date;
     TextView textViewdispdate;
     private Button addnewplayer;
@@ -119,8 +121,9 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
         * ASSIGNING VALUES
         * */
         textViewdispdate= (TextView) findViewById(R.id.tv_show_date);
-        textViewdispdate.setVisibility(View.INVISIBLE);
-        iv= (CircleImageView) findViewById(R.id.civ_add_player);
+        textViewdispdate.setEnabled(false);
+        //textViewdispdate.setVisibility(View.INVISIBLE);
+        iv= (ImageView) findViewById(R.id.civ_add_player);
         playerName=(EditText)findViewById(R.id.et_player_name);
         contactNo=(EditText)findViewById(R.id.et_contactno);
         textViewTeamName = (TextView) findViewById(R.id.tv_static_teamname);
@@ -133,7 +136,10 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
         addnewplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadToServer();
+
+                if(isValidate()){
+                    uploadToServer();
+                }
             }
         });
 
@@ -149,6 +155,24 @@ public class Add_Player extends AppCompatActivity implements Spinner.OnItemSelec
         month_x=cal.get(Calendar.MONTH);
         day_x=cal.get(Calendar.DAY_OF_MONTH);
         showDialogOnButtonClick();
+
+    }
+
+    private boolean isValidate() {
+        boolean isValid = true;
+        if (TextUtils.isEmpty(playerName.getText().toString())){
+            playerName.setError("Name Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(contactNo.getText().toString())){
+            contactNo.setError("Contact No Missing");
+            isValid=false;
+        }
+        if (TextUtils.isEmpty(textViewdispdate.getText().toString())){
+            textViewdispdate.setError("Date Missing");
+            isValid=false;
+        }
+        return isValid;
 
     }
 

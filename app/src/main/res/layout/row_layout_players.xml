@@ -12,7 +12,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/iv_player_image"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/default_player"
         />
     <ImageView
         android:layout_width="2dp"

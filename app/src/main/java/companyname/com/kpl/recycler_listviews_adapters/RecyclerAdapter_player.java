@@ -8,14 +8,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
+import companyname.com.kpl.OnClickListener;
 import companyname.com.kpl.R;
 import companyname.com.kpl.admin_files.Edit_Player;
 import companyname.com.kpl.admin_files.Edit_team;
@@ -25,17 +29,20 @@ import companyname.com.kpl.admin_files.Select_Player_list;
  * Created by admin on 12/19/2016.
  */
 
-public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapter_player.RecyclerViewHolder>{
+public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapter_player.RecyclerViewHolder> implements Filterable{
     private Context ctx;
     //private static final int TYPE_HEAD=0;
     //private static final int TYPE_LIST=1;
 
 
     ArrayList<Player> arrayList=new ArrayList<>();
+    ArrayList<Player> filterList=new ArrayList<>();
+    FilterHelper filterHelper;
 
     public RecyclerAdapter_player(ArrayList<Player> arrayList, Context ctx) {
 
         this.arrayList=arrayList;
+        this.filterList=arrayList;
         this.ctx=ctx;
     }
 
@@ -48,7 +55,7 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
 
-        Player player=arrayList.get(position);
+        final Player player=arrayList.get(position);
         holder.Id.setText(Integer.toString(player.getPlayer_id()));
         holder.player_name.setText(player.getPlayer_name());
         holder.mobno.setText(player.getMobno());
@@ -56,10 +63,17 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
         holder.team_name.setText(player.getTm_name());
         holder.team_code.setText(Integer.toString(player.getTm_code()));
         Glide.with(holder.imageView.getContext()).load(player.getPlayer_image())
-                .error(R.mipmap.ic_launcher)
+                .error(R.drawable.default_player)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
                 .into(holder.imageView);
+
+        holder.setItemClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                //Toast.makeText(view,player.getPlayer_name(),Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
@@ -68,10 +82,22 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
         return arrayList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+
+        if(filterHelper==null)
+        {
+            filterHelper=new FilterHelper(filterList,this);
+        }
+
+        return filterHelper;
+    }
+
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
+        OnClickListener onClickListener;
         int viewType;
         TextView player_name,Id,mobno,dob,team_code,team_name;
         ImageView imageView,imageView_static;
@@ -97,6 +123,7 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
 
         @Override
         public void onClick(View view) {
+            this.onClickListener.onClick(view,getLayoutPosition());
             int position=getAdapterPosition();
             Player player=this.player.get(position);
             Intent intent=new Intent(ctx,Player_Details.class);
@@ -110,6 +137,12 @@ public class RecyclerAdapter_player extends RecyclerView.Adapter <RecyclerAdapte
             this.ctx.startActivity(intent);
             ((Activity)ctx).finish();
 
+
+        }
+
+        public void setItemClickListener(OnClickListener ic)
+        {
+            this.onClickListener=ic;
 
         }
 
